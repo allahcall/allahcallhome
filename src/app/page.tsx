@@ -1,15 +1,34 @@
 import Link from "next/link";
 import { Shahada, TeamGrid } from "@/components/blocks/media-blocks";
-import { Cta, Faq, Stats } from "@/components/blocks/text-blocks";
+import { Cta, Quote } from "@/components/blocks/text-blocks";
 import { Arrow, ButtonLink } from "@/components/ui/button";
+import { Star } from "@/components/ui/mark";
 import { Photo } from "@/components/ui/photo";
-import { Label, Section, SectionHead } from "@/components/ui/section";
+import { Section, SectionHead, Ticks } from "@/components/ui/section";
 import type { Person } from "@/content/types";
+
+const stats = [
+  { value: "50,000+", label: "People reached through dawah" },
+  { value: "5,000+", label: "New Muslims supported" },
+  { value: "10,000+", label: "Students enrolled" },
+  { value: "100+", label: "Community events a year" },
+];
+
+const topics = [
+  { label: "Understanding Islam", href: "/islam" },
+  { label: "Quran & Sunnah", href: "/quran-sunnah" },
+  { label: "The Shahada", href: "/shahada" },
+  { label: "Courses", href: "/courses" },
+  { label: "World religions", href: "/religions" },
+  { label: "Marriage", href: "/marriage" },
+  { label: "Dawah", href: "/dawah" },
+];
 
 const paths = [
   {
     title: "New to Islam",
     body: "Understand the faith, take your Shahada, and find support in your first steps.",
+    image: { src: "/images/garden-arch.webp", alt: "A garden archway" },
     links: [
       { label: "Accept Islam now", href: "/accept-islam-now" },
       { label: "New Muslim guidelines", href: "/new-muslim-guidelines" },
@@ -19,6 +38,7 @@ const paths = [
   {
     title: "Learn & grow",
     body: "Structured courses on Quran, Sunnah and character, taught by qualified scholars.",
+    image: { src: "/images/quran.webp", alt: "A copy of the Quran" },
     links: [
       { label: "Islamic courses", href: "/courses" },
       { label: "Companionship program", href: "/companionship" },
@@ -28,6 +48,7 @@ const paths = [
   {
     title: "Get involved",
     body: "Serve the community through dawah, events, content and teaching.",
+    image: { src: "/images/congregation.webp", alt: "A congregation at an AllahCall event" },
     links: [
       { label: "Volunteer with us", href: "/volunteers" },
       { label: "Events & activities", href: "/events" },
@@ -106,175 +127,213 @@ const faq = [
 export default function Home() {
   return (
     <>
-      <header className="pt-14 md:pt-22">
-        <div className="wrap">
-          <h1 className="display max-w-[11.5em] text-[46px] leading-[0.98] tracking-[-0.035em] md:text-[clamp(56px,7vw,104px)]">
-            Discover the truth of Islam’s <em className="italic">beautiful</em> message
-          </h1>
-          <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-12 md:gap-8">
-            <div className="md:col-span-4 md:pt-1">
-              <p className="text-[17px] text-ink-2">
+      <div className="wrap pt-1.5 md:pt-4">
+        <div className="grid gap-3 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:gap-4">
+          <header className="relative isolate flex min-h-[460px] flex-col justify-end overflow-hidden rounded-[24px] text-paper md:min-h-[520px] lg:min-h-[580px]">
+            <div className="absolute inset-0 -z-10">
+              <Photo
+                image={{ src: "/images/mosque-window.webp", alt: "Light falling through a mosque window" }}
+                sizes="(min-width: 1024px) 60vw, 100vw"
+                priority
+                position="center 40%"
+                className="h-full"
+              />
+            </div>
+            <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-ink/5 from-20% to-ink/85" />
+            <div className="p-5 md:p-10">
+              <Link
+                href="/events"
+                className="inline-flex items-center gap-2 rounded-[10px] bg-paper/15 px-2.5 py-1.5 text-[12.5px] font-medium backdrop-blur-sm hover:bg-paper/25"
+              >
+                <span aria-hidden className="size-1.5 rounded-full bg-leaf" />
+                New Muslims Support Group · Saturdays
+              </Link>
+              <h1 className="display mt-3.5 max-w-[11em] text-[38px] leading-[1.04] md:text-[clamp(48px,5.4vw,68px)]">
+                Discover the truth of Islam’s <em className="italic">beautiful</em> message
+              </h1>
+              <p className="mt-3 max-w-[34em] text-[15px] text-paper/85 md:text-[17px]">
                 Join us on a journey to understand the pure teachings of Islam and find answers to life’s important
                 questions, with authentic knowledge from qualified scholars.
               </p>
-              <div className="mt-7 flex flex-wrap gap-2.5">
-                <ButtonLink href="/islam" arrow>
+              <div className="mt-5 grid grid-cols-2 gap-2.5 sm:flex">
+                <ButtonLink href="/islam" variant="inverse">
                   Start learning
                 </ButtonLink>
-                <ButtonLink href="/contact" variant="secondary">
+                <ButtonLink href="/contact" variant="inverse-secondary">
                   Ask a scholar
                 </ButtonLink>
               </div>
             </div>
-            <figure className="md:col-span-8">
-              <Photo
-                image={{ src: "/images/mosque-window.webp", alt: "Light falling through a mosque window" }}
-                sizes="(min-width: 768px) 66vw, 100vw"
-                priority
-                className="aspect-[16/10] md:aspect-[16/9.5]"
-                position="center 45%"
-              />
-              <figcaption className="flex justify-between gap-4 pt-3 text-[13px] text-muted">
-                <Link href="/events" className="hover:text-ink">
-                  New Muslims Support Group
-                </Link>
-                <span className="text-right">Every Saturday · 3–5 PM · Online</span>
-              </figcaption>
-            </figure>
+          </header>
+
+          <div className="grid content-start gap-3 sm:grid-cols-2 lg:grid-cols-1 lg:grid-rows-[1fr_auto] lg:content-stretch lg:gap-4">
+            <dl className="grid grid-cols-2 gap-2.5 sm:col-span-2 lg:col-span-1 lg:auto-rows-fr lg:gap-4">
+              {stats.map((s) => (
+                <div key={s.label} className="card flex flex-col p-4 lg:justify-end lg:p-5">
+                  <dd className="font-serif text-[30px] leading-none font-medium tracking-[-0.02em] text-green lg:text-[36px]">{s.value}</dd>
+                  <dt className="mt-2 text-[13px] leading-snug text-muted">{s.label}</dt>
+                </div>
+              ))}
+            </dl>
+            <Link href="/events" className="card group flex items-center gap-4 p-3.5 sm:col-span-2 lg:col-span-1">
+              <span className="grid size-16 shrink-0 place-items-center content-center rounded-[14px] bg-green-tint text-center leading-tight text-green">
+                <span className="text-[11px] font-bold tracking-wide">EVERY</span>
+                <span className="text-[20px] font-bold">SAT</span>
+              </span>
+              <span className="min-w-0">
+                <span className="block text-[16px] font-semibold">New Muslims Support Group</span>
+                <span className="block text-[13.5px] text-muted">3–5 PM · Online · Weekly</span>
+              </span>
+              <span aria-hidden className="ml-auto grid size-9 shrink-0 place-items-center rounded-[12px] bg-canvas transition-transform group-hover:translate-x-0.5">
+                →
+              </span>
+            </Link>
           </div>
         </div>
-      </header>
 
-      <div className="pt-16 md:pt-8">
-        <Stats
-          block={{
-            type: "stats",
-            items: [
-              { value: "50,000+", label: "People reached through dawah" },
-              { value: "5,000+", label: "New Muslims supported" },
-              { value: "10,000+", label: "Students enrolled" },
-              { value: "100+", label: "Community events a year" },
-            ],
-          }}
-        />
+        <nav aria-label="Topics" className="rail mt-4 [--rail-col:auto] md:flex md:flex-wrap md:gap-2">
+          {topics.map((t, i) => (
+            <Link
+              key={t.href}
+              href={t.href}
+              className="inline-flex h-10 items-center gap-2 rounded-[12px] border border-line bg-paper px-3.5 text-[14px] font-medium whitespace-nowrap hover:border-green hover:text-green"
+            >
+              {i === 0 && <Star className="size-4 text-green" />}
+              {t.label}
+            </Link>
+          ))}
+        </nav>
       </div>
 
-      <Shahada block={{ type: "shahada", action: { label: "Understand the Shahada", href: "/shahada" } }} flush />
+      <Section>
+        <SectionHead label="Begin here" title="Wherever you are on the path, there is a place to start." />
+        <div className="rail [--rail-col:82%] sm:[--rail-col:60%] md:grid-cols-3">
+          {paths.map((p) => (
+            <article key={p.title} className="card flex flex-col overflow-hidden">
+              <Photo image={p.image} sizes="(min-width: 768px) 33vw, 82vw" className="aspect-[16/10]" />
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="text-[19px] font-semibold tracking-[-0.01em]">{p.title}</h3>
+                <p className="mt-1.5 text-[14.5px] text-muted">{p.body}</p>
+                <ul className="mt-auto pt-4">
+                  {p.links.map((l) => (
+                    <li key={l.href}>
+                      <Link
+                        href={l.href}
+                        className="group flex justify-between border-t border-line py-2.5 text-[14.5px] font-medium hover:text-green"
+                      >
+                        {l.label} <Arrow />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </Section>
 
-      <Section flush>
-        <SectionHead index={1} label="About us" title="Get to know more about Islam" />
-        <div className="grid gap-10 border-t border-ink pt-8 md:grid-cols-12 md:gap-8 md:pt-10">
-          <div className="space-y-4 text-[17px] text-ink-2 md:col-span-5">
-            <p>
-              Welcome to our Islamic learning platform, where we strive to provide authentic knowledge about Islam. Our
-              mission is to help people understand the true teachings of Islam through reliable sources and scholarly
-              guidance.
-            </p>
-            <p>
-              We offer comprehensive resources, educational materials, and expert guidance to help you learn about
-              Islamic principles, practices, and values in a welcoming and inclusive environment.
-            </p>
-            <ButtonLink href="/about" variant="secondary" arrow className="mt-4">
-              Discover more
-            </ButtonLink>
+      <Shahada block={{ type: "shahada", action: { label: "Understand the Shahada", href: "/shahada" } }} />
+
+      <Section>
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-4">
+          <div>
+            <SectionHead label="About us" title="Get to know more about Islam" />
+            <div className="card p-5 md:p-7">
+              <p className="font-serif text-[21px] leading-snug tracking-[-0.01em] md:text-[24px]">
+                Our mission is to make Islamic knowledge accessible to everyone, in a comprehensive and authentic manner.
+              </p>
+              <p className="mt-3 text-[15px] text-ink-2">
+                Welcome to our Islamic learning platform. We help people understand the true teachings of Islam through
+                reliable sources and scholarly guidance, with resources, educational materials and expert guidance in a
+                welcoming and inclusive environment.
+              </p>
+              <Ticks items={mission} className="mt-5" />
+              <ButtonLink href="/about" variant="secondary" arrow className="mt-6 max-sm:w-full">
+                Discover more
+              </ButtonLink>
+            </div>
           </div>
-          <div className="md:col-span-6 md:col-start-7">
-            <h3 className="text-[13px] font-medium text-muted">Mission statement</h3>
-            <p className="mt-3 font-serif text-[22px] leading-snug tracking-[-0.01em]">
-              To make Islamic knowledge accessible to everyone, so anyone can learn the teachings of Islam in a
-              comprehensive and authentic way.
-            </p>
-            <ul className="mt-6">
-              {mission.map((m) => (
-                <li key={m} className="border-t border-line py-3.5 text-[15.5px] text-ink-2">
-                  {m}
-                </li>
+          <div>
+            <SectionHead label="Questions" title="Everything you need to know" link={{ label: "Ask us", href: "/contact" }} />
+            <div className="card divide-y divide-line">
+              {faq.map((item, i) => (
+                <details key={item.q} open={i === 0} className="group">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 px-5 py-4 text-[15.5px] font-semibold md:px-7">
+                    {item.q}
+                    <span aria-hidden className="text-xl leading-none font-light text-muted transition-transform group-open:rotate-45">
+                      +
+                    </span>
+                  </summary>
+                  <p className="px-5 pb-5 text-[15px] text-ink-2 md:px-7">{item.a}</p>
+                </details>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </Section>
 
-      <Section tone="alt">
-        <SectionHead index={2} label="Begin here" title="Wherever you are on the path, there is a place to start." />
-        <div className="grid border-t border-ink md:grid-cols-3">
-          {paths.map((p, i) => (
-            <div
-              key={p.title}
-              className="border-line py-7 max-md:border-t max-md:first:border-t-0 md:border-l md:px-8 md:first:border-l-0 md:first:pl-0 md:last:pr-0"
-            >
-              <span className="text-[13px] text-muted">{["i", "ii", "iii"][i]}</span>
-              <h3 className="mt-8 font-serif text-[30px] tracking-[-0.02em] md:mt-12">{p.title}</h3>
-              <p className="mt-2.5 max-w-[22em] text-muted">{p.body}</p>
-              <ul className="mt-8">
-                {p.links.map((l) => (
-                  <li key={l.href}>
-                    <Link
-                      href={l.href}
-                      className="group flex justify-between border-t border-line py-3 text-[15px] font-medium hover:text-green"
-                    >
-                      {l.label} <Arrow />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+      <Quote
+        block={{
+          type: "quote",
+          label: "Our method",
+          quote: "Invite to the way of your Lord with wisdom and good instruction, and argue with them in a way that is best.",
+          cite: "Quran 16:125",
+          body: "Every resource we share is grounded in the Quran and Sunnah and reviewed by qualified scholars, so you can learn with confidence.",
+          image: { src: "/images/quran.webp", alt: "A copy of the Quran on a dark cloth" },
+        }}
+      />
+
+      <Section>
+        <SectionHead label="Our people" title="Scholars and professionals in service of the message." link={{ label: "Board", href: "/board-of-directors" }} />
+        <TeamGrid people={team} more />
+      </Section>
+
+      <Section>
+        <div className="card grid overflow-hidden md:grid-cols-2">
+          <Photo
+            image={{ src: "/images/gathering.webp", alt: "A community gathering at an AllahCall event" }}
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="aspect-[16/10] md:aspect-auto md:min-h-80"
+          />
+          <div className="flex flex-col justify-center p-5 md:p-10">
+            <p className="text-[13px] font-semibold text-green">Strengthen your faith</p>
+            <h2 className="display mt-2 text-[28px] md:text-[clamp(30px,3vw,42px)]">Join our growing community of believers</h2>
+            <p className="mt-3 text-[15px] text-ink-2">
+              Learn authentic Islamic knowledge, share wisdom with fellow Muslims, and grow spiritually through our online
+              Islamic education platform.
+            </p>
+            <div className="mt-6 grid grid-cols-2 gap-2.5 sm:flex">
+              <ButtonLink href="/courses">Browse courses</ButtonLink>
+              <ButtonLink href="/companionship" variant="secondary">
+                Find a companion
+              </ButtonLink>
             </div>
-          ))}
+          </div>
         </div>
       </Section>
 
       <Section>
-        <div className="grid items-center gap-10 md:grid-cols-12 md:gap-8">
-          <Photo
-            image={{ src: "/images/quran.webp", alt: "A copy of the Quran on a dark cloth" }}
-            sizes="(min-width: 768px) 50vw, 100vw"
-            position="62% center"
-            className="aspect-[4/3] md:col-span-6 md:aspect-[4/5]"
-          />
-          <div className="md:col-span-5 md:col-start-8">
-            <Label index={3} className="mb-7">
-              Our method
-            </Label>
-            <blockquote className="display text-[30px] leading-[1.16] md:text-[clamp(30px,3vw,42px)]">
-              “Invite to the way of your Lord with wisdom and good instruction, and argue with them in a way that is
-              best.”
-            </blockquote>
-            <cite className="mt-6 block text-[14px] text-muted not-italic">Quran 16:125</cite>
-            <p className="mt-10 max-w-[30em] border-t border-line pt-6 text-ink-2">
-              Every resource we share is grounded in the Quran and Sunnah and reviewed by qualified scholars, so you can
-              learn with confidence.
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      <Section flush>
-        <SectionHead index={4} label="Our people" title="Scholars and professionals in service of the message." />
-        <TeamGrid people={team} more />
-      </Section>
-
-      <Section tone="alt">
-        <SectionHead index={5} label="Testimonials" title="In their own words." />
-        <div className="grid border-t border-ink md:grid-cols-2 lg:grid-cols-3">
+        <SectionHead label="Testimonials" title="In their own words" link={{ label: "More stories", href: "/testimonies-of-new-muslims" }} />
+        <div className="rail [--rail-col:82%] sm:[--rail-col:46%] md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t) => (
-            <figure key={t.heading} className="flex flex-col border-b border-line py-8 md:pr-8">
-              <h3 className="text-[13px] font-medium text-muted">{t.heading}</h3>
-              <blockquote className="mt-4 font-serif text-[22px] leading-snug tracking-[-0.01em]">“{t.quote}”</blockquote>
-              <figcaption className="mt-auto pt-5 text-[14px] text-muted">{t.place}</figcaption>
+            <figure key={t.heading} className="card flex flex-col p-5 md:p-6">
+              <span aria-hidden className="font-serif text-[44px] leading-[0.6] text-green">“</span>
+              <p className="mt-3 text-[13px] font-semibold text-green">{t.heading}</p>
+              <blockquote className="mt-1.5 font-serif text-[19px] leading-snug tracking-[-0.01em]">{t.quote}</blockquote>
+              <figcaption className="mt-auto pt-4 text-[13px] text-muted">{t.place}</figcaption>
             </figure>
           ))}
           <Link
             href="/testimonies-of-new-muslims"
-            className="group flex flex-col justify-end border-b border-line py-8 font-serif text-[24px] tracking-[-0.02em] hover:text-green"
+            className="group flex flex-col justify-end rounded-[20px] bg-green p-5 text-paper md:p-6"
           >
-            <span>
+            <span className="text-[20px] font-semibold">
               Read more stories <Arrow />
             </span>
+            <span className="mt-1 text-[13.5px] text-paper/70">Testimonies of new Muslims</span>
           </Link>
         </div>
       </Section>
-
-      <Faq block={{ type: "faq", label: "Questions", title: "Everything you need to know", items: faq }} index={6} />
 
       <Cta
         block={{
