@@ -42,7 +42,7 @@ export type Block =
   | { type: "gallery"; label?: string; title?: string; lede?: string; groups: { title: string; items: Img[] }[] }
   | { type: "books"; label?: string; title: string; items: { title: string; author: string; body: string; image: Img }[] }
   | { type: "testimonies"; label?: string; title: string; lede?: string; items: Testimony[] }
-  | { type: "form"; label?: string; title: string; lede?: string; form: "contact" | "volunteer" }
+  | { type: "form"; label?: string; title: string; lede?: string; form: "contact" | "volunteer" | "updates" }
   | { type: "faq"; label?: string; title?: string; items: { q: string; a: string }[] }
   /** Closing call to action on a dark green band. */
   | { type: "cta"; title: string; body?: string; actions: Action[] };

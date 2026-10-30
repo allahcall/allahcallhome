@@ -507,6 +507,13 @@ export const aboutPages: Page[] = [
         ],
       },
       {
+        type: "form",
+        label: "Stay updated",
+        title: "Hear about upcoming events",
+        lede: "Leave your email and we will let you know about upcoming events and activities.",
+        form: "updates",
+      },
+      {
         type: "cta",
         title: "Want to help run our events?",
         actions: [

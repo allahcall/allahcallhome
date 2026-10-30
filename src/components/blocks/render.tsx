@@ -1,5 +1,5 @@
 import type { Block, Page } from "@/content/types";
-import { ContactForm, VolunteerForm } from "@/components/forms/forms";
+import { ContactForm, UpdatesForm, VolunteerForm } from "@/components/forms/forms";
 import { Photo } from "@/components/ui/photo";
 import { Label, Section } from "@/components/ui/section";
 import { site } from "@/lib/site";
@@ -56,7 +56,7 @@ function FormBlock({ block, index, flush }: { block: Extract<Block, { type: "for
           )}
         </div>
         <div className="md:col-span-7 md:col-start-6">
-          {block.form === "contact" ? <ContactForm /> : <VolunteerForm />}
+          {block.form === "contact" ? <ContactForm /> : block.form === "updates" ? <UpdatesForm /> : <VolunteerForm />}
         </div>
       </div>
     </Section>
@@ -72,7 +72,9 @@ export function Blocks({ blocks }: { blocks: Block[] }) {
   let n = 0;
   return blocks.map((block, i) => {
     // Sections that sit on the same background share the padding between them.
-    const flush = i > 0 && tone(blocks[i - 1]) === tone(block) && tone(block) !== "dark";
+    // Events may end on its grey "Past events" band, decided by today's date, so never share with it.
+    const prev = blocks[i - 1];
+    const flush = i > 0 && prev.type !== "events" && tone(prev) === tone(block) && tone(block) !== "dark";
     const index = "label" in block && block.label && block.type !== "shahada" ? ++n : undefined;
     const props = { index, flush };
     const key = `${block.type}-${i}`;

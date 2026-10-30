@@ -46,15 +46,23 @@ function useFormspree(subject: string) {
   return { status, onSubmit, reset: () => setStatus("idle") };
 }
 
-function Sent({ title, onReset }: { title: string; onReset: () => void }) {
+function Sent({
+  title,
+  body = "JazakAllahu khayran. A member of our team will reply by email, usually within a few days.",
+  again = "Send another message",
+  onReset,
+}: {
+  title: string;
+  body?: string;
+  again?: string;
+  onReset: () => void;
+}) {
   return (
     <div role="status" className="border-t border-ink pt-8">
       <p className="font-serif text-[30px] leading-tight tracking-[-0.02em]">{title}</p>
-      <p className="mt-3 max-w-[32em] text-ink-2">
-        JazakAllahu khayran. A member of our team will reply by email, usually within a few days.
-      </p>
+      <p className="mt-3 max-w-[32em] text-ink-2">{body}</p>
       <button type="button" onClick={onReset} className="mt-6 text-[14.5px] font-medium underline underline-offset-4">
-        Send another message
+        {again}
       </button>
     </div>
   );
@@ -124,6 +132,34 @@ export function ContactForm() {
         <textarea name="message" required rows={6} className={`${field} py-3`} />
       </Field>
       <Submit status={status}>Send message</Submit>
+    </form>
+  );
+}
+
+export function UpdatesForm() {
+  const { status, onSubmit, reset } = useFormspree("Event updates sign-up from allahcall.com");
+  if (status === "sent")
+    return (
+      <Sent
+        title="You’re on the list."
+        body="JazakAllahu khayran. We will email you about upcoming events and activities."
+        again="Add another email"
+        onReset={reset}
+      />
+    );
+  return (
+    <form onSubmit={onSubmit} className="space-y-6">
+      {honeypot}
+      <input type="hidden" name="topic" value="Event updates" />
+      <div className="grid gap-6 sm:grid-cols-2">
+        <Field label="Name" hint="Optional">
+          <input name="name" autoComplete="name" className={`${field} h-12`} />
+        </Field>
+        <Field label="Email">
+          <input name="email" type="email" required autoComplete="email" className={`${field} h-12`} />
+        </Field>
+      </div>
+      <Submit status={status}>Subscribe</Submit>
     </form>
   );
 }
