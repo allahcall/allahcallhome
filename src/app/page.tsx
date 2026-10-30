@@ -36,6 +36,40 @@ const paths = [
   },
 ];
 
+const mission = [
+  "Providing authentic Islamic education based on reliable sources",
+  "Creating an inclusive and welcoming learning environment for all",
+  "Supporting spiritual growth through knowledge and understanding",
+];
+
+const testimonials = [
+  {
+    heading: "Finding peace in Islam",
+    quote: "AllahCall’s authentic teachings cleared my misconceptions and guided me to embrace Islam with a pure heart.",
+    place: "New Muslim, United States",
+  },
+  {
+    heading: "Clarity through knowledge",
+    quote: "The scholars at AllahCall answered all my questions with wisdom, helping me overcome my doubts about Islam.",
+    place: "Revert to Islam, Canada",
+  },
+  {
+    heading: "From confusion to certainty",
+    quote: "AllahCall helped me understand the true beauty of Islam and cleared all my misconceptions.",
+    place: "New Muslim, United Kingdom",
+  },
+  {
+    heading: "A journey of discovery",
+    quote: "AllahCall’s authentic Islamic knowledge helped me see Islam in its true light and embrace it.",
+    place: "Revert to Islam, Spain",
+  },
+  {
+    heading: "Understanding Islam",
+    quote: "Through AllahCall’s teachings, I found the truth about Islam and embraced it with an open heart.",
+    place: "New Muslim, Australia",
+  },
+];
+
 const team: Person[] = [
   { name: "Hafiz Muhammad Haris", role: "Founder & CEO", image: { src: "/images/team/hafiz.jpg", alt: "Hafiz Muhammad Haris" } },
   { name: "Ya’qub Nuri Amin", role: "Islamic Scholar", image: { src: "/images/team/almubeen.jpg", alt: "Ya’qub Nuri Amin" } },
@@ -127,8 +161,42 @@ export default function Home() {
 
       <Shahada block={{ type: "shahada", action: { label: "Understand the Shahada", href: "/shahada" } }} flush />
 
+      <Section flush>
+        <SectionHead index={1} label="About us" title="Get to know more about Islam" />
+        <div className="grid gap-10 border-t border-ink pt-8 md:grid-cols-12 md:gap-8 md:pt-10">
+          <div className="space-y-4 text-[17px] text-ink-2 md:col-span-5">
+            <p>
+              Welcome to our Islamic learning platform, where we strive to provide authentic knowledge about Islam. Our
+              mission is to help people understand the true teachings of Islam through reliable sources and scholarly
+              guidance.
+            </p>
+            <p>
+              We offer comprehensive resources, educational materials, and expert guidance to help you learn about
+              Islamic principles, practices, and values in a welcoming and inclusive environment.
+            </p>
+            <ButtonLink href="/about" variant="secondary" arrow className="mt-4">
+              Discover more
+            </ButtonLink>
+          </div>
+          <div className="md:col-span-6 md:col-start-7">
+            <h3 className="text-[13px] font-medium text-muted">Mission statement</h3>
+            <p className="mt-3 font-serif text-[22px] leading-snug tracking-[-0.01em]">
+              To make Islamic knowledge accessible to everyone, so anyone can learn the teachings of Islam in a
+              comprehensive and authentic way.
+            </p>
+            <ul className="mt-6">
+              {mission.map((m) => (
+                <li key={m} className="border-t border-line py-3.5 text-[15.5px] text-ink-2">
+                  {m}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Section>
+
       <Section tone="alt">
-        <SectionHead index={1} label="Begin here" title="Wherever you are on the path, there is a place to start." />
+        <SectionHead index={2} label="Begin here" title="Wherever you are on the path, there is a place to start." />
         <div className="grid border-t border-ink md:grid-cols-3">
           {paths.map((p, i) => (
             <div
@@ -164,7 +232,7 @@ export default function Home() {
             className="aspect-[4/3] md:col-span-6 md:aspect-[4/5]"
           />
           <div className="md:col-span-5 md:col-start-8">
-            <Label index={2} className="mb-7">
+            <Label index={3} className="mb-7">
               Our method
             </Label>
             <blockquote className="display text-[30px] leading-[1.16] md:text-[clamp(30px,3vw,42px)]">
@@ -181,11 +249,32 @@ export default function Home() {
       </Section>
 
       <Section flush>
-        <SectionHead index={3} label="Our people" title="Scholars and professionals in service of the message." />
+        <SectionHead index={4} label="Our people" title="Scholars and professionals in service of the message." />
         <TeamGrid people={team} more />
       </Section>
 
-      <Faq block={{ type: "faq", label: "Questions", title: "Everything you need to know", items: faq }} index={4} flush />
+      <Section tone="alt">
+        <SectionHead index={5} label="Testimonials" title="In their own words." />
+        <div className="grid border-t border-ink md:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((t) => (
+            <figure key={t.heading} className="flex flex-col border-b border-line py-8 md:pr-8">
+              <h3 className="text-[13px] font-medium text-muted">{t.heading}</h3>
+              <blockquote className="mt-4 font-serif text-[22px] leading-snug tracking-[-0.01em]">“{t.quote}”</blockquote>
+              <figcaption className="mt-auto pt-5 text-[14px] text-muted">{t.place}</figcaption>
+            </figure>
+          ))}
+          <Link
+            href="/testimonies-of-new-muslims"
+            className="group flex flex-col justify-end border-b border-line py-8 font-serif text-[24px] tracking-[-0.02em] hover:text-green"
+          >
+            <span>
+              Read more stories <Arrow />
+            </span>
+          </Link>
+        </div>
+      </Section>
+
+      <Faq block={{ type: "faq", label: "Questions", title: "Everything you need to know", items: faq }} index={6} />
 
       <Cta
         block={{
