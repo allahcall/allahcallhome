@@ -5,13 +5,13 @@ type Variant = "primary" | "secondary" | "inverse" | "inverse-secondary";
 
 const variants: Record<Variant, string> = {
   primary: "bg-ink text-paper hover:bg-green-ink",
-  secondary: "border border-line text-ink hover:border-ink",
-  inverse: "bg-paper text-ink hover:bg-alt",
-  "inverse-secondary": "border border-paper/25 text-paper hover:border-paper",
+  secondary: "border border-line bg-paper text-ink hover:border-ink-2/40",
+  inverse: "bg-paper text-ink hover:bg-green-tint",
+  "inverse-secondary": "bg-paper/15 text-paper backdrop-blur-sm hover:bg-paper/25",
 };
 
 export function buttonClass(variant: Variant = "primary", className = "") {
-  return `inline-flex h-11 items-center gap-2.5 rounded-md px-[18px] text-[14.5px] font-medium whitespace-nowrap transition-colors ${variants[variant]} ${className}`;
+  return `inline-flex min-h-12 items-center justify-center gap-2 rounded-[14px] px-5 py-2 text-center text-[15px] font-semibold transition-colors ${variants[variant]} ${className}`;
 }
 
 export function ButtonLink({

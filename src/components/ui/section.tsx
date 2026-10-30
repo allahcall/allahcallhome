@@ -1,63 +1,68 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 
-const tones = {
-  default: "",
-  alt: "bg-alt",
-} as const;
-
-export function Section({
-  children,
-  tone = "default",
-  flush = false,
-  className = "",
-  id,
-}: {
-  children: ReactNode;
-  tone?: keyof typeof tones;
-  /** Drop the top padding when following a section of the same tone. */
-  flush?: boolean;
-  className?: string;
-  id?: string;
-}) {
+export function Section({ children, className = "", id }: { children: ReactNode; className?: string; id?: string }) {
   return (
-    <section id={id} className={`${tones[tone]} ${flush ? "pb-22 md:pb-32" : "py-22 md:py-32"} ${className}`}>
+    <section id={id} className={`mt-10 md:mt-16 ${className}`}>
       <div className="wrap">{children}</div>
     </section>
   );
 }
 
-/** Small numbered label, e.g. "01  Begin here". */
-export function Label({ index, children, className = "" }: { index?: number; children: ReactNode; className?: string }) {
-  return (
-    <p className={`text-[13px] text-muted ${className}`}>
-      {index !== undefined && (
-        <b className="mr-2.5 font-medium text-ink tabular-nums">{String(index).padStart(2, "0")}</b>
-      )}
-      {children}
-    </p>
-  );
+/** Small green label above a heading, e.g. "Begin here". */
+export function Label({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <p className={`text-[13px] font-semibold text-green ${className}`}>{children}</p>;
 }
 
-/** Label in the left 3 columns, heading in the next 6 (stacked on mobile). */
+/** Label, heading and lede above a block, with an optional link on the right. */
 export function SectionHead({
-  index,
   label,
   title,
   lede,
+  link,
 }: {
-  index?: number;
   label?: string;
   title?: string;
   lede?: string;
+  link?: { label: string; href: string };
 }) {
   if (!label && !title) return null;
   return (
-    <div className="mb-10 grid gap-5 md:mb-16 md:grid-cols-12 md:gap-8">
-      {label && <Label index={index} className="md:col-span-3 md:pt-3">{label}</Label>}
-      <div className={label ? "md:col-span-8 lg:col-span-7" : "md:col-span-9"}>
-        {title && <h2 className="display text-[34px] md:text-[clamp(36px,4vw,56px)]">{title}</h2>}
-        {lede && <p className="mt-5 max-w-[36em] text-[17px] text-ink-2">{lede}</p>}
+    <div className="mb-4 md:mb-6">
+      <div className="flex items-end justify-between gap-4">
+        <div className="min-w-0">
+          {label && <Label>{label}</Label>}
+          {title && (
+            <h2 className="mt-1 max-w-[28em] text-[22px] leading-tight font-semibold tracking-[-0.02em] text-balance md:text-[30px]">
+              {title}
+            </h2>
+          )}
+        </div>
+        {link && (
+          <Link href={link.href} className="shrink-0 pb-1 text-[14px] font-medium text-green hover:underline">
+            {link.label}
+          </Link>
+        )}
       </div>
+      {lede && <p className="mt-2 max-w-[40em] text-ink-2 md:text-[16.5px]">{lede}</p>}
     </div>
+  );
+}
+
+/** A tick-marked list, used for requirements, highlights and mission points. */
+export function Ticks({ items, className = "" }: { items: readonly string[]; className?: string }) {
+  return (
+    <ul className={`grid gap-2.5 ${className}`}>
+      {items.map((t) => (
+        <li key={t} className="flex gap-2.5 text-[14.5px] text-ink-2">
+          <span aria-hidden className="mt-px grid size-5 shrink-0 place-items-center rounded-[7px] bg-green-tint text-green">
+            <svg viewBox="0 0 20 20" className="size-4" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M6 10.5l2.5 2.5L14 7.5" />
+            </svg>
+          </span>
+          {t}
+        </li>
+      ))}
+    </ul>
   );
 }

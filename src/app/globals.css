@@ -1,19 +1,21 @@
 @import "tailwindcss";
 
 /*
- * AllahCall design tokens. Direction D ("Masjid"): white, near-black ink,
- * one deep green used sparingly. See design/README.md for the rules.
+ * AllahCall design tokens. Direction G ("App"): white cards on a soft
+ * grey-green canvas, one deep green used with confidence. See design/README.md.
  */
 @theme {
+  --color-canvas: #f3f5f4;
   --color-paper: #ffffff;
-  --color-alt: #f3f4f3;
-  --color-ink: #111413;
-  --color-ink-2: #3b413e;
-  --color-muted: #6a716d;
-  --color-line: #e2e5e3;
-  --color-green: #1d5843;
-  --color-green-ink: #123a2c;
-  --color-green-tint: #e8efec;
+  --color-alt: #eaefec;
+  --color-ink: #0f1513;
+  --color-ink-2: #3a433f;
+  --color-muted: #6b746f;
+  --color-line: #e3e8e5;
+  --color-green: #17533e;
+  --color-green-ink: #0e3a2b;
+  --color-green-tint: #e6efea;
+  --color-leaf: #7fd3a8;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-newsreader), Georgia, serif;
@@ -26,11 +28,11 @@
     scroll-padding-top: 5rem;
   }
   body {
-    background: var(--color-paper);
+    background: var(--color-canvas);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 15.5px;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -47,20 +49,57 @@
   }
 }
 
-/* Light serif used for every heading. */
+/* Serif used for hero and feature headings. */
 @utility display {
   font-family: var(--font-serif);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.03em;
-  line-height: 1.04;
+  line-height: 1.05;
   text-wrap: balance;
 }
 
-/* Page gutter: 20px on phones, 32px from 1024px, max 1240px wide. */
+/* Page gutter: 16px on phones, 32px from 1024px; max 1180px wide, 1440px on very wide screens. */
 @utility wrap {
-  width: min(77.5rem, 100% - 2.5rem);
+  width: min(73.75rem, 100% - 2rem);
   margin-inline: auto;
   @media (width >= 64rem) {
-    width: min(77.5rem, 100% - 4rem);
+    width: min(73.75rem, 100% - 4rem);
+  }
+  @media (width >= 110rem) {
+    width: min(90rem, 100% - 6rem);
+  }
+}
+
+/* White surface every block sits on. */
+@utility card {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: 1.25rem;
+}
+
+/* Swipeable row on phones; a normal grid from 768px (set its columns with md:grid-cols-*). */
+@utility rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--rail-col, 80%);
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  margin-inline: -1rem;
+  padding-inline: 1rem;
+  scroll-padding-inline: 1rem;
+  & > * {
+    scroll-snap-align: start;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @media (width >= 48rem) {
+    grid-auto-flow: row;
+    overflow: visible;
+    margin-inline: 0;
+    padding-inline: 0;
+    gap: 1rem;
   }
 }
