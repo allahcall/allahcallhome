@@ -1,0 +1,8 @@
+# Netlify detects Next.js and adds its runtime; these pin the settings so the
+# dashboard's guesses (e.g. a static "out" publish folder) can't override them.
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
