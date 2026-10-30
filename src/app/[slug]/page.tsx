@@ -7,6 +7,10 @@ import { imageSrc } from "@/lib/image";
 
 type Params = PageProps<"/[slug]">["params"];
 
+// Unlisted slugs then render in full before any bytes are sent, so notFound()
+// can still answer with a 404 instead of a streamed 200 (or a 500 on Netlify).
+export const ensureStatic = "navigation";
+
 // Every slug is known at build time; unknown slugs fall through to notFound().
 export function generateStaticParams() {
   return pages.map((p) => ({ slug: p.slug }));
