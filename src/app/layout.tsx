@@ -29,7 +29,7 @@ export const viewport: Viewport = { themeColor: "#f3f5f4", viewportFit: "cover" 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} ${newsreader.variable} ${amiri.variable}`}>
-      <body className="flex min-h-svh flex-col pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-0">
+      <body className="flex min-h-svh flex-col pb-[calc(4rem+env(safe-area-inset-bottom)+var(--badge-h,0px))] lg:pb-0">
         <a
           href="#main"
           className="sr-only z-50 bg-ink px-4 py-2 text-sm text-paper focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
