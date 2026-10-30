@@ -367,6 +367,20 @@ export const aboutPages: Page[] = [
         ],
       },
       {
+        type: "columns",
+        label: "Vision",
+        title: "Our vision",
+        cols: 3,
+        items: [
+          {
+            title: "Community Growth",
+            body: "Fostering a strong, united Muslim community through education and support.",
+          },
+          { title: "Islamic Education", body: "Promoting authentic Islamic knowledge and understanding." },
+          { title: "Social Impact", body: "Making a positive difference in society through Islamic values." },
+        ],
+      },
+      {
         type: "cta",
         title: "Join us in our mission",
         body: "The Board of Directors invites you to contribute your talents and resources to this noble cause. Together, we can illuminate hearts with divine guidance.",
