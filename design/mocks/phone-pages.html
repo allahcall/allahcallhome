@@ -1,0 +1,9 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#d9dedb;font:600 14px Inter,system-ui,sans-serif}
+.row{display:flex;gap:28px;padding:24px}
+.col h2{margin:0 0 8px;font-size:14px}
+iframe{width:375px;height:2600px;border:0;border-radius:18px;background:#fff;display:block}
+</style></head><body><div class="row" id="r"></div><script>
+const pages=(new URLSearchParams(location.search).get('p')||'/').split(',');
+for(const p of pages){const d=document.createElement('div');d.className='col';d.innerHTML='<h2>'+p+'</h2><iframe src="http://localhost:3411'+p+'"></iframe>';r.appendChild(d)}
+</script></body></html>

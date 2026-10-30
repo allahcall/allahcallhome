@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AllahCall · Direction I · Refined</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&family=Amiri&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #ffffff;
+    --alt: #f2f4f3;
+    --ink: #111413;
+    --ink-2: #3b413e;
+    --muted: #6a716d;
+    --line: #e2e5e3;
+    --green: #1d5843;
+    --green-ink: #123a2c;
+    --tint: #e8efec;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; padding-bottom: 76px; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .wrap { width: min(1240px, 100% - 40px); margin-inline: auto; }
+  .display { font-family: Newsreader, Georgia, serif; font-weight: 300; letter-spacing: -.03em; line-height: 1.04; text-wrap: balance; }
+  .label { font-size: 13px; color: var(--muted); }
+  .label b { color: var(--green); font-weight: 600; margin-right: 8px; font-variant-numeric: tabular-nums; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 48px; padding: 0 20px; border-radius: 6px; font-size: 15px; font-weight: 500; }
+  .btn.dark { background: var(--ink); color: #fff; }
+  .btn.line { border: 1px solid var(--line); }
+  .btn.green { background: var(--green); color: #fff; }
+
+  .nav { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: flex; align-items: center; height: 60px; }
+  .brand { font-family: Newsreader, serif; font-size: 22px; font-weight: 500; letter-spacing: -.01em; display: flex; align-items: center; gap: 10px; }
+  .brand svg { color: var(--green); }
+  .nav nav { display: none; }
+  .nav .menu { margin-left: auto; font-size: 14.5px; font-weight: 500; }
+
+  /* Hero: image first on phones */
+  .hero { padding-top: 16px; }
+  .hero .ph { aspect-ratio: 4/3; border-radius: 4px; overflow: hidden; position: relative; }
+  .hero .tag { position: absolute; left: 12px; bottom: 12px; background: #fff; border-radius: 6px; padding: 8px 12px; font-size: 13px; display: flex; gap: 10px; align-items: center; }
+  .hero .tag i { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+  .hero h1 { font-size: 40px; margin-top: 22px; }
+  .hero h1 em { font-style: italic; color: var(--green); }
+  .hero p { margin-top: 12px; color: var(--ink-2); font-size: 16.5px; }
+  .hero .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 20px; }
+
+  .stats { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; background: var(--tint); border-radius: 6px; }
+  .stats div { padding: 18px; }
+  .stats div:nth-child(even) { border-left: 1px solid rgb(29 88 67 / .15); }
+  .stats div:nth-child(n+3) { border-top: 1px solid rgb(29 88 67 / .15); }
+  .stats b { display: block; font-family: Newsreader, serif; font-weight: 400; font-size: 30px; line-height: 1; color: var(--green-ink); letter-spacing: -.02em; }
+  .stats span { display: block; font-size: 13px; color: var(--ink-2); margin-top: 6px; line-height: 1.35; }
+
+  section { padding: 56px 0; }
+  section.alt { background: var(--alt); }
+  .sh { margin-bottom: 22px; }
+  .sh h2 { font-size: 32px; margin-top: 10px; }
+
+  /* Path cards */
+  .paths { display: grid; gap: 12px; }
+  .path { background: #fff; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; display: grid; grid-template-columns: 110px 1fr; }
+  .path .ph { height: 100%; min-height: 130px; }
+  .path .body { padding: 16px; }
+  .path h3 { font-family: Newsreader, serif; font-weight: 400; font-size: 23px; letter-spacing: -.02em; line-height: 1.1; }
+  .path p { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .path .go { margin-top: 10px; display: inline-flex; gap: 6px; font-size: 14px; font-weight: 500; color: var(--green); }
+
+  /* Shahada */
+  .shahada { text-align: center; }
+  .shahada svg { width: 88px; color: var(--green); margin: 0 auto 18px; }
+  .shahada .ar { font-family: Amiri, serif; font-size: 28px; line-height: 1.85; }
+  .shahada .tr { font-family: Newsreader, serif; font-style: italic; font-size: 17px; color: var(--ink-2); margin-top: 10px; }
+  .shahada .en { color: var(--muted); font-size: 14.5px; margin: 6px auto 0; max-width: 32em; }
+
+  /* About */
+  .about .lead { font-family: Newsreader, serif; font-size: 22px; line-height: 1.35; letter-spacing: -.01em; }
+  .about p.more { color: var(--ink-2); margin-top: 12px; font-size: 15.5px; }
+  .about ol { list-style: none; margin-top: 20px; border-top: 1px solid var(--ink); }
+  .about li { display: flex; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .about li b { color: var(--green); font-weight: 600; font-size: 13px; padding-top: 2px; }
+
+  /* Rails */
+  .rail { display: grid; grid-auto-flow: column; grid-auto-columns: 80%; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-right: -20px; padding-right: 20px; }
+  .rail::-webkit-scrollbar { display: none; }
+  .rail > * { scroll-snap-align: start; }
+  .people { grid-auto-columns: 44%; }
+  .person .ph { aspect-ratio: 4/5; overflow: hidden; border-radius: 4px; filter: grayscale(1); }
+  .person h3 { font-size: 14.5px; font-weight: 500; margin-top: 10px; }
+  .person p { font-size: 13px; color: var(--muted); }
+  .voice { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 20px; display: flex; flex-direction: column; }
+  .voice small { font-size: 12.5px; color: var(--green); font-weight: 600; }
+  .voice blockquote { font-family: Newsreader, serif; font-size: 20px; line-height: 1.3; letter-spacing: -.01em; margin-top: 10px; }
+  .voice figcaption { margin-top: auto; padding-top: 14px; font-size: 13px; color: var(--muted); }
+
+  /* Quote */
+  .method .ph { aspect-ratio: 16/10; border-radius: 4px; overflow: hidden; }
+  .method blockquote { font-size: 28px; line-height: 1.16; margin-top: 22px; }
+  .method cite { display: block; font-style: normal; font-size: 14px; color: var(--muted); margin-top: 12px; }
+
+  .faq details { border-top: 1px solid var(--line); }
+  .faq details:last-child { border-bottom: 1px solid var(--line); }
+  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 14px; padding: 16px 0; font-family: Newsreader, serif; font-size: 20px; letter-spacing: -.01em; line-height: 1.25; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary span { font-family: Inter, sans-serif; color: var(--muted); font-weight: 300; transition: transform .2s; }
+  .faq details[open] summary span { transform: rotate(45deg); }
+  .faq p { padding-bottom: 16px; color: var(--ink-2); font-size: 15px; }
+
+  .cta { background: var(--green-ink); color: #fff; padding: 56px 0; }
+  .cta h2 { font-size: 32px; }
+  .cta .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 22px; }
+  .cta .btn.white { background: #fff; color: var(--ink); }
+  .cta .btn.ghost { border: 1px solid rgb(255 255 255 / .3); }
+  footer { padding: 28px 0; font-size: 13px; color: var(--muted); }
+
+  /* Sticky action bar (phones) */
+  .dock { position: fixed; inset: auto 0 0 0; z-index: 20; background: rgb(255 255 255 / .96); backdrop-filter: blur(12px); border-top: 1px solid var(--line); padding: 10px 20px calc(10px + env(safe-area-inset-bottom)); display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .dock .btn { height: 46px; }
+
+  @media (min-width: 900px) {
+    body { padding-bottom: 0; }
+    .dock { display: none; }
+    .wrap { width: min(1240px, 100% - 64px); }
+    .nav .wrap { height: 68px; gap: 32px; }
+    .nav nav { display: flex; gap: 4px; margin-left: auto; font-size: 14.5px; color: var(--ink-2); }
+    .nav nav a { padding: 8px 12px; }
+    .nav .menu { display: none; }
+    .hero { padding-top: 56px; display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: end; }
+    .hero .copy { order: -1; padding-bottom: 8px; }
+    .hero h1 { font-size: clamp(54px, 5.6vw, 84px); margin-top: 0; }
+    .hero .ph { aspect-ratio: 16/12; }
+    .hero .btns { display: flex; }
+    .stats { grid-template-columns: repeat(4, 1fr); margin-top: 48px; }
+    .stats div { padding: 26px 28px; border-left: 1px solid rgb(29 88 67 / .15); }
+    .stats div:first-child { border-left: 0; }
+    .stats div:nth-child(n+3) { border-top: 0; }
+    .stats b { font-size: 42px; }
+    section { padding: 96px 0; }
+    .sh { display: grid; grid-template-columns: 3fr 9fr; gap: 32px; align-items: start; margin-bottom: 40px; }
+    .sh h2 { font-size: clamp(36px, 3.6vw, 52px); margin-top: 0; max-width: 14em; }
+    .paths { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .path { grid-template-columns: 1fr; }
+    .path .ph { aspect-ratio: 16/10; min-height: 0; }
+    .path .body { padding: 22px; }
+    .shahada .ar { font-size: 48px; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .method blockquote { font-size: 40px; margin-top: 0; }
+    .rail { grid-auto-flow: initial; grid-template-columns: repeat(3, 1fr); overflow: visible; margin: 0; padding: 0; gap: 16px; }
+    .people { grid-template-columns: repeat(4, 1fr); }
+    .faq-grid { display: grid; grid-template-columns: 3fr 9fr; gap: 32px; }
+    .cta .wrap { display: flex; justify-content: space-between; align-items: end; gap: 40px; }
+    .cta h2 { font-size: 48px; max-width: 13em; }
+    .cta .btns { display: flex; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><symbol id="star" viewBox="-50 -50 100 100"><g fill="none" stroke="currentColor" stroke-width="5"><rect x="-30" y="-30" width="60" height="60"/><rect x="-30" y="-30" width="60" height="60" transform="rotate(45)"/><circle r="11"/></g></symbol>
+<symbol id="rosette" viewBox="-100 -100 200 200"><g fill="none" stroke="currentColor" stroke-width="1.2"><circle r="98"/><circle r="90"/><circle r="46"/><g id="sq"><rect x="-64" y="-64" width="128" height="128"/><rect x="-64" y="-64" width="128" height="128" transform="rotate(45)"/></g><use href="#sq" transform="rotate(22.5)"/><use href="#sq" transform="scale(.5)"/><use href="#sq" transform="rotate(22.5) scale(.5)"/></g></symbol></svg>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="#"><svg width="22" height="22"><use href="#star"/></svg>AllahCall</a>
+  <nav><a href="#">About</a><a href="#">Islam</a><a href="#">Religions</a><a href="#">New Muslims</a><a href="#">Programs</a><a href="#">Services</a><a href="#">Contact</a></nav>
+  <a class="btn dark" href="#" style="height:40px;padding:0 16px;font-size:14px" data-desktop>Accept Islam</a>
+  <a class="menu" href="#">Menu</a>
+</div></header>
+<style>[data-desktop]{display:none!important}@media (min-width:900px){[data-desktop]{display:inline-flex!important}}</style>
+
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <div class="ph"><img src="img/window.webp" alt="Light falling through a mosque window" /><span class="tag"><i></i>New Muslims Support Group · Saturdays</span></div>
+      <div class="copy">
+        <h1 class="display">Discover the truth of Islam’s <em>beautiful</em> message</h1>
+        <p>Understand the pure teachings of Islam, with authentic knowledge from qualified scholars.</p>
+        <div class="btns"><a class="btn dark" href="#">Start learning →</a><a class="btn line" href="#">Ask a scholar</a></div>
+      </div>
+    </div>
+    <div class="stats">
+      <div><b>50,000+</b><span>People reached through dawah</span></div>
+      <div><b>5,000+</b><span>New Muslims supported</span></div>
+      <div><b>10,000+</b><span>Students enrolled</span></div>
+      <div><b>100+</b><span>Community events a year</span></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="sh"><p class="label"><b>01</b>Begin here</p><h2 class="display">Wherever you are on the path, there is a place to start.</h2></div>
+      <div class="paths">
+        <a class="path" href="#"><div class="ph"><img src="img/hero-arch.webp" alt="" /></div><div class="body"><h3>New to Islam</h3><p>Understand the faith and take your first steps.</p><span class="go">Accept Islam now →</span></div></a>
+        <a class="path" href="#"><div class="ph"><img src="img/quran.webp" alt="" /></div><div class="body"><h3>Learn &amp; grow</h3><p>Courses on Quran, Sunnah and character.</p><span class="go">Islamic courses →</span></div></a>
+        <a class="path" href="#"><div class="ph"><img src="img/congregation.webp" alt="" /></div><div class="body"><h3>Get involved</h3><p>Dawah, events, content and teaching.</p><span class="go">Volunteer with us →</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap shahada">
+      <svg viewBox="-100 -100 200 200"><use href="#rosette"/></svg>
+      <p class="ar" dir="rtl" lang="ar">أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّٰهِ</p>
+      <p class="tr">Ash-hadu an laa ilaaha ill-Allah, wa ash-hadu anna Muhammadan rasool-Allah</p>
+      <p class="en">I bear witness that there is no deity worthy of worship except Allah, and I bear witness that Muhammad is His messenger.</p>
+      <a class="btn line" href="#" style="margin-top:22px;background:#fff">Understand the Shahada →</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sh"><p class="label"><b>02</b>About us</p><h2 class="display">Get to know more about Islam</h2></div>
+      <div class="split about">
+        <div><p class="lead">Our mission is to make Islamic knowledge accessible to everyone, through reliable sources and scholarly guidance.</p>
+          <p class="more">We offer resources, educational materials and expert guidance in a welcoming and inclusive environment.</p></div>
+        <ol><li><b>01</b>Providing authentic Islamic education based on reliable sources</li><li><b>02</b>Creating an inclusive and welcoming learning environment for all</li><li><b>03</b>Supporting spiritual growth through knowledge and understanding</li></ol>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap split method">
+      <div class="ph"><img src="img/quran.webp" alt="A copy of the Quran" /></div>
+      <div><p class="label"><b>03</b>Our method</p><blockquote class="display" style="margin-top:14px">“Invite to the way of your Lord with wisdom and good instruction.”</blockquote><cite>Quran 16:125</cite></div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="sh"><p class="label"><b>04</b>Our people</p><h2 class="display">Scholars and professionals in service of the message.</h2></div>
+      <div class="rail people">
+        <div class="person"><div class="ph"><img src="img/hafiz.jpg" alt="" /></div><h3>Hafiz Muhammad Haris</h3><p>Founder &amp; CEO</p></div>
+        <div class="person"><div class="ph"><img src="img/almubeen.jpg" alt="" /></div><h3>Ya’qub Nuri Amin</h3><p>Islamic Scholar</p></div>
+        <div class="person"><div class="ph"><img src="img/zeeshan.jpg" alt="" /></div><h3>Muhammad Zeeshan</h3><p>Marketing Manager</p></div>
+        <a class="person" href="#"><div class="ph" style="filter:none;background:#fff;border:1px solid var(--line);display:grid;place-items:end start;padding:16px"><span class="display" style="font-size:24px">Board of Directors →</span></div><h3>Full leadership team</h3></a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sh"><p class="label"><b>05</b>Testimonials</p><h2 class="display">In their own words.</h2></div>
+      <div class="rail">
+        <figure class="voice"><small>Finding peace in Islam</small><blockquote>“AllahCall’s authentic teachings cleared my misconceptions and guided me to embrace Islam.”</blockquote><figcaption>New Muslim, United States</figcaption></figure>
+        <figure class="voice"><small>Clarity through knowledge</small><blockquote>“The scholars answered all my questions with wisdom, helping me overcome my doubts.”</blockquote><figcaption>Revert to Islam, Canada</figcaption></figure>
+        <figure class="voice"><small>From confusion to certainty</small><blockquote>“AllahCall helped me understand the true beauty of Islam.”</blockquote><figcaption>New Muslim, United Kingdom</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap faq-grid">
+      <div class="sh" style="display:block"><p class="label"><b>06</b>Questions</p><h2 class="display" style="margin-top:10px">Everything you need to know</h2></div>
+      <div class="faq">
+        <details open><summary>What is AllahCall’s dawah mission?<span>+</span></summary><p>AllahCall shares the beautiful message of Islam through authentic knowledge, with resources, guidance and support for Muslims and anyone curious about Islam.</p></details>
+        <details><summary>How can I learn about Islam?<span>+</span></summary><p>Explore our free resources, join an online class, or book a one-on-one session with a scholar.</p></details>
+        <details><summary>Are your teachings authentic?<span>+</span></summary><p>Yes. All content is based on the Quran and Sunnah and verified by qualified scholars.</p></details>
+        <details><summary>Do you offer support for new Muslims?<span>+</span></summary><p>Yes: beginner courses, mentorship and a welcoming community.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta"><div class="wrap">
+    <h2 class="display">Have a question about Islam? Our scholars are here to help.</h2>
+    <div class="btns"><a class="btn white" href="#">Contact us</a><a class="btn ghost" href="#">Volunteer</a></div>
+  </div></div>
+  <footer><div class="wrap">© 2026 AllahCall Institute · EIN 86-2956026</div></footer>
+</main>
+
+<div class="dock"><a class="btn line" href="#">Ask a scholar</a><a class="btn green" href="#">Accept Islam</a></div>
+</body>
+</html>
