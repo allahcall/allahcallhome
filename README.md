@@ -21,7 +21,7 @@ npm run build && npm start
 
 | Variable | Purpose |
 |---|---|
-| `NEXT_PUBLIC_FORMSPREE_ID` | Formspree form that receives the contact and volunteer forms. Defaults to the old site's form (`mvgaewpr`); create a form in an account you own and set this. |
+| `NEXT_PUBLIC_FORMSPREE_ID` | Formspree form that receives the contact, volunteer and event-updates forms. Optional: defaults to `mrppaaza`, owned by the allahcall786@gmail.com Formspree account. |
 
 ## Where things live
 

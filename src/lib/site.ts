@@ -17,8 +17,8 @@ export const site = {
     { label: "LinkedIn", href: "https://www.linkedin.com/company/allah-call/" },
   ],
   // Formspree form that receives contact and volunteer submissions.
-  // The old site used "mvgaewpr"; set NEXT_PUBLIC_FORMSPREE_ID to a form you own.
-  formspreeId: process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "mvgaewpr",
+  // Owned by the allahcall786@gmail.com Formspree account; submissions are emailed there.
+  formspreeId: process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "mrppaaza",
 } as const;
 
 export type NavLink = { label: string; href: string; description?: string };
