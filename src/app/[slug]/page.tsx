@@ -54,10 +54,8 @@ async function Content({ params }: { params: Params }) {
 
 function HeroPlaceholder() {
   return (
-    <div aria-hidden className="wrap animate-pulse pt-14 md:pt-22">
-      <div className="h-4 w-20 bg-alt" />
-      <div className="mt-6 h-14 w-2/3 bg-alt md:h-24" />
-      <div className="mt-12 aspect-[16/10] bg-alt md:mt-16 md:aspect-[21/8]" />
+    <div aria-hidden className="wrap animate-pulse pt-1.5 md:pt-4">
+      <div className="min-h-[340px] rounded-[24px] bg-alt md:min-h-[460px]" />
     </div>
   );
 }

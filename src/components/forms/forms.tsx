@@ -6,12 +6,12 @@ import { site } from "@/lib/site";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const field =
-  "mt-2 block w-full rounded-md border border-line bg-paper px-3.5 text-[15.5px] text-ink transition-colors placeholder:text-muted/70 hover:border-ink-2/40 focus:border-ink focus:outline-none";
+  "mt-1.5 block w-full rounded-[14px] border border-line bg-canvas px-4 text-[16px] text-ink transition-colors placeholder:text-muted/70 hover:border-ink-2/30 focus:border-green focus:bg-paper focus:outline-none";
 
 function Field({ label, children, hint }: { label: string; children: ReactNode; hint?: string }) {
   return (
     <label className="block">
-      <span className="text-[14px] font-medium">{label}</span>
+      <span className="text-[14px] font-semibold">{label}</span>
       {hint && <span className="ml-2 text-[13px] text-muted">{hint}</span>}
       {children}
     </label>
@@ -58,8 +58,8 @@ function Sent({
   onReset: () => void;
 }) {
   return (
-    <div role="status" className="border-t border-ink pt-8">
-      <p className="font-serif text-[30px] leading-tight tracking-[-0.02em]">{title}</p>
+    <div role="status" className="rounded-[16px] bg-green-tint p-6">
+      <p className="font-serif text-[26px] leading-tight tracking-[-0.02em] text-green-ink">{title}</p>
       <p className="mt-3 max-w-[32em] text-ink-2">{body}</p>
       <button type="button" onClick={onReset} className="mt-6 text-[14.5px] font-medium underline underline-offset-4">
         {again}
@@ -74,7 +74,7 @@ function Submit({ status, children }: { status: Status; children: ReactNode }) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex h-12 items-center rounded-md bg-ink px-6 text-[15px] font-medium text-paper transition-colors hover:bg-green-ink disabled:opacity-60"
+        className="inline-flex h-12 items-center justify-center rounded-[14px] bg-green px-6 text-[15px] font-semibold text-paper transition-colors hover:bg-green-ink disabled:opacity-60 max-sm:w-full"
       >
         {status === "sending" ? "Sending…" : children}
       </button>
