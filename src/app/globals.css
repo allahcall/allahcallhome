@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * AllahCall design tokens. Direction D ("Masjid"): white, near-black ink,
+ * one deep green used sparingly. See design/README.md for the rules.
+ */
+@theme {
+  --color-paper: #ffffff;
+  --color-alt: #f3f4f3;
+  --color-ink: #111413;
+  --color-ink-2: #3b413e;
+  --color-muted: #6a716d;
+  --color-line: #e2e5e3;
+  --color-green: #1d5843;
+  --color-green-ink: #123a2c;
+  --color-green-tint: #e8efec;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-arabic: var(--font-amiri), "Noto Naskh Arabic", serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-green-tint);
+    color: var(--color-green-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 3px;
+  }
+  summary::-webkit-details-marker {
+    display: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Light serif used for every heading. */
+@utility display {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+/* Page gutter: 20px on phones, 32px from 1024px, max 1240px wide. */
+@utility wrap {
+  width: min(77.5rem, 100% - 2.5rem);
+  margin-inline: auto;
+  @media (width >= 64rem) {
+    width: min(77.5rem, 100% - 4rem);
+  }
 }
