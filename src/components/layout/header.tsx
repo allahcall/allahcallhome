@@ -27,7 +27,8 @@ export function Header() {
                 >
                   {group.label}
                 </Link>
-                <div className="invisible absolute top-full left-0 -mt-px w-60 translate-y-1 opacity-0 transition duration-150 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                {/* Keyboard focus only: a clicked link keeps focus after client navigation and would hold its menu open. */}
+                <div className="invisible absolute top-full left-0 -mt-px w-60 translate-y-1 opacity-0 transition duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-has-[:focus-visible]:visible group-has-[:focus-visible]:translate-y-0 group-has-[:focus-visible]:opacity-100">
                   <ul className="border border-line bg-paper py-2 shadow-[0_12px_32px_-12px_rgb(17_20_19/0.18)]">
                     {group.links.map((link) => (
                       <li key={link.href}>
