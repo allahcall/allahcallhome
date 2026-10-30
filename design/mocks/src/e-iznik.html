@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AllahCall · Direction E · Iznik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0f1111;
+    --bg-2: #151818;
+    --surface: #1a1d1d;
+    --ink: #eceeed;
+    --ink-2: #bfc4c2;
+    --muted: #868d8a;
+    --line: #262a2a;
+    --line-2: #333838;
+    --teal: #4aa6a0;
+    --teal-ink: #7cc6c0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font: 400 16px/1.6 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: min(1280px, 100% - 64px); margin-inline: auto; }
+  h1, h2, h3, .t { font-family: "Inter Tight", Inter, sans-serif; letter-spacing: -.03em; }
+  .tag { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+  .tag::before { content: ""; width: 6px; height: 6px; background: var(--teal); transform: rotate(45deg); }
+  .btn { display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 18px; border-radius: 4px; font-size: 14.5px; font-weight: 500; transition: background .15s, border-color .15s, color .15s; }
+  .btn-light { background: var(--ink); color: var(--bg); }
+  .btn-light:hover { background: #fff; }
+  .btn-line { border: 1px solid var(--line-2); color: var(--ink); }
+  .btn-line:hover { border-color: var(--ink-2); }
+
+  .nav { position: sticky; top: 0; z-index: 10; background: rgba(15, 17, 17, .9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: flex; align-items: center; height: 64px; gap: 40px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: "Inter Tight"; font-weight: 600; font-size: 18px; letter-spacing: -.02em; }
+  .brand svg { color: var(--teal); }
+  .links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-2); }
+  .links a:hover { color: var(--ink); }
+  .nav .right { margin-left: auto; display: flex; gap: 8px; }
+  .nav .btn { height: 36px; font-size: 14px; }
+  .menu { display: none; margin-left: auto; background: none; border: 1px solid var(--line-2); border-radius: 4px; height: 36px; padding: 0 14px; color: var(--ink); font: 500 14px Inter; }
+
+  .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: min(calc(100svh - 64px), 860px); border-bottom: 1px solid var(--line); }
+  .hero .copy { display: flex; flex-direction: column; justify-content: space-between; padding: 72px 64px 56px max(32px, calc((100vw - 1280px) / 2)); }
+  h1 { font-weight: 500; font-size: clamp(44px, 5.4vw, 84px); line-height: .98; letter-spacing: -.045em; margin-top: 28px; }
+  h1 span { color: var(--teal-ink); }
+  .hero p.lede { font-size: 18px; color: var(--ink-2); max-width: 28em; margin-top: 28px; }
+  .hero .row { display: flex; gap: 10px; margin-top: 36px; flex-wrap: wrap; }
+  .hero .next { display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; padding-top: 24px; border-top: 1px solid var(--line); margin-top: 56px; font-size: 14px; }
+  .hero .next .d { font-family: "Inter Tight"; font-weight: 600; font-size: 13px; color: var(--teal-ink); border: 1px solid var(--line-2); border-radius: 4px; padding: 6px 10px; }
+  .hero .next span { color: var(--muted); }
+  .hero .img { background: url(img/mihrab.webp) 50% center / cover; position: relative; }
+
+  section.s { padding: 136px 0; }
+  .head { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 64px; }
+  h2 { font-weight: 500; font-size: clamp(34px, 3.8vw, 56px); line-height: 1.02; letter-spacing: -.04em; margin-top: 16px; }
+  .head p { color: var(--muted); max-width: 32em; justify-self: end; }
+
+  .shahada { position: relative; border-bottom: 1px solid var(--line); overflow: hidden; }
+  .shahada .pattern { position: absolute; inset: 0; color: var(--teal); opacity: .07; }
+  .shahada .wrap { position: relative; display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: center; }
+  .arabic { font-family: "Noto Naskh Arabic", serif; font-weight: 500; font-size: clamp(28px, 3.1vw, 46px); line-height: 1.9; text-align: right; text-wrap: balance; }
+  .translit { font-size: 17px; color: var(--ink-2); margin-top: 18px; text-align: right; font-style: italic; }
+  .translation { color: var(--muted); margin-top: 6px; text-align: right; }
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card { display: block; }
+  .card .img { aspect-ratio: 4 / 3; background-size: cover; background-position: center; border-radius: 4px; transition: opacity .2s; }
+  .card:hover .img { opacity: .85; }
+  .card .meta { display: flex; justify-content: space-between; margin-top: 20px; font-size: 13px; color: var(--muted); }
+  .card h3 { font-weight: 500; font-size: 26px; margin-top: 8px; }
+  .card p { color: var(--muted); margin-top: 8px; font-size: 15px; max-width: 26em; }
+  .card ul { list-style: none; margin-top: 20px; border-top: 1px solid var(--line); }
+  .card li a { display: flex; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; color: var(--ink-2); }
+  .card li a:hover { color: var(--teal-ink); }
+
+  .verse { background: var(--bg-2); border-block: 1px solid var(--line); }
+  .verse .wrap { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; }
+  blockquote { font-family: "Inter Tight"; font-weight: 400; font-size: clamp(28px, 3vw, 44px); line-height: 1.15; letter-spacing: -.03em; }
+  cite { display: block; margin-top: 24px; font-style: normal; font-size: 14px; color: var(--teal-ink); }
+
+  .events { border-top: 1px solid var(--line); }
+  .event { display: grid; grid-template-columns: 180px 1fr 200px auto; gap: 32px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--line); }
+  .event .when { font-family: "Inter Tight"; font-weight: 500; font-size: 18px; }
+  .event .when small { display: block; font-family: Inter; font-weight: 400; font-size: 13px; color: var(--muted); }
+  .event h3 { font-weight: 500; font-size: 21px; }
+  .event p { color: var(--muted); font-size: 14.5px; }
+  .event .where { font-size: 14px; color: var(--ink-2); }
+
+  .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .member { display: grid; grid-template-columns: 88px 1fr; gap: 18px; align-items: center; padding: 20px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); }
+  .member .ph { width: 88px; height: 88px; border-radius: 2px; background-color: #2a2e2e; filter: grayscale(.2); background-size: cover; background-position: center top; }
+  .member h3 { font-weight: 500; font-size: 18px; }
+  .member p { color: var(--muted); font-size: 14px; }
+
+  .faq { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; }
+  details { border-top: 1px solid var(--line); }
+  details:last-child { border-bottom: 1px solid var(--line); }
+  summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 20px; padding: 22px 0; font-family: "Inter Tight"; font-weight: 500; font-size: 19px; letter-spacing: -.02em; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--muted); font-weight: 300; font-size: 22px; line-height: 1; transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--muted); padding-bottom: 24px; max-width: 40em; }
+
+  footer { border-top: 1px solid var(--line); padding: 64px 0 32px; font-size: 14px; color: var(--muted); }
+  .foot { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
+  footer h4 { color: var(--ink); font-weight: 500; font-size: 14px; margin-bottom: 12px; }
+  footer li { list-style: none; margin: 7px 0; }
+  footer a:hover { color: var(--ink); }
+  .legal { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; }
+
+  @media (max-width: 960px) {
+    .wrap { width: calc(100% - 40px); }
+    .links, .nav .right { display: none; }
+    .menu { display: block; }
+    .hero { grid-template-columns: 1fr; min-height: 0; }
+    .hero .copy { padding: 56px 20px 40px; }
+    .hero .img { aspect-ratio: 4 / 3; order: -1; }
+    .head, .shahada .wrap, .verse .wrap, .faq, .foot { grid-template-columns: 1fr; gap: 24px; }
+    .head p { justify-self: start; }
+    .arabic, .translit, .translation { text-align: left; }
+    .cards, .team { grid-template-columns: 1fr; gap: 40px; }
+    .team { gap: 12px; }
+    .event { grid-template-columns: 1fr; gap: 6px; }
+    .event .btn { justify-self: start; margin-top: 10px; }
+    section.s { padding: 88px 0; }
+    .head { margin-bottom: 40px; }
+  }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#"><svg width="20" height="20" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7">{{TILE}}</svg>AllahCall</a>
+    <nav class="links"><a href="#">About</a><a href="#">Islam</a><a href="#">New Muslims</a><a href="#">Programs</a><a href="#">Religions</a></nav>
+    <div class="right"><a class="btn btn-line" href="#">Contact</a><a class="btn btn-light" href="#">Accept Islam</a></div>
+    <button class="menu">Menu</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="copy">
+    <div>
+      <span class="tag">Islamic Dawah Platform</span>
+      <h1>Discover the truth of Islam’s <span>beautiful</span> message</h1>
+      <p class="lede">Join us on a journey to understand the pure teachings of Islam and find answers to life’s important questions.</p>
+      <div class="row"><a class="btn btn-light" href="#">Start learning</a><a class="btn btn-line" href="#">Ask a scholar</a></div>
+    </div>
+    <div class="next"><span class="d">SAT</span><b style="font-weight:500">New Muslims Support Group</b><span>3–5 PM · Online</span></div>
+  </div>
+  <div class="img"></div>
+</section>
+
+<section class="s shahada">
+  <svg class="pattern" width="100%" height="100%" aria-hidden="true"><defs><pattern id="tile" width="100" height="100" patternUnits="userSpaceOnUse"><g fill="none" stroke="currentColor" stroke-width="1">{{TILE}}</g></pattern></defs><rect width="100%" height="100%" fill="url(#tile)"/></svg>
+  <div class="wrap">
+    <div><span class="tag">The Declaration of Faith</span><h2>One sentence, said with sincerity, opens the door.</h2><a class="btn btn-line" href="#" style="margin-top:32px">Understand the Shahada</a></div>
+    <div>
+      <p class="arabic" dir="rtl" lang="ar">أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّٰهِ</p>
+      <p class="translit">Ash-hadu an laa ilaaha ill-Allah, wa ash-hadu anna Muhammadan rasool-Allah</p>
+      <p class="translation">I bear witness that there is no deity worthy of worship except Allah, and I bear witness that Muhammad is His messenger.</p>
+    </div>
+  </div>
+</section>
+
+<section class="s">
+  <div class="wrap">
+    <div class="head"><div><span class="tag">Begin here</span><h2>Three ways in</h2></div><p>Whether you are curious, newly Muslim, or returning to your faith, there is a path for you.</p></div>
+    <div class="cards">
+      <div class="card"><a href="#"><div class="img" style="background-image:url(img/window.webp)"></div></a><div class="meta"><span>01</span><span>For seekers</span></div><h3>New to Islam</h3><p>Understand the faith, take your Shahada, and find support in your first steps.</p><ul><li><a href="#">Accept Islam now <span>→</span></a></li><li><a href="#">New Muslim guidelines <span>→</span></a></li><li><a href="#">Testimonies <span>→</span></a></li></ul></div>
+      <div class="card"><a href="#"><div class="img" style="background-image:url(img/quran.webp)"></div></a><div class="meta"><span>02</span><span>For learners</span></div><h3>Learn &amp; grow</h3><p>Structured courses on Quran, Sunnah and character, taught by qualified scholars.</p><ul><li><a href="#">Islamic courses <span>→</span></a></li><li><a href="#">Companionship program <span>→</span></a></li><li><a href="#">Articles &amp; books <span>→</span></a></li></ul></div>
+      <div class="card"><a href="#"><div class="img" style="background-image:url(img/event.webp)"></div></a><div class="meta"><span>03</span><span>For servants</span></div><h3>Get involved</h3><p>Serve the community through dawah, events, content and teaching.</p><ul><li><a href="#">Volunteer with us <span>→</span></a></li><li><a href="#">Events &amp; activities <span>→</span></a></li><li><a href="#">Publish your work <span>→</span></a></li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="s verse">
+  <div class="wrap"><span class="tag">Our method</span><div><blockquote>“Invite to the way of your Lord with wisdom and good instruction, and argue with them in a way that is best.”</blockquote><cite>Quran 16:125</cite></div></div>
+</section>
+
+<section class="s">
+  <div class="wrap">
+    <div class="head"><div><span class="tag">Gatherings</span><h2>Upcoming events</h2></div><p>Conferences, competitions and weekly circles, online and in person.</p></div>
+    <div class="events">
+      <div class="event"><div class="when">Every Saturday<small>3:00 – 5:00 PM</small></div><div><h3>New Muslims Support Group</h3><p>Learn about Islam, share experiences, and ask questions.</p></div><span class="where">Online</span><a class="btn btn-line" href="#">Register</a></div>
+      <div class="event"><div class="when">15 March<small>10:00 AM – 5:00 PM</small></div><div><h3>Islamic Knowledge Conference</h3><p>Renowned scholars on Islamic knowledge and contemporary issues.</p></div><span class="where">Islamic Center, New York</span><a class="btn btn-line" href="#">Register</a></div>
+      <div class="event"><div class="when">5 April<small>2:00 – 6:00 PM</small></div><div><h3>Quran Recitation Competition</h3><p>For all age groups, with prizes and certificates.</p></div><span class="where">Community Hall, Chicago</span><a class="btn btn-line" href="#">Register</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><div><span class="tag">Our people</span><h2>Meet the team</h2></div><p>Scholars and professionals dedicated to sharing authentic Islamic knowledge.</p></div>
+    <div class="team">
+      <div class="member"><div class="ph" style="background-image:url(img/hafiz.jpg)"></div><div><h3>Hafiz Muhammad Haris</h3><p>Founder &amp; CEO</p></div></div>
+      <div class="member"><div class="ph" style="background-image:url(img/almubeen.jpg)"></div><div><h3>Ya’qub Nuri Amin</h3><p>Islamic Scholar</p></div></div>
+      <div class="member"><div class="ph" style="background-image:url(img/zeeshan.jpg)"></div><div><h3>Muhammad Zeeshan</h3><p>Marketing Manager</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" style="padding-top:0">
+  <div class="wrap faq">
+    <div><span class="tag">FAQ</span><h2>Questions, answered</h2></div>
+    <div>
+      <details open><summary>What is AllahCall’s dawah mission?</summary><p>AllahCall is a platform dedicated to sharing the beautiful message of Islam through authentic knowledge and understanding. We provide resources, guidance, and support for both Muslims and those interested in learning about Islam.</p></details>
+      <details><summary>Can I ask questions about Islam?</summary><p>Absolutely. We encourage questions and open dialogue, during live sessions or in a private consultation with our scholars.</p></details>
+      <details><summary>Are your teachings authentic?</summary><p>Yes. All our content is based on authentic sources from the Quran and Sunnah, verified by qualified scholars.</p></details>
+      <details><summary>How can I support the dawah work?</summary><p>Share our content, volunteer, donate to our projects, or join our community events. Every contribution helps.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><a class="brand" href="#" style="color:var(--ink)"><svg width="20" height="20" viewBox="0 0 100 100" fill="none" stroke="#4aa6a0" stroke-width="7">{{TILE}}</svg>AllahCall</a><p style="margin-top:12px;max-width:24em">For Islamic thought and education. Powered by Allah Call Education PK.</p></div>
+      <div><h4>Explore</h4><ul><li><a href="#">About</a></li><li><a href="#">Islam</a></li><li><a href="#">New Muslims</a></li><li><a href="#">Programs</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="#">+92 304 0496627</a></li><li><a href="#">allahcall786@gmail.com</a></li></ul></div>
+      <div><h4>Follow</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">YouTube</a></li><li><a href="#">Facebook</a></li><li><a href="#">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 AllahCall Institute</span><span>EIN 86-2956026 · 501(c)</span></div>
+  </div>
+</footer>
+</body>
+</html>

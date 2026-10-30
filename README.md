@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AllahCall
 
-## Getting Started
+The rebuilt website for [allahcall.com](https://www.allahcall.com), an Islamic dawah and education platform. Next.js 16 (App Router, Cache Components), React 19 and Tailwind CSS 4.
 
-First, run the development server:
+## Run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build && npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Configuration
 
-## Learn More
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_FORMSPREE_ID` | Formspree form that receives the contact and volunteer forms. Defaults to the old site's form (`mvgaewpr`); create a form in an account you own and set this. |
 
-To learn more about Next.js, take a look at the following resources:
+## Where things live
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/content/pages/*.ts`: all inner-page content, typed by `src/content/types.ts`. Edit text here.
+- `src/app/page.tsx`: the home page.
+- `src/app/[slug]/page.tsx`: renders every content page.
+- `src/components/blocks`: one component per content block type (columns, cards, quote, events…).
+- `src/lib/site.ts`: navigation, contact details, social links.
+- `design/`: design rules (`design/README.md`) and the mocks that were explored.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Content still to confirm
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Testimonies** (`testimonies-of-new-muslims`, `our-work`) came from the old site and use stock photos; confirm they are real people before launch.
+- **Events** with dates in the past move to "Past events" automatically. Add new dated events in `src/content/pages/about.ts`.
+- **Statistics** (50,000+ reached, 5,000+ new Muslims, and so on) are carried over from the old site.

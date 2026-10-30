@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AllahCall · Direction F · Cobalt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=Amiri&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #0e1430;
+    --ink-2: #3a4060;
+    --muted: #6b7088;
+    --line: #e1e4ee;
+    --cobalt: #1f3d9a;
+    --cobalt-deep: #142a6e;
+    --tint: #f2f4fa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font: 400 16px/1.65 "IBM Plex Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: min(1200px, 100% - 64px); margin-inline: auto; }
+  .display { font-family: "Libre Caslon Display", Georgia, serif; font-weight: 400; }
+  .smallcaps { font-size: 12.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--cobalt); }
+  .btn { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 20px; border-radius: 2px; font-size: 15px; font-weight: 500; transition: background .15s, color .15s, border-color .15s; }
+  .btn-white { background: #fff; color: var(--cobalt-deep); }
+  .btn-white:hover { background: var(--tint); }
+  .btn-ghost-w { border: 1px solid rgba(255,255,255,.4); color: #fff; }
+  .btn-ghost-w:hover { border-color: #fff; }
+  .btn-cobalt { background: var(--cobalt); color: #fff; }
+  .btn-cobalt:hover { background: var(--cobalt-deep); }
+  .btn-line { border: 1px solid var(--ink); }
+  .btn-line:hover { background: var(--ink); color: #fff; }
+
+  .top { background: var(--cobalt); color: #fff; }
+  .nav .wrap { display: flex; align-items: center; height: 76px; gap: 40px; border-bottom: 1px solid rgba(255,255,255,.16); }
+  .brand { font-family: "Libre Caslon Display", serif; font-size: 26px; }
+  .links { display: flex; gap: 28px; font-size: 14.5px; color: rgba(255,255,255,.78); margin-left: auto; }
+  .links a:hover { color: #fff; }
+  .nav .btn { height: 38px; font-size: 14px; }
+  .menu { display: none; margin-left: auto; background: none; border: 1px solid rgba(255,255,255,.4); color: #fff; height: 38px; padding: 0 14px; font: 500 14px "IBM Plex Sans"; border-radius: 2px; }
+
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; padding: 96px 0 112px; }
+  h1 { font-family: "Libre Caslon Display", serif; font-weight: 400; font-size: clamp(46px, 6.4vw, 92px); line-height: 1.02; letter-spacing: -.015em; }
+  h1 em { font-family: "Libre Caslon Text", serif; font-style: italic; font-size: .86em; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,.8); max-width: 30em; margin-top: 28px; }
+  .hero .row { display: flex; gap: 10px; margin-top: 36px; flex-wrap: wrap; }
+  .hero .rosette { justify-self: end; width: min(440px, 100%); aspect-ratio: 1; color: rgba(255,255,255,.9); }
+
+  .title-page { padding: 120px 0; }
+  .plate { position: relative; max-width: 960px; margin: 0 auto; padding: 72px 56px; text-align: center; border: 1px solid var(--cobalt); outline: 1px solid var(--cobalt); outline-offset: -8px; }
+  .arabic { font-family: Amiri, serif; font-size: clamp(30px, 4vw, 52px); line-height: 1.85; color: var(--cobalt); margin-top: 24px; }
+  .translit { font-family: "Libre Caslon Text", serif; font-style: italic; font-size: 20px; margin-top: 18px; }
+  .translation { color: var(--muted); max-width: 34em; margin: 10px auto 0; }
+  .plate .btn { margin-top: 36px; }
+
+  section.s { padding: 120px 0; }
+  .head { display: flex; justify-content: space-between; align-items: end; gap: 48px; margin-bottom: 56px; padding-bottom: 28px; border-bottom: 1px solid var(--ink); }
+  h2 { font-family: "Libre Caslon Display", serif; font-weight: 400; font-size: clamp(36px, 4.2vw, 58px); line-height: 1.04; margin-top: 12px; }
+  .head p { color: var(--muted); max-width: 26em; }
+
+  .paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+  .path .n { font-family: "Libre Caslon Text", serif; font-style: italic; font-size: 64px; line-height: 1; color: var(--cobalt); }
+  .path h3 { font-family: "Libre Caslon Display", serif; font-weight: 400; font-size: 30px; margin: 20px 0 10px; }
+  .path p { color: var(--muted); }
+  .path ul { list-style: none; margin-top: 24px; }
+  .path li a { display: flex; justify-content: space-between; padding: 11px 0; border-top: 1px solid var(--line); font-weight: 500; font-size: 15px; }
+  .path li a:hover { color: var(--cobalt); }
+
+  .strip { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; height: 460px; }
+  .strip div { background-size: cover; background-position: center; }
+
+  .verse { background: var(--tint); text-align: center; }
+  .verse .ar { font-family: Amiri, serif; font-size: clamp(26px, 3vw, 38px); color: var(--cobalt); }
+  blockquote { font-family: "Libre Caslon Text", serif; font-style: italic; font-size: clamp(26px, 3vw, 40px); line-height: 1.3; max-width: 24em; margin: 20px auto 0; }
+  cite { display: block; margin-top: 22px; font-style: normal; }
+
+  .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .member .ph { aspect-ratio: 1; background-color: var(--tint); background-blend-mode: multiply; background-size: cover; background-position: center top; }
+  .member h3 { font-family: "Libre Caslon Display", serif; font-weight: 400; font-size: 25px; margin-top: 20px; }
+  .member p { color: var(--muted); font-size: 14.5px; }
+
+  .faq { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; }
+  details { border-top: 1px solid var(--line); }
+  details:last-child { border-bottom: 1px solid var(--line); }
+  summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 20px; padding: 22px 0; font-family: "Libre Caslon Text", serif; font-size: 20px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--cobalt); font-family: "IBM Plex Sans"; font-weight: 400; font-size: 22px; line-height: 1; transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--ink-2); padding-bottom: 24px; max-width: 40em; }
+
+  footer { background: var(--cobalt-deep); color: rgba(255,255,255,.72); padding: 72px 0 32px; font-size: 14.5px; }
+  .foot { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
+  footer h4 { color: #fff; font-weight: 500; font-size: 14px; margin-bottom: 12px; }
+  footer li { list-style: none; margin: 7px 0; }
+  footer a:hover { color: #fff; }
+  .legal { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 64px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.16); font-size: 13px; }
+
+  @media (max-width: 960px) {
+    .wrap { width: calc(100% - 40px); }
+    .links, .nav .btn { display: none; }
+    .menu { display: block; }
+    .hero .wrap { grid-template-columns: 1fr; padding: 56px 0 72px; }
+    .hero .rosette { justify-self: center; width: 70%; order: -1; }
+    .plate { padding: 48px 20px; }
+    .title-page, section.s { padding: 80px 0; }
+    .head { flex-direction: column; align-items: start; gap: 12px; }
+    .paths, .team, .faq, .foot { grid-template-columns: 1fr; gap: 40px; }
+    .strip { grid-template-columns: 1fr 1fr; height: auto; }
+    .strip div { aspect-ratio: 1; }
+    .strip div:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
+  }
+</style>
+</head>
+<body>
+<div class="top">
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#">AllahCall</a>
+      <nav class="links"><a href="#">About</a><a href="#">Islam</a><a href="#">New Muslims</a><a href="#">Programs</a><a href="#">Religions</a><a href="#">Contact</a></nav>
+      <a class="btn btn-white" href="#">Accept Islam</a>
+      <button class="menu">Menu</button>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Discover the truth of Islam’s <em>beautiful</em> message</h1>
+        <p>Join us on a journey to understand the pure teachings of Islam and find answers to life’s important questions.</p>
+        <div class="row"><a class="btn btn-white" href="#">Start learning</a><a class="btn btn-ghost-w" href="#">Ask a scholar</a></div>
+      </div>
+      <svg class="rosette" viewBox="-202 -202 404 404" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true">{{ROSETTE}}</svg>
+    </div>
+  </section>
+</div>
+
+<section class="title-page">
+  <div class="wrap">
+    <div class="plate">
+      <span class="smallcaps">The Declaration of Faith</span>
+      <p class="arabic" dir="rtl" lang="ar">أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللَّٰهِ</p>
+      <p class="translit">Ash-hadu an laa ilaaha ill-Allah, wa ash-hadu anna Muhammadan rasool-Allah</p>
+      <p class="translation">I bear witness that there is no deity worthy of worship except Allah, and I bear witness that Muhammad is His messenger.</p>
+      <a class="btn btn-cobalt" href="#">Accept Islam now</a>
+    </div>
+  </div>
+</section>
+
+<section class="s" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><div><span class="smallcaps">Begin here</span><h2>Where would you like to begin?</h2></div><p>Whether you are curious, newly Muslim, or returning to your faith, there is a path for you.</p></div>
+    <div class="paths">
+      <div class="path"><div class="n">i.</div><h3>New to Islam</h3><p>Understand the faith, take your Shahada, and find support in your first steps.</p><ul><li><a href="#">Accept Islam now <span>→</span></a></li><li><a href="#">New Muslim guidelines <span>→</span></a></li><li><a href="#">Testimonies <span>→</span></a></li></ul></div>
+      <div class="path"><div class="n">ii.</div><h3>Learn &amp; grow</h3><p>Structured courses on Quran, Sunnah and character, taught by qualified scholars.</p><ul><li><a href="#">Islamic courses <span>→</span></a></li><li><a href="#">Companionship program <span>→</span></a></li><li><a href="#">Articles &amp; books <span>→</span></a></li></ul></div>
+      <div class="path"><div class="n">iii.</div><h3>Get involved</h3><p>Serve the community through dawah, events, content and teaching.</p><ul><li><a href="#">Volunteer with us <span>→</span></a></li><li><a href="#">Events &amp; activities <span>→</span></a></li><li><a href="#">Publish your work <span>→</span></a></li></ul></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap strip"><div style="background-image:url(img/window.webp)"></div><div style="background-image:url(img/quran.webp)"></div><div style="background-image:url(img/event.webp)"></div></div>
+
+<section class="s verse" style="margin-top:120px">
+  <div class="wrap">
+    <p class="ar" dir="rtl" lang="ar">ٱدْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِٱلْحِكْمَةِ وَٱلْمَوْعِظَةِ ٱلْحَسَنَةِ</p>
+    <blockquote>“Invite to the way of your Lord with wisdom and good instruction, and argue with them in a way that is best.”</blockquote>
+    <cite class="smallcaps">Quran 16:125</cite>
+  </div>
+</section>
+
+<section class="s">
+  <div class="wrap">
+    <div class="head"><div><span class="smallcaps">Our people</span><h2>Meet the team</h2></div><p>Scholars and professionals dedicated to sharing authentic Islamic knowledge.</p></div>
+    <div class="team">
+      <div class="member"><div class="ph" style="background-image:url(img/hafiz.jpg)"></div><h3>Hafiz Muhammad Haris</h3><p>Founder &amp; CEO</p></div>
+      <div class="member"><div class="ph" style="background-image:url(img/almubeen.jpg)"></div><h3>Ya’qub Nuri Amin</h3><p>Islamic Scholar</p></div>
+      <div class="member"><div class="ph" style="background-image:url(img/zeeshan.jpg)"></div><h3>Muhammad Zeeshan</h3><p>Marketing Manager</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" style="padding-top:0">
+  <div class="wrap faq">
+    <div><span class="smallcaps">FAQ</span><h2>Questions, answered</h2></div>
+    <div>
+      <details open><summary>What is AllahCall’s dawah mission?</summary><p>AllahCall is a platform dedicated to sharing the beautiful message of Islam through authentic knowledge and understanding. We provide resources, guidance, and support for both Muslims and those interested in learning about Islam.</p></details>
+      <details><summary>How can I learn about Islam?</summary><p>Start by exploring our free resources, joining our online classes, or scheduling a one-on-one session with our qualified scholars.</p></details>
+      <details><summary>Are your teachings authentic?</summary><p>Yes. All our content is based on authentic sources from the Quran and Sunnah, verified by qualified scholars.</p></details>
+      <details><summary>Do you offer support for new Muslims?</summary><p>Yes. Beginner courses, mentorship programs, and a welcoming community to help you on your journey.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><a class="display" href="#" style="color:#fff;font-size:26px">AllahCall</a><p style="margin-top:12px;max-width:24em">For Islamic thought and education. Powered by Allah Call Education PK.</p></div>
+      <div><h4>Explore</h4><ul><li><a href="#">About</a></li><li><a href="#">Islam</a></li><li><a href="#">New Muslims</a></li><li><a href="#">Programs</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="#">+92 304 0496627</a></li><li><a href="#">allahcall786@gmail.com</a></li></ul></div>
+      <div><h4>Follow</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">YouTube</a></li><li><a href="#">Facebook</a></li><li><a href="#">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 AllahCall Institute</span><span>EIN 86-2956026 · 501(c)</span></div>
+  </div>
+</footer>
+</body>
+</html>
