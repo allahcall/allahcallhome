@@ -5,7 +5,7 @@ export const legalPages: Page[] = [
     slug: "privacy",
     title: "Privacy Policy",
     description:
-      "How AllahCall handles the information you share through our forms, WhatsApp and email, and what our hosting, analytics and error monitoring collect.",
+      "How AllahCall handles the information you share through our forms, WhatsApp and email, and what our hosting and analytics collect.",
     hero: {
       label: "Legal",
       title: "Privacy policy",
@@ -40,7 +40,6 @@ export const legalPages: Page[] = [
           "Formspree receives form submissions, emails them to our team and stores them on our behalf. It also screens submissions for spam.",
           "Vercel hosts the website. Like any web host, it processes technical data such as IP addresses to deliver pages and protect the site from abuse.",
           "Vercel Web Analytics counts page views so we can see which pages are useful, and Vercel Speed Insights measures how quickly pages load. Neither uses cookies or builds a profile of you.",
-          "Sentry receives a report when a page breaks, with technical details such as the page address, browser and device type, so we can fix it. We switch off its collection of personal data, such as IP addresses.",
           "WhatsApp (Meta) and Google (Gmail) carry the messages you send us directly, under their own privacy policies.",
         ],
       },

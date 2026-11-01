@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
-import { reportError } from "@/lib/sentry";
 
 // Replaces the root layout when it fails, so it carries its own document and
 // plain inline styles in place of the site's stylesheet.
 export default function GlobalError({ error, retry }: { error: unknown; retry: () => void }) {
-  useEffect(() => reportError(error), [error]);
+  useEffect(() => console.error(error), [error]);
 
   return (
     <html lang="en">
@@ -16,7 +15,7 @@ export default function GlobalError({ error, retry }: { error: unknown; retry: (
           <div>
             <h1 style={{ fontSize: 36, margin: 0 }}>Something went wrong</h1>
             <p style={{ color: "#3a433f", maxWidth: "30em", margin: "12px auto 24px" }}>
-              We have been notified and will look into it. Please try again in a moment.
+              Please try again in a moment.
             </p>
             <button
               type="button"
