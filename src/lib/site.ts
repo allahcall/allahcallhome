@@ -92,6 +92,7 @@ export const nav: NavGroup[] = [
     links: [
       { label: "All services", href: "/our-services" },
       { label: "Articles & Books", href: "/articles-books" },
+      { label: "Research papers", href: "/research" },
       { label: "Muslim Revival", href: "/muslim-revival" },
       { label: "Rejoining the Ummah", href: "/rejoining-muslim-ummah" },
       { label: "Publish your work", href: "/publish-your-work" },

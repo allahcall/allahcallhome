@@ -83,7 +83,10 @@ export const servicePages: Page[] = [
         type: "cta",
         title: "Start reading today",
         body: "Access our complete collection of articles and books to deepen your Islamic knowledge.",
-        actions: [{ label: "Contact us", href: "/contact" }],
+        actions: [
+          { label: "Research papers", href: "/research" },
+          { label: "Contact us", href: "/contact", variant: "secondary" },
+        ],
       },
     ],
   },
