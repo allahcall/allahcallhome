@@ -9,6 +9,13 @@ export const site = {
   ein: "EIN 86-2956026 · 501(c)",
   phone: { display: "+92 304 0496627", href: "tel:+923040496627" },
   email: { display: "allahcall786@gmail.com", href: "mailto:allahcall786@gmail.com" },
+  // Prefilled drafts so people don't face an empty chat or email.
+  whatsapp: `https://wa.me/923040496627?text=${encodeURIComponent(
+    "Assalamu alaikum AllahCall team, I found you through allahcall.com and would like to ask about ",
+  )}`,
+  emailDraft: `mailto:allahcall786@gmail.com?subject=${encodeURIComponent("Question from allahcall.com")}&body=${encodeURIComponent(
+    "Assalamu alaikum AllahCall team,\n\nI would like to ask about \n\nJazakAllahu khayran,\n",
+  )}`,
   socials: [
     { label: "Instagram", href: "https://www.instagram.com/allah_call1" },
     { label: "YouTube", href: "https://youtube.com/@allahcall2421" },

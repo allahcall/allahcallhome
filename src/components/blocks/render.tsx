@@ -1,5 +1,6 @@
 import type { Block, Page } from "@/content/types";
 import { ContactForm, UpdatesForm, VolunteerForm } from "@/components/forms/forms";
+import { buttonClass } from "@/components/ui/button";
 import { Photo } from "@/components/ui/photo";
 import { Label, Section } from "@/components/ui/section";
 import { site } from "@/lib/site";
@@ -46,7 +47,25 @@ function FormBlock({ block }: { block: Extract<Block, { type: "form" }> }) {
           <h2 className="display mt-2 text-[30px] md:text-[clamp(32px,3.2vw,44px)]">{block.title}</h2>
           {block.lede && <p className="mt-3 text-ink-2">{block.lede}</p>}
           {block.form === "contact" && (
-            <dl className="mt-6 grid gap-2.5">
+            <div className="mt-6 grid gap-2.5 sm:grid-cols-2">
+              <a
+                href={site.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 items-center justify-center rounded-[14px] bg-green px-5 py-2 text-[15px] font-semibold text-paper transition-colors hover:bg-green-ink sm:col-span-2"
+              >
+                Chat on WhatsApp
+              </a>
+              <a href={site.emailDraft} className={buttonClass("secondary")}>
+                Email us
+              </a>
+              <a href={site.phone.href} className={buttonClass("secondary")}>
+                Call us
+              </a>
+            </div>
+          )}
+          {block.form === "contact" && (
+            <dl className="mt-2.5 grid gap-2.5">
               <div className="rounded-[14px] bg-canvas px-4 py-3">
                 <dt className="text-[12.5px] font-semibold text-green">Email</dt>
                 <dd className="text-[15px] break-all">
