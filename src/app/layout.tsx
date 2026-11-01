@@ -3,6 +3,8 @@ import { Amiri, Inter, Newsreader } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { MobileNav } from "@/components/layout/mobile-menu";
+import { JsonLd, siteLd } from "@/components/seo/json-ld";
+import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -21,7 +23,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: `${site.name} · ${site.tagline}`, template: `%s · ${site.name}` },
   description: site.description,
-  openGraph: { siteName: site.name, type: "website", locale: "en" },
+  applicationName: site.name,
+  category: "religion",
+  robots: { index: true, follow: true, googleBot: { "max-image-preview": "large", "max-snippet": -1 } },
+  appleWebApp: { title: site.name, statusBarStyle: "default" },
+  formatDetection: { telephone: false },
+  ...pageMetadata({ description: site.description, path: "/" }),
 };
 
 export const viewport: Viewport = { themeColor: "#f3f5f4", viewportFit: "cover" };
@@ -29,7 +36,7 @@ export const viewport: Viewport = { themeColor: "#f3f5f4", viewportFit: "cover" 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} ${newsreader.variable} ${amiri.variable}`}>
-      <body className="flex min-h-svh flex-col pb-[calc(4rem+env(safe-area-inset-bottom)+var(--badge-h,0px))] lg:pb-0">
+      <body className="flex min-h-svh flex-col pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-0">
         <a
           href="#main"
           className="sr-only z-50 bg-ink px-4 py-2 text-sm text-paper focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
@@ -42,6 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <Footer />
         <MobileNav />
+        <JsonLd data={siteLd()} />
       </body>
     </html>
   );
