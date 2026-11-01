@@ -1,6 +1,7 @@
 import type { Page } from "../types";
 import { aboutPages } from "./about";
 import { islamPages } from "./islam";
+import { legalPages } from "./legal";
 import { newMuslimPages } from "./new-muslims";
 import { programPages } from "./programs";
 import { religionPages } from "./religions";
@@ -13,6 +14,7 @@ export const pages: Page[] = [
   ...newMuslimPages,
   ...programPages,
   ...servicePages,
+  ...legalPages,
 ];
 
 export function getPage(slug: string): Page | undefined {

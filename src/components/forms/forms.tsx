@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { site } from "@/lib/site";
 
@@ -78,6 +79,13 @@ function Submit({ status, children }: { status: Status; children: ReactNode }) {
       >
         {status === "sending" ? "Sending…" : children}
       </button>
+      <p className="w-full text-[13px] text-muted">
+        We only use your details to reply. See our{" "}
+        <Link href="/privacy" className="underline underline-offset-2 hover:text-green">
+          privacy policy
+        </Link>
+        .
+      </p>
       {status === "error" && (
         <p role="alert" className="text-[14px] text-[#9b2c2c]">
           Something went wrong. Please try again, or email us at{" "}

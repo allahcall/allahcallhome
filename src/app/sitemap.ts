@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pages.map((p) => ({
       url: `${site.url}/${p.slug}`,
       changeFrequency: p.slug === "events" ? ("weekly" as const) : ("monthly" as const),
-      priority: key.has(p.slug) ? 0.9 : 0.7,
+      priority: key.has(p.slug) ? 0.9 : p.slug === "privacy" ? 0.3 : 0.7,
     })),
   ];
 }

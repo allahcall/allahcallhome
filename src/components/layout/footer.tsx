@@ -96,7 +96,12 @@ export function Footer() {
           <span>
             © <CurrentYear /> {site.legalName}
           </span>
-          <span>{site.ein}</span>
+          <span className="flex flex-wrap gap-x-4">
+            <Link href="/privacy" className="hover:text-green">
+              Privacy policy
+            </Link>
+            {site.ein}
+          </span>
         </div>
       </div>
     </footer>
