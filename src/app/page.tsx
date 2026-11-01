@@ -169,7 +169,7 @@ export default function Home() {
           <div className="grid content-start gap-3 sm:grid-cols-2 lg:grid-cols-1 lg:grid-rows-[1fr_auto] lg:content-stretch lg:gap-4">
             <dl className="grid grid-cols-2 gap-2.5 sm:col-span-2 lg:col-span-1 lg:auto-rows-fr lg:gap-4">
               {stats.map((s) => (
-                <div key={s.label} className="card flex flex-col p-4 lg:justify-end lg:p-5">
+                <div key={s.label} className="card flex flex-col p-4 lg:justify-between lg:p-6">
                   <dd className="font-serif text-[30px] leading-none font-medium tracking-[-0.02em] text-green lg:text-[36px]">{s.value}</dd>
                   <dt className="mt-2 text-[13px] leading-snug text-muted">{s.label}</dt>
                 </div>
