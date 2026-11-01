@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Shahada, TeamGrid } from "@/components/blocks/media-blocks";
 import { Cta, Quote } from "@/components/blocks/text-blocks";
@@ -6,6 +7,23 @@ import { Star } from "@/components/ui/mark";
 import { Photo } from "@/components/ui/photo";
 import { Section, SectionHead, Ticks } from "@/components/ui/section";
 import type { Person } from "@/content/types";
+import { JsonLd, faqLd } from "@/components/seo/json-ld";
+import { pageMetadata } from "@/lib/seo";
+import { site } from "@/lib/site";
+
+const homeTitle = `${site.name} · Learn Islam, Take Your Shahada & Find Support`;
+const seo = pageMetadata({
+  description:
+    "Learn about Islam from qualified scholars, take your Shahada and find support as a new Muslim. Free courses, guidance and a welcoming community.",
+  path: "/",
+});
+
+export const metadata: Metadata = {
+  ...seo,
+  title: { absolute: homeTitle },
+  openGraph: { ...seo.openGraph, title: homeTitle },
+  twitter: { ...seo.twitter, title: homeTitle },
+};
 
 const stats = [
   { value: "50,000+", label: "People reached through dawah" },
@@ -345,6 +363,7 @@ export default function Home() {
           ],
         }}
       />
+      <JsonLd data={faqLd(faq)} />
     </>
   );
 }

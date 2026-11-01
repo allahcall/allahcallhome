@@ -285,7 +285,7 @@ export const aboutPages: Page[] = [
     slug: "board-of-directors",
     title: "Board of Directors",
     description:
-      "The distinguished members of our Board of Directors bring together experience in Islamic scholarship, education, and community service to guide AllahCall's mission.",
+      "Meet AllahCall's Board of Directors: leaders in Islamic scholarship, education and community service who guide our dawah mission.",
     hero: {
       label: "About",
       title: "Board of directors",

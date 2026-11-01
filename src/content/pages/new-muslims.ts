@@ -5,7 +5,7 @@ export const newMuslimPages: Page[] = [
     slug: "new-muslims",
     title: "Welcome to Islam",
     description:
-      "Whether you're curious about Islam or have already taken your Shahada, we're here to support your journey with knowledge, community, and practical guidance.",
+      "Curious about Islam or newly Muslim? Get knowledge, community and practical guidance for every step of your journey with AllahCall.",
     hero: {
       label: "New Muslims",
       title: "Welcome to Islam",
@@ -79,7 +79,7 @@ export const newMuslimPages: Page[] = [
     slug: "accept-islam-now",
     title: "Accept Islam Today",
     description:
-      "Accepting Islam is a beautiful and straightforward process. It begins with understanding and declaring your belief in One God (Allah) and His final messenger, Prophet Muhammad (peace be upon him).",
+      "How to accept Islam: understand the faith, then declare your belief in One God (Allah) and His final messenger, Prophet Muhammad (peace be upon him).",
     hero: {
       label: "New Muslims",
       title: "Accept Islam today",
@@ -134,7 +134,7 @@ export const newMuslimPages: Page[] = [
     slug: "shahada",
     title: "The Shahada",
     description:
-      "The Shahada is the most important declaration in Islam. It is through this testimony that one becomes a Muslim, affirming their belief in the One true God and His final messenger.",
+      "The Shahada is the declaration of faith that makes one a Muslim: belief in the One true God and His final messenger. Read it in Arabic and English.",
     hero: {
       label: "New Muslims",
       title: "The Shahada",
@@ -203,7 +203,7 @@ export const newMuslimPages: Page[] = [
     slug: "new-muslim-guidelines",
     title: "New Muslim Guidelines",
     description:
-      "A practical guide to understanding and implementing Islamic practices in daily life. Take it step by step, and remember that Allah knows your intention and effort.",
+      "A practical, step-by-step guide for new Muslims to prayer, worship and daily Islamic practice. Allah knows your intention and your effort.",
     hero: {
       label: "New Muslims",
       title: "New Muslim guidelines",
@@ -301,7 +301,7 @@ export const newMuslimPages: Page[] = [
     slug: "testimonies-of-new-muslims",
     title: "Journey to Islam",
     description:
-      "Every journey to Islam is unique and beautiful. These testimonies share how different people found their way to the truth and how Islam transformed their lives.",
+      "Stories of new Muslims: how people from different backgrounds found their way to Islam, and how their faith transformed their lives.",
     hero: {
       label: "New Muslims",
       title: "Journey to Islam",

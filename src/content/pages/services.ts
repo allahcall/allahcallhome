@@ -91,7 +91,7 @@ export const servicePages: Page[] = [
     slug: "muslim-revival",
     title: "Muslim Revival",
     description:
-      "Our Muslim Revival programs are designed to help you strengthen your connection with Allah, increase your Islamic knowledge, and build a strong Muslim community.",
+      "Muslim Revival programs help you strengthen your connection with Allah, grow your Islamic knowledge and build a strong Muslim community.",
     hero: {
       label: "Services",
       title: "Muslim revival",
@@ -170,7 +170,7 @@ export const servicePages: Page[] = [
     slug: "rejoining-muslim-ummah",
     title: "Rejoining Muslim Ummah",
     description:
-      "Our Rejoining Muslim Ummah program provides comprehensive support and guidance for those seeking to reconnect with the Muslim community and strengthen their faith.",
+      "Support and guidance for Muslims reconnecting with their faith and the Muslim community. Rejoin the Ummah at your own pace with AllahCall.",
     hero: {
       label: "Services",
       title: "Rejoining Muslim Ummah",

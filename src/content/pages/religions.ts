@@ -112,7 +112,7 @@ export const religionPages: Page[] = [
     slug: "christianity",
     title: "Understanding Christianity",
     description:
-      "Islam and Christianity share many common values and beliefs. Understanding these similarities while respecting our differences helps build meaningful dialogue.",
+      "Islam and Christianity share many values and beliefs. Explore the similarities, respect the differences and build meaningful interfaith dialogue.",
     hero: {
       label: "Religions",
       title: "Understanding Christianity",
@@ -437,7 +437,7 @@ export const religionPages: Page[] = [
     slug: "buddhism",
     title: "Understanding Buddhism",
     description:
-      "While Buddhism and Islam have distinct beliefs and practices, both traditions share universal values that can serve as a foundation for mutual understanding and respect.",
+      "Buddhism and Islam differ in belief and practice but share universal values. A respectful guide to common ground and mutual understanding.",
     hero: {
       label: "Religions",
       title: "Understanding Buddhism",

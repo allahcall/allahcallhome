@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Blocks, PageHero } from "@/components/blocks/render";
+import { JsonLd, breadcrumbLd, faqLd } from "@/components/seo/json-ld";
 import { getPage, pages } from "@/content/pages";
-import { imageSrc } from "@/lib/image";
+import { pageMetadata } from "@/lib/seo";
 
 type Params = PageProps<"/[slug]">["params"];
 
 // Unlisted slugs then render in full before any bytes are sent, so notFound()
-// can still answer with a 404 instead of a streamed 200 (or a 500 on Netlify).
+// can still answer with a 404 instead of a streamed 200.
 export const ensureStatic = "navigation";
 
 // Every slug is known at build time; unknown slugs fall through to notFound().
@@ -19,16 +20,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const page = getPage((await params).slug);
   if (!page) return {};
-  return {
-    title: page.title,
-    description: page.description,
-    alternates: { canonical: `/${page.slug}` },
-    openGraph: {
-      title: page.title,
-      description: page.description,
-      images: page.hero.image ? [imageSrc(page.hero.image.src, 1200)] : undefined,
-    },
-  };
+  return pageMetadata({ title: page.title, description: page.description, path: `/${page.slug}` });
 }
 
 export default function ContentPage({ params }: PageProps<"/[slug]">) {
@@ -44,10 +36,12 @@ export default function ContentPage({ params }: PageProps<"/[slug]">) {
 async function Content({ params }: { params: Params }) {
   const page = getPage((await params).slug);
   if (!page) notFound();
+  const faqs = page.blocks.filter((b) => b.type === "faq");
   return (
     <>
       <PageHero hero={page.hero} />
       <Blocks blocks={page.blocks} />
+      <JsonLd data={[breadcrumbLd(page), ...faqs.map((f) => faqLd(f.items))]} />
     </>
   );
 }
