@@ -44,6 +44,8 @@ export type Block =
   | { type: "testimonies"; label?: string; title: string; lede?: string; items: Testimony[] }
   | { type: "form"; label?: string; title: string; lede?: string; form: "contact" | "volunteer" | "updates" }
   | { type: "faq"; label?: string; title?: string; items: { q: string; a: string }[] }
+  /** A private conversation with the team over WhatsApp or email, for people thinking about Islam. */
+  | { type: "talk"; title: string; body?: string }
   /** Closing call to action on a dark green band. */
   | { type: "cta"; title: string; body?: string; actions: Action[] };
 

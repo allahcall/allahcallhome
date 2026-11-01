@@ -2,6 +2,7 @@ import type { Block, Page } from "@/content/types";
 import { ContactForm, UpdatesForm, VolunteerForm } from "@/components/forms/forms";
 import { buttonClass } from "@/components/ui/button";
 import { Photo } from "@/components/ui/photo";
+import { Rosette } from "@/components/ui/rosette";
 import { Label, Section } from "@/components/ui/section";
 import { site } from "@/lib/site";
 import { Events } from "./events";
@@ -93,6 +94,28 @@ function FormBlock({ block }: { block: Extract<Block, { type: "form" }> }) {
   );
 }
 
+function Talk({ block }: { block: Extract<Block, { type: "talk" }> }) {
+  return (
+    <Section>
+      <div className="relative overflow-hidden rounded-[24px] bg-green p-6 text-paper md:flex md:items-center md:justify-between md:gap-10 md:p-12">
+        <Rosette className="pointer-events-none absolute -bottom-28 -left-20 size-72 text-paper opacity-[0.07]" />
+        <div className="relative max-w-2xl">
+          <h2 className="display text-[28px] md:text-[clamp(30px,3.2vw,44px)]">{block.title}</h2>
+          {block.body && <p className="mt-3 text-[15px] text-paper/75 md:text-[16.5px]">{block.body}</p>}
+        </div>
+        <div className="relative mt-6 grid grid-cols-2 gap-2.5 md:mt-0 md:flex md:shrink-0">
+          <a href={site.talk.whatsapp} target="_blank" rel="noopener noreferrer" className={buttonClass("inverse")}>
+            WhatsApp us
+          </a>
+          <a href={site.talk.email} className={buttonClass("inverse-secondary")}>
+            Email us
+          </a>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 export function Blocks({ blocks }: { blocks: Block[] }) {
   return blocks.map((block, i) => {
     const key = `${block.type}-${i}`;
@@ -127,6 +150,8 @@ export function Blocks({ blocks }: { blocks: Block[] }) {
         return <FormBlock key={key} block={block} />;
       case "faq":
         return <Faq key={key} block={block} />;
+      case "talk":
+        return <Talk key={key} block={block} />;
       case "cta":
         return <Cta key={key} block={block} />;
     }

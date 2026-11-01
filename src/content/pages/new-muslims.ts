@@ -65,6 +65,11 @@ export const newMuslimPages: Page[] = [
         ],
       },
       {
+        type: "talk",
+        title: "Thinking about Islam? Talk to someone privately.",
+        body: "Message a member of our team on WhatsApp or by email. Ask anything, at your own pace, with no pressure and nothing shared.",
+      },
+      {
         type: "cta",
         title: "Ready to learn more?",
         body: "Our team is here to answer your questions and provide guidance on your journey to Islam.",
@@ -120,13 +125,9 @@ export const newMuslimPages: Page[] = [
       },
       { type: "shahada", label: "Declaration", title: "The declaration of faith (Shahada)" },
       {
-        type: "cta",
-        title: "Need support?",
-        body: "Our team is here to help you with your journey to Islam. We can provide guidance, answer questions, and connect you with your local Muslim community.",
-        actions: [
-          { label: "Contact us", href: "/contact" },
-          { label: "New Muslim guidelines", href: "/new-muslim-guidelines", variant: "secondary" },
-        ],
+        type: "talk",
+        title: "Need support? Talk to someone privately.",
+        body: "Our team can answer your questions, help you say the Shahada, and connect you with your local Muslim community. Message us on WhatsApp or by email; nothing is shared.",
       },
     ],
   },

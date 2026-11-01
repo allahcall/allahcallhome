@@ -16,6 +16,15 @@ export const site = {
   emailDraft: `mailto:allahcall786@gmail.com?subject=${encodeURIComponent("Question from allahcall.com")}&body=${encodeURIComponent(
     "Assalamu alaikum AllahCall team,\n\nI would like to ask about \n\nJazakAllahu khayran,\n",
   )}`,
+  // Drafts for someone thinking about Islam who wants a private conversation.
+  talk: {
+    whatsapp: `https://wa.me/923040496627?text=${encodeURIComponent(
+      "Assalamu alaikum, I am thinking about Islam and would like to talk with someone privately. ",
+    )}`,
+    email: `mailto:allahcall786@gmail.com?subject=${encodeURIComponent("I would like to talk about Islam")}&body=${encodeURIComponent(
+      "Assalamu alaikum,\n\nI am thinking about Islam and would like to talk with someone privately. A little about me and my questions:\n\n",
+    )}`,
+  },
   socials: [
     { label: "Instagram", href: "https://www.instagram.com/allah_call1" },
     { label: "YouTube", href: "https://youtube.com/@allahcall2421" },
