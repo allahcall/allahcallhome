@@ -47,14 +47,22 @@ function FormBlock({ block }: { block: Extract<Block, { type: "form" }> }) {
           {block.lede && <p className="mt-3 text-ink-2">{block.lede}</p>}
           {block.form === "contact" && (
             <dl className="mt-6 grid gap-2.5">
-              <a href={site.email.href} className="block rounded-[14px] bg-canvas px-4 py-3 hover:bg-green-tint">
+              <div className="rounded-[14px] bg-canvas px-4 py-3">
                 <dt className="text-[12.5px] font-semibold text-green">Email</dt>
-                <dd className="break-all text-[15px]">{site.email.display}</dd>
-              </a>
-              <a href={site.phone.href} className="block rounded-[14px] bg-canvas px-4 py-3 hover:bg-green-tint">
+                <dd className="text-[15px] break-all">
+                  <a href={site.email.href} className="hover:text-green hover:underline">
+                    {site.email.display}
+                  </a>
+                </dd>
+              </div>
+              <div className="rounded-[14px] bg-canvas px-4 py-3">
                 <dt className="text-[12.5px] font-semibold text-green">Phone and WhatsApp</dt>
-                <dd className="text-[15px]">{site.phone.display}</dd>
-              </a>
+                <dd className="text-[15px]">
+                  <a href={site.phone.href} className="hover:text-green hover:underline">
+                    {site.phone.display}
+                  </a>
+                </dd>
+              </div>
             </dl>
           )}
         </div>

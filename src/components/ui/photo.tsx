@@ -4,8 +4,8 @@ import { imageSrc } from "@/lib/image";
 
 /**
  * A cover-cropped image that fills a box sized by its parent. `priority` marks
- * the page's main image: loaded eagerly at high fetch priority (Next 16
- * deprecates the old `priority` prop in favour of this).
+ * the page's hero, which is the LCP element at every width, so it is preloaded
+ * from <head> (Next 16's `preload`, which replaces the deprecated `priority`).
  */
 export function Photo({
   image,
@@ -27,8 +27,7 @@ export function Photo({
         alt={image.alt}
         fill
         sizes={sizes}
-        loading={priority ? "eager" : "lazy"}
-        fetchPriority={priority ? "high" : undefined}
+        preload={priority}
         className="object-cover"
         style={{ objectPosition: position }}
       />
