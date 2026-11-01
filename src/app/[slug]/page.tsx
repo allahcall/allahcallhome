@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import { Blocks, PageHero } from "@/components/blocks/render";
 import { JsonLd, breadcrumbLd, faqLd } from "@/components/seo/json-ld";
 import { getPage, pages } from "@/content/pages";
@@ -23,17 +22,10 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return pageMetadata({ title: page.title, description: page.description, path: `/${page.slug}` });
 }
 
-export default function ContentPage({ params }: PageProps<"/[slug]">) {
-  // The boundary lets client navigations between content pages show the hero
-  // placeholder at once while the page streams in.
-  return (
-    <Suspense fallback={<HeroPlaceholder />}>
-      <Content params={params} />
-    </Suspense>
-  );
-}
-
-async function Content({ params }: { params: Params }) {
+// Params are awaited outside any <Suspense> so each page prerenders as one
+// in-order document: a fallback here was painted first and then swapped,
+// shifting the footer and delaying the hero image.
+export default async function ContentPage({ params }: PageProps<"/[slug]">) {
   const page = getPage((await params).slug);
   if (!page) notFound();
   const faqs = page.blocks.filter((b) => b.type === "faq");
@@ -43,13 +35,5 @@ async function Content({ params }: { params: Params }) {
       <Blocks blocks={page.blocks} />
       <JsonLd data={[breadcrumbLd(page), ...faqs.map((f) => faqLd(f.items))]} />
     </>
-  );
-}
-
-function HeroPlaceholder() {
-  return (
-    <div aria-hidden className="wrap animate-pulse pt-1.5 md:pt-4">
-      <div className="min-h-[340px] rounded-[24px] bg-alt md:min-h-[460px]" />
-    </div>
   );
 }
