@@ -3,7 +3,7 @@ export const site = {
   tagline: "Islamic Dawah & Education",
   description:
     "A platform dedicated to spreading authentic Islamic knowledge and connecting people with the message of Islam.",
-  url: "https://www.allahcall.com",
+  url: "https://allahcall.com",
   legalName: "AllahCall Institute",
   poweredBy: "Allah Call Education PK",
   ein: "EIN 86-2956026 · 501(c)",

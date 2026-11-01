@@ -1,6 +1,6 @@
 # AllahCall
 
-The rebuilt website for [allahcall.com](https://www.allahcall.com), an Islamic dawah and education platform. Next.js 16 (App Router, Cache Components), React 19 and Tailwind CSS 4.
+The rebuilt website for [allahcall.com](https://allahcall.com), an Islamic dawah and education platform. Next.js 16 (App Router, Cache Components), React 19 and Tailwind CSS 4.
 
 This replaces an older codebase built by the previous developers: [anstariq333/allah-call](https://github.com/anstariq333/allah-call). It is kept for reference only; content and images were carried over from the old live site, not from that repo.
 
