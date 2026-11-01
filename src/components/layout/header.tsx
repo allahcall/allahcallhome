@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button";
 import { Mark } from "@/components/ui/mark";
 import { nav, site } from "@/lib/site";
+import { Search } from "./search";
 
 export function Header() {
   return (
@@ -62,6 +63,7 @@ export function Header() {
         <Link href="/contact" className="ml-auto text-[14.5px] font-semibold text-green lg:hidden">
           Contact
         </Link>
+        <Search />
         {/* The wrapper carries the breakpoint: the button's own inline-flex would override `hidden`. */}
         <div className="hidden lg:block">
           <ButtonLink href="/accept-islam-now" className="min-h-10 rounded-[12px] px-4 text-[14px]">
