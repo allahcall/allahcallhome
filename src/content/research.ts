@@ -2,7 +2,7 @@ import type { Page } from "./types";
 
 /**
  * Published research papers co-authored by Muhammad Harris Suhaib. The full
- * papers stay with their journals and on Zenodo (open access, CC BY 4.0); this
+ * papers stay with their journals and on Zenodo (open access); this
  * site lists them and, for papers with a `summary`, adds a plain-language page
  * at /research/[slug]. Papers without one link straight to their DOI.
  */
@@ -19,8 +19,10 @@ export type Paper = {
   journal?: string;
   /** Publication date (YYYY-MM-DD), or just the year when the paper gives no day. */
   date: string;
-  /** Zenodo DOI, e.g. "10.5281/zenodo.20780438". */
+  /** Zenodo or journal DOI, e.g. "10.5281/zenodo.20780438". */
   doi: string;
+  /** Creative Commons licence the paper is published under, when not CC BY 4.0. */
+  license?: "by-nc-nd";
   /** One line for the research index. */
   blurb: string;
   /** Our own write-up for a general reader. */
@@ -305,6 +307,19 @@ export const papers: Paper[] = [
     },
   },
 
+  {
+    slug: "finite-cosmos-infinite-creator",
+    title:
+      "From Finite Cosmos to Infinite Creator: An Unassailable Defense of the Kalam Cosmological Argument",
+    topic: "god",
+    authors: [suhaib, "Shiza Fatima", "Muhammad Atta ul Baseer"],
+    journal: "Qualitative Research Journal for Social Studies",
+    date: "2024-12-19",
+    doi: "10.63878/qrjs46",
+    license: "by-nc-nd",
+    blurb: "A defence of the Kalam argument against Hume, Kant and “universe from nothing” cosmology.",
+  },
+
   // Modern thought
   {
     slug: "quranic-response-to-nihilism",
@@ -503,6 +518,19 @@ export const papers: Paper[] = [
     },
   },
 
+  {
+    slug: "burden-of-proof-atheism",
+    title:
+      "Restoring the Burden of Proof: Clarifying Atheism, Theism, and Agnosticism in Contemporary Discourse",
+    topic: "modern",
+    authors: [suhaib, "Shiza Fatima", "Rizwan Haider"],
+    journal: "Contemporary Journal of Social Science Review",
+    date: "2025-07-27",
+    doi: "10.63878/cjssr.v3i3.1060",
+    license: "by-nc-nd",
+    blurb: "Why defining atheism as a mere “lack of belief” sidesteps the burden of proof.",
+  },
+
   // Qur'an and Sunnah
   {
     slug: "surah-al-fil-and-imperialism",
@@ -687,6 +715,43 @@ export const papers: Paper[] = [
         "They propose a long curriculum combining classical sciences, modern disciplines and supervised fatwa practice.",
       ],
     },
+  },
+
+  {
+    slug: "ghazwa-e-hind-hadiths",
+    title:
+      "A Research-Based Analysis of the Hadiths on Ghazwah-e-Hind: Authenticity and Significance",
+    topic: "quran",
+    authors: ["Muhammad Nauman Khalid", "Abdul Majid", suhaib],
+    journal: "Social Sciences & Humanity Research Review",
+    date: "2025-10-20",
+    doi: "10.63468/sshrr.127",
+    license: "by-nc-nd",
+    blurb: "How reliable are the hadiths on Ghazwa-e-Hind, and how should they be read?",
+  },
+  {
+    slug: "standard-for-interpreting-quran-and-hadith",
+    title:
+      "The Standard for Interpreting the Qur'an and Hadith",
+    topic: "quran",
+    authors: [suhaib, "Muhammad Nauman Khalid"],
+    journal: "Al-Aasar",
+    date: "2024-12-28",
+    doi: "10.63878/aaj517",
+    license: "by-nc-nd",
+    blurb: "How to tell which meaning of a word like salah or zakat a verse intends. In Urdu.",
+  },
+  {
+    slug: "ghamidi-principles-critical-review",
+    title:
+      "A Critical Review of Javed Ahmad Ghamidi's Principles and Juristic Views",
+    topic: "quran",
+    authors: [suhaib, "Muhammad Nauman Khalid", "Muhammad Atta ul Baseer"],
+    journal: "Al-Aasar",
+    date: "2025-03-25",
+    doi: "10.63878/aaj518",
+    license: "by-nc-nd",
+    blurb: "Where Javed Ahmad Ghamidi's method departs from the four Sunni schools. In Urdu.",
   },
 
   // Society and rights
@@ -935,6 +1000,46 @@ export const papers: Paper[] = [
       ],
     },
   },
+  {
+    slug: "how-islam-responds-to-liberalism",
+    title:
+      "How Islam Responds to Liberalism: A Comparative Analysis of Ideological Foundations and Social Outcomes",
+    topic: "society",
+    authors: [suhaib, "Shiza Fatima", "Haroon Abdullah"],
+    journal: "Social Sciences & Humanity Research Review",
+    date: "2025-10-09",
+    doi: "10.63468/sshrr.133",
+    license: "by-nc-nd",
+    blurb: "Liberal autonomy and Islamic servanthood compared, in principle and in social outcomes.",
+  },
+  {
+    slug: "riba-as-structural-distortion",
+    title:
+      "Riba (Interest) as Structural Distortions: A Comparative Study of Classical Islamic Thought and Contemporary Economic Theories",
+    topic: "society",
+    authors: [suhaib, "Rizwan Haider", "Muhammad Aslam"],
+    journal: "Al-Qamar",
+    date: "2025-09-21",
+    doi: "10.53762/alqamar.08.03.e02",
+    license: "by-nc-nd",
+    blurb: "How interest shapes debt, inequality and crises, and what Islamic risk-sharing finance offers instead.",
+    summary: {
+      title: "Riba and the cost of interest",
+      lede: "Mainstream economics treats interest as a neutral price for borrowing money. The authors argue it shapes who gains and who loses, and that Islam's ban on riba points to a fairer system.",
+      body: [
+        "Riba, usually translated as interest or usury, is forbidden in the Qur'an: “Allah has permitted trade and forbidden usury” (2:275). Modern economics, by contrast, treats interest as a neutral price for credit that balances saving and investment. This paper asks whether that view holds up, and argues that interest is a structural force with real winners and losers.",
+        "The authors begin with history. Aristotle called interest unnatural because money cannot breed, Thomas Aquinas called it unjust, and medieval canon law treated usury as a sin; even Adam Smith supported limits on interest rates. Only later did interest come to be seen as a neutral tool. The paper then draws on modern critics: Hyman Minsky, who showed how long periods of easy credit build up to sudden crashes such as 2008; Thomas Piketty, who argued that when returns on capital outpace growth, wealth concentrates at the top; and Joseph Stiglitz on how finance shifts risk onto borrowers. It links this to the Qur'anic aim that wealth should not “circulate only among the rich” (59:7).",
+        "At the level of households and firms, the paper argues, heavy debt holds back investment, pushes firms to cut wages and favours large companies that borrow cheaply. At the level of countries, interest payments crowd out spending on health and education and trap developing nations in debt. The authors also connect interest to wider problems: high discount rates make long-term climate investment look worthless, and price support in rich countries leads to food being destroyed. Case studies from Greece, Spain, Ghana, Malaysia and the United States illustrate these points.",
+        "Against this the paper sets Islamic finance, where financiers share profit and loss instead of charging a fixed return. Citing IMF data, it reports that Islamic banks kept growing during the 2008 crisis while conventional banks shrank. The authors accept that Islamic finance still faces problems of standardisation, regulation and scale, and close with policy proposals: more risk-sharing instruments such as mudarabah, musharakah and green sukuk, debt restructuring, and tighter limits on predatory lending.",
+      ],
+      points: [
+        "Interest is not a neutral price; the paper argues it moves wealth from borrowers to lenders.",
+        "Debt and interest payments squeeze wages, public services and poorer countries' budgets.",
+        "Islamic banks, which share risk instead of charging interest, held up better in 2008.",
+        "The authors call for risk-sharing finance, debt restructuring and limits on predatory lending.",
+      ],
+    },
+  },
 ];
 
 export const doiUrl = (p: Paper) => `https://doi.org/${p.doi}`;
@@ -945,6 +1050,9 @@ export const summarized = papers.filter((p) => p.summary);
 export function getPaper(slug: string): Paper | undefined {
   return summarized.find((p) => p.slug === slug);
 }
+
+export const licenseName = (p: Paper) => (p.license === "by-nc-nd" ? "CC BY-NC-ND 4.0" : "CC BY 4.0");
+export const licenseUrl = (p: Paper) => `https://creativecommons.org/licenses/${p.license ?? "by"}/4.0/`;
 
 export function citeLine(p: Paper) {
   return [p.journal, p.date.slice(0, 4)].filter(Boolean).join(" · ");
@@ -1027,7 +1135,7 @@ export function paperPage(p: Paper & { summary: NonNullable<Paper["summary"]> })
         items: [
           { title: "Authors", body: p.authors.join(", ") },
           { title: "Published", body: [p.journal, longDate(p.date)].filter(Boolean).join(", ") },
-          { title: "Full paper", body: `Free to read under CC BY 4.0. DOI ${p.doi}`, href: doiUrl(p) },
+          { title: "Full paper", body: `Free to read under ${licenseName(p)}. DOI ${p.doi}`, href: doiUrl(p) },
         ],
       },
       {

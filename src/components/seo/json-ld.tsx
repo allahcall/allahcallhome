@@ -1,4 +1,4 @@
-import { doiUrl, paperPath, type Paper } from "@/content/research";
+import { doiUrl, licenseUrl, paperPath, type Paper } from "@/content/research";
 import type { Page } from "@/content/types";
 import { nav, site } from "@/lib/site";
 
@@ -105,7 +105,7 @@ export function paperLd(paper: Paper): Thing[] {
       ...(paper.journal ? { isPartOf: { "@type": "Periodical", name: paper.journal } } : {}),
       identifier: { "@type": "PropertyValue", propertyID: "DOI", value: paper.doi },
       sameAs: doiUrl(paper),
-      license: "https://creativecommons.org/licenses/by/4.0/",
+      license: licenseUrl(paper),
       mainEntityOfPage: url,
     },
   ];
