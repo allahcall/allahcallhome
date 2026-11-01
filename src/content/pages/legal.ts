@@ -5,7 +5,7 @@ export const legalPages: Page[] = [
     slug: "privacy",
     title: "Privacy Policy",
     description:
-      "How AllahCall handles the information you share through our contact, volunteer and event update forms, and what our hosting and analytics collect.",
+      "How AllahCall handles the information you share through our forms, WhatsApp and email, and what our hosting, analytics and error monitoring collect.",
     hero: {
       label: "Legal",
       title: "Privacy policy",
@@ -28,7 +28,8 @@ export const legalPages: Page[] = [
           "Contact form: your name, email address, the topic you pick and your message.",
           "Volunteer form: your name, email address, phone number if you give one, the role you are interested in and your message.",
           "Event updates: your email address, and your name if you give one.",
-          "You do not need an account to use this site, and we do not set our own cookies.",
+          "WhatsApp and email: if you message us directly, we receive your phone number or email address, your name as you have set it, and what you write.",
+          "You do not need an account to use this site. Neither we nor the services below set cookies.",
         ],
       },
       {
@@ -36,9 +37,11 @@ export const legalPages: Page[] = [
         label: "Who processes it",
         title: "The services behind this site",
         body: [
-          "Formspree receives form submissions, emails them to our team and stores them on our behalf.",
+          "Formspree receives form submissions, emails them to our team and stores them on our behalf. It also screens submissions for spam.",
           "Vercel hosts the website. Like any web host, it processes technical data such as IP addresses to deliver pages and protect the site from abuse.",
-          "Vercel Web Analytics counts page views so we can see which pages are useful. It does not use cookies and does not build a profile of you.",
+          "Vercel Web Analytics counts page views so we can see which pages are useful, and Vercel Speed Insights measures how quickly pages load. Neither uses cookies or builds a profile of you.",
+          "Sentry receives a report when a page breaks, with technical details such as the page address, browser and device type, so we can fix it. We switch off its collection of personal data, such as IP addresses.",
+          "WhatsApp (Meta) and Google (Gmail) carry the messages you send us directly, under their own privacy policies.",
         ],
       },
       {
@@ -48,6 +51,7 @@ export const legalPages: Page[] = [
         body: [
           "We use what you send to reply to you, to arrange volunteering, and to send the event updates you asked for.",
           "We never sell your information or use it for advertising.",
+          "If you tell us you are thinking about Islam or have accepted it, we keep that between you and the team members helping you. We never publish it, or a testimony from you, without your clear permission.",
         ],
       },
       {
@@ -56,6 +60,7 @@ export const legalPages: Page[] = [
         title: "No longer than we need it",
         body: [
           "We keep messages for as long as we need them to respond and follow up. We keep your email on the event updates list until you ask us to remove it.",
+          "Our team works from Pakistan and the United States, and the services above may store data in other countries, so your information may be handled outside the country you live in.",
         ],
       },
       {
@@ -64,6 +69,7 @@ export const legalPages: Page[] = [
         title: "See, correct or delete your information",
         body: [
           "Email allahcall786@gmail.com to ask what we hold about you, to correct it, or to have it deleted, and we will do so.",
+          "This site is not meant for children under 13. If a child has sent us information, ask us and we will delete it.",
           "If we change this policy, we will update it on this page and change the date at the top.",
         ],
       },
