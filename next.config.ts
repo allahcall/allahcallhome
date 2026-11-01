@@ -2,14 +2,15 @@ import type { NextConfig } from "next";
 
 // Static pages can't carry per-request nonces, so inline scripts are allowed
 // (Next's guidance for statically rendered sites); everything else is locked
-// to this origin plus Formspree, which receives the forms.
+// to this origin plus Formspree, which receives the forms, and Sentry, which
+// receives error reports.
 const csp = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  "connect-src 'self' https://formspree.io",
+  "connect-src 'self' https://formspree.io https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://*.ingest.de.sentry.io",
   "form-action 'self' https://formspree.io",
   "frame-ancestors 'none'",
   "base-uri 'self'",

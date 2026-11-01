@@ -21,6 +21,7 @@ npm run build && npm start
 
 | Variable | Purpose |
 |---|---|
+| `NEXT_PUBLIC_SENTRY_DSN` | Sentry project that receives server and browser errors. Optional: without it, errors are only logged to the console and Vercel logs. |
 | `NEXT_PUBLIC_FORMSPREE_ID` | Formspree form that receives the contact, volunteer and event-updates forms. Optional: defaults to `mrppaaza`, owned by the allahcall786@gmail.com Formspree account. |
 
 ## Where things live
