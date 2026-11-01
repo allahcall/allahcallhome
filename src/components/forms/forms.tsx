@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { site } from "@/lib/site";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -21,6 +21,10 @@ function Field({ label, children, hint }: { label: string; children: ReactNode; 
 
 function useFormspree(subject: string) {
   const [status, setStatus] = useState<Status>("idle");
+  const shownAt = useRef(0);
+  useEffect(() => {
+    shownAt.current = Date.now();
+  }, [status]);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -28,6 +32,8 @@ function useFormspree(subject: string) {
     const data = new FormData(form);
     // Honeypot: real people never fill this hidden field.
     if (data.get("_gotcha")) return;
+    // Bots submit the instant the page loads; people take longer than two seconds.
+    if (Date.now() - shownAt.current < 2000) return;
     if (!data.get("_subject")) data.set("_subject", subject);
     setStatus("sending");
     try {
