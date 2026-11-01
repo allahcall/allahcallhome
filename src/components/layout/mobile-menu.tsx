@@ -72,7 +72,7 @@ export function MobileNav() {
       <div
         id="menu-sheet"
         hidden={!open}
-        className="fixed inset-x-0 top-0 bottom-[calc(4rem+env(safe-area-inset-bottom)+var(--badge-h,0px))] z-40 overflow-y-auto bg-canvas"
+        className="fixed inset-x-0 top-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-40 overflow-y-auto bg-canvas"
       >
         <nav aria-label="Menu" className="wrap pt-5 pb-10">
           <div className="flex items-center justify-between">
@@ -123,7 +123,7 @@ export function MobileNav() {
 
       <nav
         aria-label="Quick links"
-        className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-paper/95 pb-[calc(env(safe-area-inset-bottom)+var(--badge-h,0px))] backdrop-blur-md"
+        className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-paper/95 pb-[calc(env(safe-area-inset-bottom))] backdrop-blur-md"
       >
         <ul className="mx-auto grid h-16 max-w-xl grid-cols-5">
           {tabs.map((t) => {

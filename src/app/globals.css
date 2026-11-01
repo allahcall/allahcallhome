@@ -27,10 +27,6 @@
     -webkit-text-size-adjust: 100%;
     scroll-padding-top: 5rem;
   }
-  /* Netlify's free plan pins its badge to the bottom of the screen; the phone tab bar grows to sit above it. */
-  html:has(#nl-badge-frame) {
-    --badge-h: 4.25rem;
-  }
   body {
     background: var(--color-canvas);
     color: var(--color-ink);
