@@ -12,7 +12,7 @@ Direction **G · App**: the site behaves like a polished mobile app. White cards
 | `paper` | `#ffffff` | Cards, inputs on focus |
 | `alt` | `#eaefec` | Image placeholders |
 | `ink` / `ink-2` | `#0f1513` / `#3a433f` | Text, primary buttons / body copy |
-| `muted` | `#6b746f` | Secondary text |
+| `muted` | `#646d68` | Secondary text |
 | `line` | `#e3e8e5` | Card borders, dividers |
 | `green` / `green-ink` | `#17533e` / `#0e3a2b` | Labels, links, CTA band / Shahada and quote cards |
 | `green-tint` | `#e6efea` | Number chips, date tiles, ticks |
