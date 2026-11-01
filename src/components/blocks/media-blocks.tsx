@@ -214,7 +214,16 @@ export function Testimonies({ block }: { block: Of<"testimonies"> }) {
         {block.items.map((t) => (
           <figure key={t.name} className="card flex flex-col p-5 md:p-7">
             <div className="flex items-center gap-3">
-              <Photo image={t.image} sizes="56px" className="size-14 shrink-0 rounded-full" />
+              {t.image ? (
+                <Photo image={t.image} sizes="56px" className="size-14 shrink-0 rounded-full" />
+              ) : (
+                <span
+                  aria-hidden
+                  className="grid size-14 shrink-0 place-items-center rounded-full bg-green-tint font-serif text-[24px] text-green"
+                >
+                  {t.name.charAt(0)}
+                </span>
+              )}
               <div>
                 <p className="font-semibold">{t.name}</p>
                 <p className="text-[13.5px] text-muted">{t.place}</p>

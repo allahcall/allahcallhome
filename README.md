@@ -34,6 +34,6 @@ npm run build && npm start
 
 ## Content still to confirm
 
-- **Testimonies** (`testimonies-of-new-muslims`, `our-work`) came from the old site and use stock photos; confirm they are real people before launch.
+- **Testimonies** (`testimonies-of-new-muslims`, `our-work`) came from the old site. Their stock portraits were removed; confirm the stories are real people before launch, and only add a photo the person has agreed to share.
 - **Events** with dates in the past move to "Past events" automatically. Add new dated events in `src/content/pages/about.ts`.
 - **Statistics** (50,000+ reached, 5,000+ new Muslims, and so on) are carried over from the old site.

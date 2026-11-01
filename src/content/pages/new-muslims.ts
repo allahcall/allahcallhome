@@ -329,7 +329,6 @@ export const newMuslimPages: Page[] = [
               "Islam brought peace to my heart and clarity to my mind. The concept of direct connection with Allah resonated deeply with me.",
             story:
               "I was searching for meaning in life when I first learned about Islam. The logical approach to faith and the emphasis on direct connection with God drew me in.",
-            image: { src: "photo-1740620779952-17ab8c00de48", alt: "Portrait of David" },
           },
           {
             name: "Sarah Johnson",
@@ -338,7 +337,6 @@ export const newMuslimPages: Page[] = [
               "The brotherhood and sisterhood in Islam is unlike anything I've experienced before. It truly feels like one global family.",
             story:
               "After studying various religions, I found that Islam's teachings about social justice and community responsibility aligned perfectly with my values.",
-            image: { src: "photo-1508214751196-bcfd4ca60f91", alt: "Portrait of Sarah Johnson" },
           },
           {
             name: "Emma Wilson",
@@ -347,7 +345,6 @@ export const newMuslimPages: Page[] = [
               "The beautiful thing about Islam is how it guides every aspect of life while maintaining a balance between spiritual and worldly matters.",
             story:
               "My journey to Islam began through Muslim friends who showed me the beauty of their faith through their actions and character.",
-            image: { src: "photo-1517841905240-472988babdf9", alt: "Portrait of Emma Wilson" },
           },
           {
             name: "Michael Chen",
@@ -356,7 +353,6 @@ export const newMuslimPages: Page[] = [
               "Islam answered the deep philosophical questions I had about existence and purpose in a way that satisfied both my heart and mind.",
             story:
               "As a person with a scientific background, I found Islam's emphasis on seeking knowledge and understanding the natural world particularly appealing.",
-            image: { src: "photo-1714331251780-db56109a9887", alt: "Portrait of Michael Chen" },
           },
         ],
       },

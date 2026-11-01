@@ -73,7 +73,8 @@ export type Testimony = {
   place: string;
   quote: string;
   story: string;
-  image: Img;
+  /** Only a real photo of the person; never a stock portrait. */
+  image?: Img;
 };
 
 export type Page = {
