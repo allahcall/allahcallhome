@@ -1,3 +1,4 @@
+import { researchPage } from "../research";
 import type { Page } from "../types";
 import { aboutPages } from "./about";
 import { islamPages } from "./islam";
@@ -14,6 +15,7 @@ export const pages: Page[] = [
   ...newMuslimPages,
   ...programPages,
   ...servicePages,
+  researchPage,
   ...legalPages,
 ];
 

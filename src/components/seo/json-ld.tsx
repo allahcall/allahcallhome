@@ -1,3 +1,4 @@
+import { doiUrl, paperPath, type Paper } from "@/content/research";
 import type { Page } from "@/content/types";
 import { nav, site } from "@/lib/site";
 
@@ -78,4 +79,34 @@ export function faqLd(items: { q: string; a: string }[]): Thing {
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
   };
+}
+
+/** Breadcrumb plus the paper itself, pointing at the published version by DOI. */
+export function paperLd(paper: Paper): Thing[] {
+  const url = `${site.url}${paperPath(paper)}`;
+  const name = paper.summary?.title ?? paper.title;
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { name: "Home", item: site.url },
+        { name: "Research", item: `${site.url}/research` },
+        { name, item: url },
+      ].map((t, i) => ({ "@type": "ListItem", position: i + 1, ...t })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      headline: paper.title,
+      abstract: paper.summary?.lede ?? paper.blurb,
+      author: paper.authors.map((name) => ({ "@type": "Person", name })),
+      datePublished: paper.date,
+      ...(paper.journal ? { isPartOf: { "@type": "Periodical", name: paper.journal } } : {}),
+      identifier: { "@type": "PropertyValue", propertyID: "DOI", value: paper.doi },
+      sameAs: doiUrl(paper),
+      license: "https://creativecommons.org/licenses/by/4.0/",
+      mainEntityOfPage: url,
+    },
+  ];
 }
