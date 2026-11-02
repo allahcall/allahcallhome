@@ -34,6 +34,8 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
+      // Browsers must always fetch the latest service worker so updates reach installed apps.
+      { source: "/sw.js", headers: [{ key: "Cache-Control", value: "no-cache, no-store, must-revalidate" }] },
       // Deployment URLs like allahcallhome.vercel.app mirror the site; keep them out of search.
       {
         source: "/:path*",
