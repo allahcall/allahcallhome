@@ -123,7 +123,7 @@ export function MobileNav() {
 
       <nav
         aria-label="Quick links"
-        className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-paper/95 pb-[calc(env(safe-area-inset-bottom))] backdrop-blur-md"
+        className="fixed inset-x-0 bottom-0 z-50 [view-transition-name:tab-bar] border-t border-line bg-paper/95 pb-[calc(env(safe-area-inset-bottom))] backdrop-blur-md"
       >
         <ul className="mx-auto grid h-16 max-w-xl grid-cols-5">
           {tabs.map((t) => {

@@ -4,6 +4,7 @@ import { Blocks, PageHero } from "@/components/blocks/render";
 import { JsonLd, breadcrumbLd, faqLd } from "@/components/seo/json-ld";
 import { getPage, pages } from "@/content/pages";
 import { pageMetadata } from "@/lib/seo";
+import { PageTransition } from "@/components/ui/page-transition";
 
 type Params = PageProps<"/[slug]">["params"];
 
@@ -30,10 +31,10 @@ export default async function ContentPage({ params }: PageProps<"/[slug]">) {
   if (!page) notFound();
   const faqs = page.blocks.filter((b) => b.type === "faq");
   return (
-    <>
+    <PageTransition>
       <PageHero hero={page.hero} />
       <Blocks blocks={page.blocks} />
       <JsonLd data={[breadcrumbLd(page), ...faqs.map((f) => faqLd(f.items))]} />
-    </>
+    </PageTransition>
   );
 }

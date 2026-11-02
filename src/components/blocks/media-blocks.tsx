@@ -34,7 +34,7 @@ export function Cards({ block }: { block: Of<"cards"> }) {
             </>
           );
           return (
-            <article key={item.title} className="card flex flex-col overflow-hidden">
+            <article key={item.title} className={`card flex flex-col overflow-hidden ${item.href ? "lift" : ""}`}>
               {item.href ? (
                 <Link href={item.href} className="group block">
                   {body}

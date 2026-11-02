@@ -10,6 +10,7 @@ import type { Person } from "@/content/types";
 import { JsonLd, faqLd } from "@/components/seo/json-ld";
 import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { PageTransition } from "@/components/ui/page-transition";
 
 const homeTitle = `${site.name} · Learn Islam, Take Your Shahada & Find Support`;
 const seo = pageMetadata({
@@ -144,7 +145,7 @@ const faq = [
 
 export default function Home() {
   return (
-    <>
+    <PageTransition>
       <div className="wrap pt-1.5 md:pt-4">
         <div className="grid gap-3 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:gap-4">
           <header className="relative isolate flex min-h-[460px] flex-col justify-end overflow-hidden rounded-[24px] text-paper md:min-h-[520px] lg:min-h-[580px]">
@@ -364,6 +365,6 @@ export default function Home() {
         }}
       />
       <JsonLd data={faqLd(faq)} />
-    </>
+    </PageTransition>
   );
 }

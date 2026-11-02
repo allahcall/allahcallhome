@@ -11,7 +11,7 @@ const variants: Record<Variant, string> = {
 };
 
 export function buttonClass(variant: Variant = "primary", className = "") {
-  return `inline-flex min-h-12 items-center justify-center gap-2 rounded-[14px] px-5 py-2 text-center text-[15px] font-semibold transition-colors ${variants[variant]} ${className}`;
+  return `inline-flex min-h-12 items-center justify-center gap-2 rounded-[14px] px-5 py-2 text-center text-[15px] font-semibold transition-[color,background-color,border-color,scale] active:scale-[0.97] motion-reduce:active:scale-100 ${variants[variant]} ${className}`;
 }
 
 export function ButtonLink({

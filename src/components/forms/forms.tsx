@@ -65,7 +65,20 @@ function Sent({
   onReset: () => void;
 }) {
   return (
-    <div role="status" className="rounded-[16px] bg-green-tint p-6">
+    <div role="status" className="sent rounded-[16px] bg-green-tint p-6">
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden
+        className="sent-tick mb-3 size-9 text-green"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10.5" strokeWidth="1.5" opacity="0.35" />
+        <path d="m7.5 12.5 3 3 6-6.5" />
+      </svg>
       <p className="font-serif text-[26px] leading-tight tracking-[-0.02em] text-green-ink">{title}</p>
       <p className="mt-3 max-w-[32em] text-ink-2">{body}</p>
       <button type="button" onClick={onReset} className="mt-6 text-[14.5px] font-medium underline underline-offset-4">
@@ -81,7 +94,7 @@ function Submit({ status, children }: { status: Status; children: ReactNode }) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex h-12 items-center justify-center rounded-[14px] bg-green px-6 text-[15px] font-semibold text-paper transition-colors hover:bg-green-ink disabled:opacity-60 max-sm:w-full"
+        className="inline-flex h-12 items-center justify-center rounded-[14px] bg-green px-6 text-[15px] font-semibold text-paper transition-[background-color,scale] hover:bg-green-ink active:scale-[0.97] disabled:opacity-60 motion-reduce:active:scale-100 max-sm:w-full"
       >
         {status === "sending" ? "Sending…" : children}
       </button>

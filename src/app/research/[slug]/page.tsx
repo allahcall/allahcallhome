@@ -4,6 +4,7 @@ import { Blocks, PageHero } from "@/components/blocks/render";
 import { JsonLd, paperLd } from "@/components/seo/json-ld";
 import { getPaper, paperPage, paperPath, summarized } from "@/content/research";
 import { pageMetadata } from "@/lib/seo";
+import { PageTransition } from "@/components/ui/page-transition";
 
 type Params = PageProps<"/research/[slug]">["params"];
 
@@ -35,10 +36,10 @@ export default async function PaperPage({ params }: PageProps<"/research/[slug]"
   if (!paper?.summary) notFound();
   const page = paperPage({ ...paper, summary: paper.summary });
   return (
-    <>
+    <PageTransition>
       <PageHero hero={page.hero} />
       <Blocks blocks={page.blocks} />
       <JsonLd data={paperLd(paper)} />
-    </>
+    </PageTransition>
   );
 }

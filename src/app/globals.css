@@ -103,3 +103,152 @@
     gap: 1rem;
   }
 }
+
+/*
+ * Motion. Short, soft and CSS-only: no animation library ships to the browser.
+ * Browsers without a feature simply skip that animation, and everything is
+ * switched off for people who ask their device for reduced motion.
+ */
+
+/* Page changes: the header and tab bar stay put while the page fades through. */
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+::view-transition-group(site-header),
+::view-transition-group(tab-bar) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header),
+::view-transition-old(tab-bar) {
+  display: none;
+}
+::view-transition-new(site-header),
+::view-transition-new(tab-bar) {
+  animation: none;
+}
+::view-transition-old(.page-exit) {
+  animation: 140ms ease-in both fade-out;
+}
+::view-transition-new(.page-enter) {
+  animation: 320ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms both rise-in;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Sections ease up as they scroll into view, driven by the scroll itself. */
+  @supports (animation-timeline: view()) {
+    main section {
+      animation: rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+
+  /* FAQ answers and menu groups slide open instead of snapping. */
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  details::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition:
+      block-size 260ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      content-visibility 260ms allow-discrete;
+  }
+  details[open]::details-content {
+    block-size: auto;
+  }
+
+  /* Search dialog and the phone menu sheet ease in and out. */
+  dialog,
+  dialog::backdrop,
+  #menu-sheet {
+    transition:
+      opacity 180ms ease-out,
+      translate 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      scale 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      display 220ms allow-discrete,
+      overlay 220ms allow-discrete;
+  }
+  dialog:not([open]),
+  dialog:not([open])::backdrop,
+  #menu-sheet[hidden] {
+    opacity: 0;
+  }
+  dialog:not([open]) {
+    translate: 0 -8px;
+    scale: 0.98;
+  }
+  #menu-sheet[hidden] {
+    translate: 0 12px;
+  }
+  @starting-style {
+    dialog[open],
+    dialog[open]::backdrop,
+    #menu-sheet:not([hidden]) {
+      opacity: 0;
+    }
+    dialog[open] {
+      translate: 0 -8px;
+      scale: 0.98;
+    }
+    #menu-sheet:not([hidden]) {
+      translate: 0 12px;
+    }
+  }
+
+  /* A form's thank-you note rises in and its tick draws itself. */
+  .sent {
+    animation: rise-in 360ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .sent-tick path {
+    stroke-dasharray: 24;
+    animation: draw 420ms ease-out 200ms both;
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Linked cards lift slightly under the pointer. */
+@utility lift {
+  transition:
+    translate 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 220ms ease;
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    &:hover {
+      translate: 0 -3px;
+      box-shadow: 0 18px 40px -24px rgb(15 21 19 / 0.3);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
