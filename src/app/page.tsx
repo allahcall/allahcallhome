@@ -112,7 +112,6 @@ const testimonials = [
 
 const team: Person[] = [
   { name: "Hafiz Muhammad Haris", role: "Founder & CEO", image: { src: "/images/team/hafiz.jpg", alt: "Hafiz Muhammad Haris" } },
-  { name: "Ya’qub Nuri Amin", role: "Islamic Scholar", image: { src: "/images/team/almubeen.jpg", alt: "Ya’qub Nuri Amin" } },
   { name: "Muhammad Zeeshan", role: "Marketing Manager", image: { src: "/images/team/zeeshan.jpg", alt: "Muhammad Zeeshan" } },
 ];
 

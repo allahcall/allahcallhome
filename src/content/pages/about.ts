@@ -78,11 +78,6 @@ export const aboutPages: Page[] = [
             image: { src: "/images/team/hafiz.jpg", alt: "Portrait of Hafiz Muhammad Haris" },
           },
           {
-            name: "Ya'qub Nuri Amin",
-            role: "Islamic Scholar",
-            image: { src: "/images/team/almubeen.jpg", alt: "Portrait of Ya'qub Nuri Amin" },
-          },
-          {
             name: "Muhammad Zeeshan",
             role: "Marketing Manager",
             image: { src: "/images/team/zeeshan.jpg", alt: "Portrait of Muhammad Zeeshan" },
@@ -314,17 +309,6 @@ export const aboutPages: Page[] = [
               "Founded AllahCall and led its global expansion",
               "Delivered keynote speeches at international Islamic conferences",
               "Mentored over 100 young Islamic scholars",
-            ],
-          },
-          {
-            name: "Ya'qub Nuri Amin",
-            role: "Islamic Scholar",
-            image: { src: "/images/team/almubeen.jpg", alt: "Portrait of Ya'qub Nuri Amin" },
-            bio: "Respected Islamic scholar known for his deep understanding of Islamic jurisprudence and commitment to interfaith dialogue. He has played a pivotal role in educational initiatives and community outreach programs.",
-            highlights: [
-              "Authored several articles on Islamic jurisprudence",
-              "Conducted interfaith dialogue sessions worldwide",
-              "Recognized for excellence in Islamic education",
             ],
           },
           {
