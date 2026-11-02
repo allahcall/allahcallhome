@@ -131,15 +131,21 @@
 ::view-transition-new(tab-bar) {
   animation: none;
 }
+/* A plain crossfade that starts together, so there is never a blank frame between pages. */
 ::view-transition-old(.page-exit) {
-  animation: 140ms ease-in both fade-out;
+  animation: 160ms ease-out both fade-out;
 }
 ::view-transition-new(.page-enter) {
-  animation: 320ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms both rise-in;
+  animation: 200ms ease-out both fade-in;
 }
 
 @keyframes fade-out {
   to {
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
+  from {
     opacity: 0;
   }
 }
@@ -151,15 +157,6 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Sections ease up as they scroll into view, driven by the scroll itself. */
-  @supports (animation-timeline: view()) {
-    main section {
-      animation: rise-in linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 35%;
-    }
-  }
-
   /* FAQ answers and menu groups slide open instead of snapping. */
   :root {
     interpolate-size: allow-keywords;
@@ -232,14 +229,12 @@
   }
 }
 
-/* Linked cards lift slightly under the pointer. */
+/* Linked cards gain a soft shadow under the pointer. They don't move, so the
+   card can't slip out from under the cursor and jitter at its edge. */
 @utility lift {
-  transition:
-    translate 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
-    box-shadow 220ms ease;
-  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  transition: box-shadow 220ms ease;
+  @media (hover: hover) {
     &:hover {
-      translate: 0 -3px;
       box-shadow: 0 18px 40px -24px rgb(15 21 19 / 0.3);
     }
   }
