@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Shahada, TeamGrid } from "@/components/blocks/media-blocks";
+import { Reviews } from "@/components/blocks/reviews";
 import { Cta, Quote } from "@/components/blocks/text-blocks";
 import { Arrow, ButtonLink } from "@/components/ui/button";
 import { Star } from "@/components/ui/mark";
@@ -80,34 +81,6 @@ const mission = [
   "Providing authentic Islamic education based on reliable sources",
   "Creating an inclusive and welcoming learning environment for all",
   "Supporting spiritual growth through knowledge and understanding",
-];
-
-const testimonials = [
-  {
-    heading: "Finding peace in Islam",
-    quote: "AllahCall’s authentic teachings cleared my misconceptions and guided me to embrace Islam with a pure heart.",
-    place: "New Muslim, United States",
-  },
-  {
-    heading: "Clarity through knowledge",
-    quote: "The scholars at AllahCall answered all my questions with wisdom, helping me overcome my doubts about Islam.",
-    place: "Revert to Islam, Canada",
-  },
-  {
-    heading: "From confusion to certainty",
-    quote: "AllahCall helped me understand the true beauty of Islam and cleared all my misconceptions.",
-    place: "New Muslim, United Kingdom",
-  },
-  {
-    heading: "A journey of discovery",
-    quote: "AllahCall’s authentic Islamic knowledge helped me see Islam in its true light and embrace it.",
-    place: "Revert to Islam, Spain",
-  },
-  {
-    heading: "Understanding Islam",
-    quote: "Through AllahCall’s teachings, I found the truth about Islam and embraced it with an open heart.",
-    place: "New Muslim, Australia",
-  },
 ];
 
 const team: Person[] = [
@@ -330,28 +303,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section>
-        <SectionHead label="Testimonials" title="In their own words" link={{ label: "More stories", href: "/testimonies-of-new-muslims" }} />
-        <div className="rail [--rail-col:82%] sm:[--rail-col:46%] md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure key={t.heading} className="card flex flex-col p-5 md:p-6">
-              <span aria-hidden className="font-serif text-[44px] leading-[0.6] text-green">“</span>
-              <p className="mt-3 text-[13px] font-semibold text-green">{t.heading}</p>
-              <blockquote className="mt-1.5 font-serif text-[19px] leading-snug tracking-[-0.01em]">{t.quote}</blockquote>
-              <figcaption className="mt-auto pt-4 text-[13px] text-muted">{t.place}</figcaption>
-            </figure>
-          ))}
-          <Link
-            href="/testimonies-of-new-muslims"
-            className="group flex flex-col justify-end rounded-[20px] bg-green p-5 text-paper md:p-6"
-          >
-            <span className="text-[20px] font-semibold">
-              Read more stories <Arrow />
-            </span>
-            <span className="mt-1 text-[13.5px] text-paper/70">Testimonies of new Muslims</span>
-          </Link>
-        </div>
-      </Section>
+      <Reviews />
 
       <Cta
         block={{
