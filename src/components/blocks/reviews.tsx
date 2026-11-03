@@ -48,7 +48,7 @@ export function Reviews() {
           </p>
           <Stars className="mt-2 text-green" />
           <p className="mt-2 text-[14px] text-ink-2">
-            All {rated.length} star ratings are five stars, from {reviews.length} student reviews in total.
+            Rated by {rated.length} students · {reviews.length} reviews
           </p>
           <ul className="mt-5 grid gap-2 border-t border-line pt-4 lg:mt-auto">
             {counts.map((c) => (
