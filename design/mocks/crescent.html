@@ -54,41 +54,25 @@
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <!-- Shared parts, traced from the purple logo (viewBox 0 0 206 196) -->
-    <path id="moon" d="M89.67 6.07A92 92 0 0 1 89.67 189.93A96 96 0 0 0 89.67 6.07Z"/>
-    <path id="swoosh" d="M4 190C8 160 28 124 66 105L66 117C44 130 25 160 21 190Z"/>
-    <g id="bars">
-      <path d="M65 148L65 110L84 105L84 143.3Z"/>
-      <path d="M89 142L89 92L109 87L109 137Z"/>
-      <path d="M114 135.9L114 79L135 73.8L135 130.8Z"/>
-      <path d="M65 148L135 130.8L135 125.8L65 143Z"/>
-    </g>
-    <g id="marks">
-      <path d="M87 81L87 70L93 68.7L93 79.7Z"/>
-      <path d="M96 79L96 66L101 65L101 78Z"/>
-      <path d="M105 77L105 61L111 59.7L111 75.7Z"/>
-    </g>
+    <!-- Shared parts: circles and straight lines fitted to the purple logo's edges (original pixel units) -->
+    <path id="moon" d="M85.13 14.85A93.85 93.85 0 1 1 91.39 201.62A93.96 93.96 0 0 0 85.13 14.85Z"/>
+    <path id="word" d="M16.95 201.05A93.75 93.75 0 0 1 98.79 112.96L79.42 120.50A94.10 94.10 0 0 0 34.62 201.05ZM78.00 159.01L79.53 117.58L98.79 113.01L97.42 150.30L102.04 149.20L103.75 102.77L122.97 98.21L121.25 144.65L127.23 143.24L129.27 87.82L148.53 83.26L146.33 142.82ZM100.12 92.92L100.59 80.05L106.61 78.40L106.14 91.27ZM108.97 91.12L109.56 75.26L115.56 73.62L114.98 89.48ZM117.78 89.18L118.46 70.65L124.42 69.02L123.74 87.55Z"/>
 
     <!-- 1 · Faithful: the original drawing in one colour -->
-    <symbol id="c1" viewBox="0 0 206 196">
-      <g fill="currentColor"><use href="#moon"/><use href="#swoosh"/><use href="#bars"/><use href="#marks"/></g>
+    <symbol id="c1" viewBox="15 12 178 192">
+      <g fill="currentColor"><use href="#moon"/><use href="#word"/></g>
     </symbol>
     <!-- 2 · Two-tone: the crescent in the accent, the rising word in the main colour -->
-    <symbol id="c2" viewBox="0 0 206 196">
+    <symbol id="c2" viewBox="15 12 178 192">
       <use href="#moon" fill="var(--accent)"/>
-      <g fill="currentColor"><use href="#swoosh"/><use href="#bars"/><use href="#marks"/></g>
-    </symbol>
-    <!-- 3 · Simplified: crescent and bars only, re-centred, for favicons and app icons -->
-    <symbol id="c3" viewBox="20 0 176 196">
-      <use href="#moon" fill="currentColor"/>
-      <g fill="var(--accent)" transform="translate(-6 8)"><use href="#bars"/><use href="#marks"/></g>
+      <use href="#word" fill="currentColor"/>
     </symbol>
   </defs>
 </svg>
 
 <div class="wrap">
   <h1>The crescent logo, on brand</h1>
-  <p class="lead">I redrew the mark from the purple logo as clean vector shapes, kept its drawing, and recoloured it in the site's greens. The three rising strokes with the small marks above read like a stylised “الله” (alif, two lams and the shadda) rising out of the crescent.</p>
+  <p class="lead">I rebuilt the mark from the purple logo as true geometry (circles for the crescent and swoosh, straight lines for the bars, each fitted to the original's edges), and recoloured it in the site's greens. The three rising strokes with the small marks above read like a stylised “الله” (alif, two lams and the shadda) rising out of the crescent.</p>
   <div class="orig"><img src="img/logo-purple.png" alt="Original purple Allah Call logo" onerror="this.remove()"> The original, for reference.</div>
 
   <h3>The mark</h3>
@@ -116,8 +100,6 @@
       light: ["var(--green)", "var(--green)"], dark: ["#fff", "#fff"], bg: "var(--green-ink)", app: ["#fff", "#fff"] },
     { id: "c2", name: "Two-tone", tag: "2", idea: "Gold crescent, green rising word. The gold nods to the original AllahCall logo, and the two colours make the meaning easier to see.",
       light: ["var(--green)", "var(--gold)"], dark: ["#fff", "var(--gold)"], bg: "var(--green-ink)", app: ["#fff", "var(--gold)"] },
-    { id: "c3", name: "Simplified", tag: "3", idea: "The swoosh is dropped and the word sits inside the crescent. It's tighter and stays clear at 16px, so it works as the favicon and app icon for 1 or 2.",
-      light: ["var(--green)", "var(--green)"], dark: ["#fff", "var(--leaf)"], bg: "var(--green)", app: ["#fff", "var(--leaf)"] },
   ];
 
   document.getElementById("marks-grid").innerHTML = versions.map((v) => `
