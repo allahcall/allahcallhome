@@ -84,7 +84,7 @@ const mission = [
 ];
 
 const team: Person[] = [
-  { name: "Hafiz Muhammad Haris", role: "Founder & CEO", image: { src: "/images/team/hafiz.jpg", alt: "Hafiz Muhammad Haris" } },
+  { name: "Hafiz Muhammad Harris Suhaib", role: "Founder & CEO", image: { src: "/images/team/hafiz.jpg", alt: "Hafiz Muhammad Harris Suhaib" } },
   { name: "Muhammad Zeeshan", role: "Marketing Manager", image: { src: "/images/team/zeeshan.jpg", alt: "Muhammad Zeeshan" } },
 ];
 

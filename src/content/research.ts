@@ -1084,7 +1084,18 @@ export const researchPage: Page = {
       title: "Engr. Hafiz Muhammad Harris Suhaib",
       body: [
         "Muhammad Harris Suhaib is a research scholar in the Department of Islamic Studies at Al-Ghazali University, Karachi. An engineer and a hafiz of the Qur'an, he writes on the philosophy of religion, atheism and Islam's encounter with modern thought.",
-        "He is the author of There is a GOD, a book of Islamic proofs for the existence of God, listed in our articles and books. Most of these papers were written with colleagues and teachers, including Dr. Muhammad Afzal and Dr. Muhammad Ismail Aarifi.",
+        "He is the author of three books, There Is a God, Reasoning with Atheist and The Rational Foundations of Faith, listed in our articles and books. Most of these papers were written with colleagues and teachers, including Dr. Muhammad Afzal and Dr. Muhammad Ismail Aarifi.",
+      ],
+    },
+    {
+      type: "columns",
+      label: "Profiles",
+      title: "Find his work elsewhere",
+      cols: 3,
+      items: [
+        { title: "Google Scholar", body: "Papers and citations.", href: "https://scholar.google.com/citations?user=NIrx36cAAAAJ&hl=en" },
+        { title: "ORCID", body: "His researcher ID and publication record.", href: "https://orcid.org/0009-0005-5253-1406" },
+        { title: "Academia", body: "Papers and drafts to read and download.", href: "https://independent.academia.edu/HarrisSuhaib" },
       ],
     },
     ...topics.map((t, i) => ({

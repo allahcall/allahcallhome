@@ -73,9 +73,9 @@ export const aboutPages: Page[] = [
         title: "Our team",
         items: [
           {
-            name: "Hafiz Muhammad Haris",
+            name: "Hafiz Muhammad Harris Suhaib",
             role: "Founder & CEO",
-            image: { src: "/images/team/hafiz.jpg", alt: "Portrait of Hafiz Muhammad Haris" },
+            image: { src: "/images/team/hafiz.jpg", alt: "Portrait of Hafiz Muhammad Harris Suhaib" },
           },
           {
             name: "Muhammad Zeeshan",
@@ -301,14 +301,17 @@ export const aboutPages: Page[] = [
         title: "Members of the board",
         items: [
           {
-            name: "Hafiz Muhammad Haris",
-            role: "Founder & CEO",
-            image: { src: "/images/team/hafiz.jpg", alt: "Portrait of Hafiz Muhammad Haris" },
-            bio: "Visionary founder of AllahCall, dedicated to spreading authentic Islamic knowledge globally. With a passion for community leadership and youth mentorship, he has inspired countless individuals to embrace Islamic values.",
+            name: "Maulana Engr. Hafiz Muhammad Harris Suhaib",
+            role: "Founder & CEO · Islamic scholar and electrical engineer",
+            image: { src: "/images/team/hafiz.jpg", alt: "Portrait of Hafiz Muhammad Harris Suhaib" },
+            bio: "Founder of AllahCall and co-founder of Savvy Engineer Pvt. Ltd. He studies Islamic theology, philosophy, comparative religion, logic and science, and teaches courses worldwide, including Islam and Rationality, Modern Ideologies and Islam, Philosophy of Science, and Philosophy and Islam, along with the Why Islam Is True workshop. He is the author of There Is a God, Reasoning with Atheist and The Rational Foundations of Faith.",
             highlights: [
-              "Founded AllahCall and led its global expansion",
-              "Delivered keynote speeches at international Islamic conferences",
-              "Mentored over 100 young Islamic scholars",
+              "200+ people have accepted Islam through his dialogues",
+              "1,000+ hours of debate with non-believers and people of other faiths, and 10,000+ doubts answered",
+              "Trained 300+ scholars and 500+ students",
+              "30+ seminars across Pakistan, including Faisal Mosque, NUST, CUST, HITEC, Punjab University and Al-Ghazali University",
+              "Up to 50 research papers published",
+              "3 patents in engineering and 2 gold medals in business",
             ],
           },
           {
