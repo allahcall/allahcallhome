@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
 import { Star } from "@/components/ui/mark";
+import { ThemeSwitch } from "./theme-switch";
 import { nav, site } from "@/lib/site";
 
 const icon = "size-[22px]";
@@ -117,6 +118,10 @@ export function MobileNav() {
             <a href={site.phone.href} className="card flex items-center justify-between px-5 py-4 text-[15px] text-ink-2">
               {site.phone.display} <span className="text-[13px] text-muted">Call or WhatsApp</span>
             </a>
+          </div>
+          <div className="card mt-3 flex flex-wrap items-center justify-between gap-3 px-5 py-4">
+            <p className="text-[15px] font-semibold">Appearance</p>
+            <ThemeSwitch />
           </div>
         </nav>
       </div>

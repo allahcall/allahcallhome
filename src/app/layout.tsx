@@ -45,7 +45,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     // The inline script sets data-theme before first paint, so the server's "light" is expected to differ.
-    <html lang="en" data-theme="light" suppressHydrationWarning className={`${inter.variable} ${newsreader.variable} ${amiri.variable}`}>
+    <html lang="en" data-theme="light" data-theme-pref="system" suppressHydrationWarning className={`${inter.variable} ${newsreader.variable} ${amiri.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

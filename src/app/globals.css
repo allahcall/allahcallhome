@@ -27,8 +27,8 @@
 }
 
 /*
- * Dark theme: follows the device unless the footer toggle picked one
- * (stored as data-theme on <html>, see ThemeToggle).
+ * Dark theme: follows the device unless the theme switch picked one
+ * (data-theme on <html>, set by themeScript and ThemeSwitch).
  */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 

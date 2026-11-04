@@ -2,7 +2,7 @@ import { cacheLife } from "next/cache";
 import Link from "next/link";
 import { Mark } from "@/components/ui/mark";
 import { site } from "@/lib/site";
-import { ThemeToggle } from "./theme-toggle";
+import { ThemeSwitch } from "./theme-switch";
 
 // Reading the clock makes a component dynamic; caching it per day keeps pages static.
 async function CurrentYear() {
@@ -46,6 +46,7 @@ export function Footer() {
               {site.name}
             </Link>
             <p className="mt-3 max-w-[24em] text-muted">For Islamic thought and education. Powered by {site.poweredBy}.</p>
+            <ThemeSwitch className="mt-5" />
           </div>
           {columns.map((col) => (
             <div key={col.title} className="lg:col-span-2">
@@ -102,7 +103,6 @@ export function Footer() {
             <Link href="/privacy" className="hover:text-green">
               Privacy policy
             </Link>
-            <ThemeToggle />
             {site.ein}
           </span>
         </div>
