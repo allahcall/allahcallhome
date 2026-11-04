@@ -50,7 +50,11 @@ export function MobileNav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
-  // Close after navigating.
+  // Close the moment a link is tapped: a link to the page already showing never
+  // changes the path, and on a slow connection the next page takes a while.
+  const close = () => setOpen(false);
+
+  // Also close after navigating some other way (back button, search).
   const [lastPath, setLastPath] = useState(pathname);
   if (pathname !== lastPath) {
     setLastPath(pathname);
@@ -73,7 +77,7 @@ export function MobileNav() {
       <div
         id="menu-sheet"
         hidden={!open}
-        className="fixed inset-x-0 top-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-40 overflow-y-auto bg-canvas"
+        className="fixed inset-x-0 top-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-40 overflow-y-auto overscroll-contain bg-canvas"
       >
         <nav aria-label="Menu" className="wrap pt-5 pb-10">
           <div className="flex items-center justify-between">
@@ -101,6 +105,7 @@ export function MobileNav() {
                       <Link
                         href={link.href}
                         aria-current={pathname === link.href ? "page" : undefined}
+                        onClick={close}
                         className="block rounded-[12px] px-3 py-2.5 text-[15px] text-ink-2 aria-[current=page]:bg-green-tint aria-[current=page]:text-green"
                       >
                         {link.label}
@@ -112,7 +117,7 @@ export function MobileNav() {
             ))}
           </div>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            <Link href="/contact" className="card flex items-center justify-between px-5 py-4 text-[17px] font-semibold">
+            <Link href="/contact" onClick={close} className="card flex items-center justify-between px-5 py-4 text-[17px] font-semibold">
               Contact us <span aria-hidden>→</span>
             </Link>
             <a href={site.phone.href} className="card flex items-center justify-between px-5 py-4 text-[15px] text-ink-2">
@@ -136,7 +141,7 @@ export function MobileNav() {
             if (!t.icon)
               return (
                 <li key={t.label}>
-                  <Link href={t.href} className={tabClass(true)} aria-current={on ? "page" : undefined}>
+                  <Link href={t.href} onClick={close} className={tabClass(true)} aria-current={on ? "page" : undefined}>
                     <span className="grid h-8.5 w-11.5 place-items-center rounded-[12px] bg-brand text-white">
                       <Star className="size-5" />
                     </span>
@@ -146,7 +151,7 @@ export function MobileNav() {
               );
             return (
               <li key={t.label}>
-                <Link href={t.href} className={tabClass(on)} aria-current={on ? "page" : undefined}>
+                <Link href={t.href} onClick={close} className={tabClass(on)} aria-current={on ? "page" : undefined}>
                   {t.icon}
                   {t.label}
                 </Link>

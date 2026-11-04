@@ -206,9 +206,12 @@ export function Search() {
           <button
             type="button"
             onClick={() => dialog.current?.close()}
+            aria-label="Close search"
             className="h-8 rounded-[8px] px-2 text-[13px] font-medium text-muted hover:bg-canvas hover:text-ink"
           >
-            Esc
+            {/* "Esc" only means something with a keyboard; touch screens get a plain word. */}
+            <span className="pointer-coarse:hidden">Esc</span>
+            <span className="pointer-fine:hidden">Close</span>
           </button>
         </div>
         <div className="overflow-y-auto overscroll-contain">{body}</div>

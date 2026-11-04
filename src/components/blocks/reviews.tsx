@@ -84,9 +84,10 @@ export function Reviews() {
       </div>
 
       <details className="group">
-        <summary className="mx-auto mt-2 flex w-fit cursor-pointer list-none items-center gap-2 rounded-[12px] border border-line bg-paper px-4 py-2.5 text-[14.5px] font-medium hover:border-green hover:text-green group-open:hidden">
-          Show all {rest.length + wall.length} written reviews
-          <span aria-hidden>↓</span>
+        <summary className="mx-auto mt-2 flex w-fit cursor-pointer list-none items-center gap-2 rounded-[12px] border border-line bg-paper px-4 py-2.5 text-[14.5px] font-medium hover:border-green hover:text-green">
+          <span className="group-open:hidden">Show all {rest.length + wall.length} written reviews</span>
+          <span className="hidden group-open:inline">Show fewer reviews</span>
+          <span aria-hidden className="inline-block group-open:rotate-180">↓</span>
         </summary>
         <div className="gap-3 sm:columns-2 lg:columns-3 lg:gap-4">
           {wall.slice(phoneWall).map((r) => (
