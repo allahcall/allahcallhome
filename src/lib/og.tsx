@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { BUBBLE, BUBBLE_STAR } from "@/components/ui/mark";
+import { MARK_PATH, MARK_VIEWBOX } from "@/components/ui/mark";
 import { site } from "./site";
 
 /** Share-card size every social app expects (1.91:1). */
@@ -17,9 +17,8 @@ const [serif, sans] = await Promise.all([
 
 function Mark({ size }: { size: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 64 64">
-      <path d={BUBBLE} fill="white" />
-      <path d={BUBBLE_STAR} fill="#17533e" />
+    <svg width={size} height={size} viewBox={MARK_VIEWBOX}>
+      <path d={MARK_PATH} fill="white" />
     </svg>
   );
 }
