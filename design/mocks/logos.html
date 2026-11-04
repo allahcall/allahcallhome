@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AllahCall · Logo options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --canvas: #f3f5f4; --paper: #fff; --ink: #0f1513; --ink-2: #3a433f; --muted: #646d68; --line: #e3e8e5;
+    --green: #17533e; --green-ink: #0e3a2b; --tint: #e6efea; --leaf: #7fd3a8;
+    --gold: #d9a63c; --navy: #0d2a4c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--canvas); color: var(--ink); font: 400 15px/1.55 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; padding: 40px 16px 80px; }
+  .wrap { max-width: 1180px; margin-inline: auto; }
+  header h1 { font: 500 clamp(32px, 4vw, 48px)/1.05 Newsreader, Georgia, serif; letter-spacing: -.02em; }
+  header p { margin-top: 10px; color: var(--ink-2); max-width: 64ch; }
+  .base { margin-top: 20px; display: flex; gap: 14px; align-items: center; color: var(--muted); font-size: 13.5px; }
+  .base img { width: 64px; height: 64px; border-radius: 50%; }
+  .grid { margin-top: 32px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+  .hero { display: grid; grid-template-columns: 1fr 1fr; }
+  .hero > div { aspect-ratio: 1; display: grid; place-items: center; }
+  .hero .light { background: var(--paper); border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
+  .hero .dark { background: var(--bg, var(--green)); }
+  .hero svg { width: 46%; height: 46%; }
+  .lockup { display: flex; align-items: center; gap: 12px; padding: 22px 22px 0; }
+  .lockup svg { width: 44px; height: 44px; flex: none; }
+  .body { padding: 18px 22px 22px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .tag { font-size: 12.5px; font-weight: 600; color: var(--green); letter-spacing: .02em; }
+  h2 { font-size: 19px; font-weight: 600; letter-spacing: -.01em; }
+  .body p { color: var(--ink-2); font-size: 14.5px; }
+  .foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 6px; }
+  .sizes { display: flex; align-items: end; gap: 10px; }
+  .app { display: grid; place-items: center; border-radius: 22%; background: var(--bg, var(--green)); }
+  .app svg { width: 62%; height: 62%; }
+  .sw { display: flex; gap: 6px; }
+  .sw i { width: 18px; height: 18px; border-radius: 6px; border: 1px solid rgb(0 0 0 / .08); }
+  .wm { font-weight: 700; font-size: 24px; letter-spacing: -.035em; line-height: 1; }
+  .wm-serif { display: inline-block; font: 500 27px/1 Newsreader, Georgia, serif; letter-spacing: -.02em; }
+  .wm small, .wm-serif small { display: block; margin-top: 5px; font: 500 11px/1 Inter, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .num { font: 600 12px/1 Inter, sans-serif; color: var(--muted); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- 1 · Signal Star: the 8-point star (already the site's icon) sending out the call -->
+    <symbol id="m1" viewBox="0 0 64 64">
+      <g transform="translate(22 42)" fill="currentColor">
+        <rect x="-12" y="-12" width="24" height="24"/>
+        <rect x="-12" y="-12" width="24" height="24" transform="rotate(45)"/>
+      </g>
+      <g fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round">
+        <path d="M25.5 21.3 A21 21 0 0 1 42.7 38.5"/>
+        <path d="M27.4 9.5 A32.5 32.5 0 0 1 54.5 36.6"/>
+      </g>
+    </symbol>
+
+    <!-- 2 · Mihrab Bubble: a pointed arch that is also a speech bubble -->
+    <symbol id="m2" viewBox="0 0 64 64">
+      <path d="M12 31 C12 19 21 10.5 32 4 C43 10.5 52 19 52 31 V43 Q52 50 45 50 H25 L12 60 Z" fill="currentColor"/>
+      <g transform="translate(32 31)" fill="var(--accent)">
+        <rect x="-6.5" y="-6.5" width="13" height="13" rx="1"/>
+        <rect x="-6.5" y="-6.5" width="13" height="13" rx="1" transform="rotate(45)"/>
+      </g>
+    </symbol>
+
+    <!-- 3 · Crescent Handset: the original phone curve redrawn as a crescent, with the star as the "voice" -->
+    <symbol id="m3" viewBox="0 0 64 64">
+      <!-- outer circle r24 at (30,34) minus inner circle r19 at (38,26): a crescent opening to the top right -->
+      <path fill-rule="evenodd" fill="currentColor" d="M54 34 A24 24 0 1 1 6 34 A24 24 0 1 1 54 34 Z M57 26 A19 19 0 1 0 19 26 A19 19 0 1 0 57 26 Z" clip-path="url(#c3)"/>
+      <clipPath id="c3"><circle cx="30" cy="34" r="24"/></clipPath>
+      <g transform="translate(41 23)" fill="var(--accent)">
+        <rect x="-5" y="-5" width="10" height="10" rx=".8"/>
+        <rect x="-5" y="-5" width="10" height="10" rx=".8" transform="rotate(45)"/>
+      </g>
+    </symbol>
+
+    <!-- 4 · Kufic Path: a square-Kufic spiral, the way in, ending at one point -->
+    <symbol id="m4" viewBox="0 0 64 64">
+      <path d="M21 8 H56 V56 H8 V20 H44 V44 H20 V32 H27" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linejoin="miter" stroke-linecap="square"/>
+      <rect x="30" y="28.5" width="7" height="7" fill="var(--accent)"/>
+    </symbol>
+
+    <!-- 5 · Rising Arch: an open mihrab whose call rises out of the top -->
+    <symbol id="m5" viewBox="0 0 64 64">
+      <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round">
+        <path d="M17 58 V40 C17 31 22 25.5 29 21.5"/>
+        <path d="M47 58 V40 C47 31 42 25.5 35 21.5"/>
+      </g>
+      <g fill="none" stroke="var(--accent)" stroke-width="4.5" stroke-linecap="round">
+        <path d="M26 13 Q32 8.5 38 13"/>
+        <path d="M20 7.5 Q32 -1 44 7.5"/>
+      </g>
+      <circle cx="32" cy="44" r="4.5" fill="var(--accent)"/>
+    </symbol>
+
+    <!-- 6 · Twin Alif: the two l's shared by "Allah" and "Call" as two pillars under one arch -->
+    <symbol id="m6" viewBox="0 0 64 64">
+      <rect x="16" y="22" width="9" height="36" rx="4.5" fill="currentColor"/>
+      <rect x="39" y="22" width="9" height="36" rx="4.5" fill="currentColor"/>
+      <path d="M20.5 15 C20.5 10 26 6.5 32 3.5 C38 6.5 43.5 10 43.5 15" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="32" cy="40" r="4" fill="var(--accent)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header>
+    <h1>AllahCall logo options</h1>
+    <p>Six directions, all drawn as simple geometry so they stay sharp from a 16px favicon up to a banner. Each is shown on white, on its brand colour, as a lockup with the wordmark and as app icons. Pick one or two and I'll refine spacing, weights and the final wordmark.</p>
+    <div class="base"><img src="img/logo-current.webp" alt="Current AllahCall logo" onerror="this.remove()"> Starting point: the current round logo, with a phone handset, a gold “Allah” and a swoosh.</div>
+  </header>
+
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+  const options = [
+    { id: 1, name: "Signal Star", tag: "Evolves today's site icon",
+      idea: "The 8-point star the site already uses, sending out two arcs. It still says “call”, but as broadcasting the message rather than a phone.",
+      ink: "var(--green)", accent: "var(--leaf)", bg: "var(--green)", darkInk: "#fff", darkAccent: "var(--leaf)", hole: "#fff", darkHole: "var(--green)",
+      wm: `<span class="wm">Allah<span style="color:var(--green)">Call</span></span>`, swatch: ["#17533e", "#7fd3a8", "#0f1513"] },
+    { id: 2, name: "Mihrab Bubble", tag: "Invitation and conversation",
+      idea: "A pointed mihrab arch whose bottom corner becomes a speech-bubble tail. It carries prayer and dialogue (the dawah conversations) in one shape.",
+      ink: "var(--green)", accent: "#fff", bg: "var(--green-ink)", darkInk: "var(--leaf)", darkAccent: "var(--green-ink)",
+      wm: `<span class="wm-serif">AllahCall<small>Islamic Dawah &amp; Education</small></span>`, swatch: ["#17533e", "#0e3a2b", "#7fd3a8"] },
+    { id: 3, name: "Crescent Handset", tag: "Closest to the original",
+      idea: "The curve of the original phone handset, closed into a crescent with a gold star where the voice would be. It keeps the navy and gold, made flat and modern.",
+      ink: "var(--navy)", accent: "var(--gold)", bg: "var(--navy)", darkInk: "#fff", darkAccent: "var(--gold)",
+      wm: `<span class="wm" style="color:var(--navy)"><span style="color:var(--gold)">Allah</span>Call</span>`, swatch: ["#0d2a4c", "#d9a63c", "#ffffff"] },
+    { id: 4, name: "Kufic Path", tag: "Entirely different",
+      idea: "A square-Kufic spiral, a single line that winds inward to one gold point: the path to tawheed. Very graphic, and it suits stamps, merch and the app icon.",
+      ink: "var(--ink)", accent: "var(--gold)", bg: "var(--green)", darkInk: "#fff", darkAccent: "var(--gold)",
+      wm: `<span class="wm" style="letter-spacing:.02em;text-transform:uppercase;font-size:19px;font-weight:800">Allah Call</span>`, swatch: ["#0f1513", "#d9a63c", "#17533e"] },
+    { id: 5, name: "Rising Arch", tag: "The call to prayer",
+      idea: "An open arch with a figure-dot inside and the call rising out of its apex. It reads as the adhan going out, and is light enough for a calm, editorial site.",
+      ink: "var(--green)", accent: "var(--gold)", bg: "var(--green)", darkInk: "#fff", darkAccent: "var(--gold)",
+      wm: `<span class="wm-serif" style="color:var(--green)">AllahCall</span>`, swatch: ["#17533e", "#d9a63c", "#f3f5f4"] },
+    { id: 6, name: "Twin Alif", tag: "Wordmark-led",
+      idea: "“Allah” and “Call” share a double l. Here it becomes two pillars, like two alifs, under one arch: a simple monogram that only makes sense for this name.",
+      ink: "var(--ink)", accent: "var(--green)", bg: "var(--ink)", darkInk: "#fff", darkAccent: "var(--leaf)",
+      wm: `<span class="wm">Allah<span style="color:var(--green)">Call</span></span>`, swatch: ["#0f1513", "#17533e", "#7fd3a8"] },
+  ];
+
+  const mark = (o, dark, cls = "") =>
+    `<svg class="${cls}" style="color:${dark ? o.darkInk : o.ink};--accent:${dark ? o.darkAccent : o.accent};--hole:${dark ? (o.darkHole ?? o.bg) : (o.hole ?? "#fff")}"><use href="#m${o.id}"/></svg>`;
+
+  document.getElementById("grid").innerHTML = options.map((o) => `
+    <article class="card" style="--bg:${o.bg}">
+      <div class="hero">
+        <div class="light">${mark(o, false)}</div>
+        <div class="dark">${mark(o, true)}</div>
+      </div>
+      <div class="lockup">${mark(o, false)}${o.wm}</div>
+      <div class="body">
+        <span class="tag"><span class="num">0${o.id}</span> · ${o.tag}</span>
+        <h2>${o.name}</h2>
+        <p>${o.idea}</p>
+        <div class="foot">
+          <div class="sizes">
+            ${[56, 32, 16].map((s) => `<div class="app" style="width:${s}px;height:${s}px">${mark(o, true)}</div>`).join("")}
+          </div>
+          <div class="sw">${o.swatch.map((c) => `<i style="background:${c}"></i>`).join("")}</div>
+        </div>
+      </div>
+    </article>`).join("");
+</script>
+</body>
+</html>

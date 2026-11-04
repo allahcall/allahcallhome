@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AllahCall · Mihrab Bubble</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --canvas: #f3f5f4; --paper: #fff; --ink: #0f1513; --ink-2: #3a433f; --muted: #646d68; --line: #e3e8e5;
+    --green: #17533e; --green-ink: #0e3a2b; --tint: #e6efea; --leaf: #7fd3a8;
+    --gold: #d9a63c; --navy: #0d2a4c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--canvas); color: var(--ink); font: 400 15px/1.55 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; padding: 40px 16px 80px; }
+  .wrap { max-width: 1180px; margin-inline: auto; }
+  header h1 { font: 500 clamp(32px, 4vw, 48px)/1.05 Newsreader, Georgia, serif; letter-spacing: -.02em; }
+  header p, .lead { margin-top: 10px; color: var(--ink-2); max-width: 66ch; }
+  h3.sec { margin-top: 56px; font: 500 28px/1.1 Newsreader, Georgia, serif; letter-spacing: -.015em; }
+  .grid { margin-top: 24px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+  .hero { display: grid; grid-template-columns: 1fr 1fr; }
+  .hero > div { aspect-ratio: 1; display: grid; place-items: center; }
+  .hero .light { background: var(--paper); border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
+  .hero .dark { background: var(--bg, var(--green)); }
+  .hero svg { width: 54%; height: 54%; }
+  .body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .tag { font: 600 12px/1 Inter, sans-serif; color: var(--muted); font-variant-numeric: tabular-nums; }
+  h2 { font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
+  .body p { color: var(--ink-2); font-size: 14px; }
+  .sizes { margin-top: auto; padding-top: 8px; display: flex; align-items: end; gap: 10px; }
+  .app { display: grid; place-items: center; border-radius: 22%; background: var(--bg, var(--green)); }
+  .app svg { width: 64%; height: 64%; }
+  .fav { width: 16px; height: 16px; }
+  .fav svg { width: 16px; height: 16px; display: block; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 8px; background: var(--canvas); font-size: 12px; color: var(--ink-2); }
+
+  /* palettes */
+  .pal { margin-top: 24px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+  .pal .card { padding: 0; }
+  .pal .sw { display: flex; gap: 6px; padding: 0 18px 18px; }
+  .pal .sw i { width: 18px; height: 18px; border-radius: 6px; border: 1px solid rgb(0 0 0 / .08); }
+
+  /* wordmarks */
+  .wms { margin-top: 24px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); }
+  .wmcard { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: 32px 26px; display: flex; flex-direction: column; gap: 22px; }
+  .lock { display: flex; align-items: center; gap: 12px; }
+  .lock svg { flex: none; }
+  .wm-sans { font: 700 26px/1 Inter, sans-serif; letter-spacing: -.035em; }
+  .wm-serif { font: 500 30px/1 Newsreader, Georgia, serif; letter-spacing: -.02em; }
+  .wm-sub { display: block; margin-top: 6px; font: 500 10.5px/1 Inter, sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+  .wm-stack { font: 600 22px/.95 Newsreader, Georgia, serif; letter-spacing: -.01em; }
+  .wmcard .note { color: var(--muted); font-size: 13.5px; }
+
+  /* in use */
+  .use { margin-top: 24px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); }
+  .site { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+  .site .bar { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+  .site nav { display: flex; gap: 16px; font-size: 13.5px; color: var(--ink-2); }
+  .site .hero2 { padding: 28px 20px 32px; }
+  .site .hero2 b { display: block; font: 500 30px/1.1 Newsreader, Georgia, serif; letter-spacing: -.02em; max-width: 14em; }
+  .site .hero2 span { display: inline-block; margin-top: 14px; padding: 10px 16px; border-radius: 12px; background: var(--green); color: #fff; font-weight: 600; font-size: 14px; }
+  .tabs { background: #dfe3e1; border-radius: 20px; padding: 14px 14px 0; display: flex; flex-direction: column; gap: 10px; }
+  .tab { align-self: flex-start; background: #fff; border-radius: 10px 10px 0 0; padding: 9px 14px; display: flex; gap: 8px; align-items: center; font-size: 13px; min-width: 220px; }
+  .phone { background: #0b141a; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 14px; color: #e9edef; }
+  .phone .row { display: flex; gap: 12px; align-items: center; }
+  .avatar { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--green); flex: none; }
+  .avatar svg { width: 60%; height: 60%; }
+  .phone small { color: #8696a0; font-size: 12.5px; display: block; }
+  .footer { background: var(--green-ink); border-radius: 20px; padding: 28px 24px; color: #fff; display: flex; flex-direction: column; justify-content: space-between; gap: 30px; min-height: 200px; }
+  .footer p { color: rgb(255 255 255 / .65); font-size: 13.5px; max-width: 30ch; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs id="defs"></defs></svg>
+
+<div class="wrap">
+  <header>
+    <h1>Mihrab Bubble, expanded</h1>
+    <p>Eight takes on the same idea: a mihrab arch that is also a speech bubble, for prayer and the dawah conversation. Each one is shown on white, on dark, as app icons and at a real 16px favicon size. Further down are colourways, wordmarks and how it looks in use.</p>
+  </header>
+
+  <h3 class="sec">Variations</h3>
+  <div class="grid" id="variants"></div>
+
+  <h3 class="sec">Colourways</h3>
+  <p class="lead">These use the refined base (A). Green and white matches the current site. Green and gold brings back the gold from the original logo.</p>
+  <div class="pal" id="palettes"></div>
+
+  <h3 class="sec">Wordmarks</h3>
+  <div class="wms" id="wordmarks"></div>
+
+  <h3 class="sec">In use</h3>
+  <div class="use" id="inuse"></div>
+</div>
+
+<script>
+  // 8-point star (two overlapping squares) as one polygon, half-side h
+  const star = (cx, cy, h) => {
+    const pts = [];
+    for (let k = 0; k < 16; k++) {
+      const a = (k * 22.5 - 90) * Math.PI / 180;
+      const r = k % 2 === 0 ? h * Math.SQRT2 : h / Math.cos(Math.PI / 8);
+      pts.push(`${(cx + r * Math.cos(a)).toFixed(2)},${(cy + r * Math.sin(a)).toFixed(2)}`);
+    }
+    return `M${pts.join(" L")} Z`;
+  };
+
+  // The base shape: pointed arch on top, rounded bottom-right corner, tail at bottom left
+  const BUBBLE = "M12 30 C12 18.5 20.5 10.5 32 4 C43.5 10.5 52 18.5 52 30 V43 Q52 50 45 50 H26 L15 58.4 Q12 60.6 12 57 Z";
+  // Ogee (Mughal) apex: curves out then in to a sharp point
+  const OGEE = "M12 32 C12 24.5 17 21 23 18 C28.5 15.2 31 11.5 32 5 C33 11.5 35.5 15.2 41 18 C47 21 52 24.5 52 32 V43 Q52 50 45 50 H26 L15 58.4 Q12 60.6 12 57 Z";
+  // Inner doorway for the cutout version
+  const DOOR = "M23.5 44 V31.5 C23.5 25 27 20.5 32 17 C37 20.5 40.5 25 40.5 31.5 V44 Z";
+
+  const defs = {
+    // A · refined base
+    A: `<path d="${BUBBLE}" fill="currentColor"/><path d="${star(32, 30, 6.6)}" fill="var(--accent)"/>`,
+    // B · line
+    B: `<path d="${BUBBLE}" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linejoin="round"/><path d="${star(32, 30, 5.6)}" fill="var(--accent)"/>`,
+    // C · star cut out, one colour
+    C: `<mask id="mk-c" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/><path d="${star(32, 30, 7)}" fill="#000"/></mask>
+        <path d="${BUBBLE}" fill="currentColor" mask="url(#mk-c)"/>`,
+    // D · doorway: a mihrab niche inside the bubble
+    D: `<mask id="mk-d" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/><path d="${DOOR}" fill="#000"/></mask>
+        <path d="${BUBBLE}" fill="currentColor" mask="url(#mk-d)"/><circle cx="32" cy="35" r="3.4" fill="var(--accent)"/>`,
+    // E · ogee arch, more South Asian
+    E: `<path d="${OGEE}" fill="currentColor"/><circle cx="32" cy="2.6" r="2.1" fill="currentColor"/><path d="${star(32, 33, 6)}" fill="var(--accent)"/>`,
+    // F · dialogue: two bubbles talking
+    F: `<path d="${BUBBLE}" transform="translate(63 -1) scale(-.7 .7)" fill="var(--accent)"/>
+        <path d="${BUBBLE}" transform="translate(-4 18) scale(.76)" fill="currentColor" stroke="var(--hole)" stroke-width="4.5" paint-order="stroke"/>`,
+    // G · crescent and star
+    G: `<mask id="mk-g" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/><circle cx="35.5" cy="27.5" r="8.2" fill="#000"/></mask>
+        <path d="${BUBBLE}" fill="currentColor"/><circle cx="31" cy="31" r="10" fill="var(--accent)" mask="url(#mk-g)"/><path d="${star(38.5, 26, 2.6)}" fill="var(--accent)"/>`,
+    // H · typing dots: the conversation is happening
+    H: `<path d="${BUBBLE}" fill="currentColor"/><g fill="var(--accent)"><circle cx="22" cy="33" r="3.6"/><circle cx="32" cy="33" r="3.6"/><circle cx="42" cy="33" r="3.6"/></g>`,
+  };
+  document.getElementById("defs").innerHTML = Object.entries(defs)
+    .map(([k, v]) => `<symbol id="v${k}" viewBox="0 0 64 64">${v}</symbol>`).join("");
+
+  const mark = (id, ink, accent, hole = "#fff", cls = "", size) =>
+    `<svg class="${cls}" ${size ? `width="${size}" height="${size}"` : ""} style="color:${ink};--accent:${accent};--hole:${hole}"><use href="#v${id}"/></svg>`;
+
+  const variants = [
+    { id: "A", name: "Refined", idea: "The original, cleaned up. The arch is taller and smoother, the tail is softer, and the star is sharper and sits in the centre of the arch.",
+      ink: "var(--green)", accent: "#fff", bg: "var(--green-ink)", dInk: "var(--leaf)", dAccent: "var(--green-ink)" },
+    { id: "B", name: "Line", idea: "Drawn with one stroke, so it's light and editorial and suits the Newsreader headings. Best at larger sizes; at 16px use A or C.",
+      ink: "var(--green)", accent: "var(--green)", bg: "var(--green)", dInk: "#fff", dAccent: "var(--leaf)" },
+    { id: "C", name: "Cutout star", idea: "One colour, with the star cut out so the background shows through. It's the cheapest to print, embroider or stamp, and the cleanest favicon.",
+      ink: "var(--green)", accent: "#fff", bg: "var(--green)", dInk: "#fff", dAccent: "#fff" },
+    { id: "D", name: "Doorway", idea: "A smaller mihrab niche is cut into the bubble, with one gold point inside: an open door, an invitation in.",
+      ink: "var(--green)", accent: "var(--gold)", bg: "var(--green-ink)", dInk: "#fff", dAccent: "var(--gold)" },
+    { id: "E", name: "Ogee", idea: "A Mughal ogee arch with a small finial, like Badshahi Mosque. It's more rooted in Pakistan, and a little more ornate.",
+      ink: "var(--green)", accent: "var(--gold)", bg: "var(--green)", dInk: "#fff", dAccent: "var(--gold)" },
+    { id: "F", name: "Dialogue", idea: "Two arch bubbles facing each other, one asking and one answering. It's the most literal \"conversation\", and it's friendly and app-like.",
+      ink: "var(--green)", accent: "var(--leaf)", bg: "var(--green-ink)", dInk: "#fff", dAccent: "var(--leaf)", dHole: "var(--green-ink)" },
+    { id: "G", name: "Crescent", idea: "A crescent and star inside the arch. It's instantly recognised as Islamic, though it's the most familiar of the set.",
+      ink: "var(--green)", accent: "#fff", bg: "var(--green)", dInk: "#fff", dAccent: "var(--green)" },
+    { id: "H", name: "Typing", idea: "The three typing dots from chat apps, inside the arch. It's playful and very modern: someone is answering your question right now.",
+      ink: "var(--green)", accent: "var(--leaf)", bg: "var(--green-ink)", dInk: "var(--leaf)", dAccent: "var(--green-ink)" },
+  ];
+
+  document.getElementById("variants").innerHTML = variants.map((v) => `
+    <article class="card" style="--bg:${v.bg}">
+      <div class="hero">
+        <div class="light">${mark(v.id, v.ink, v.accent)}</div>
+        <div class="dark">${mark(v.id, v.dInk, v.dAccent, v.dHole ?? v.bg)}</div>
+      </div>
+      <div class="body">
+        <span class="tag">${v.id}</span>
+        <h2>${v.name}</h2>
+        <p>${v.idea}</p>
+        <div class="sizes">
+          ${[48, 28].map((s) => `<div class="app" style="width:${s}px;height:${s}px">${mark(v.id, v.dInk, v.dAccent, v.dHole ?? v.bg)}</div>`).join("")}
+          <span class="chip"><span class="fav">${mark(v.id, v.ink, v.accent)}</span>16px</span>
+        </div>
+      </div>
+    </article>`).join("");
+
+  const palettes = [
+    { name: "Green and white", note: "Matches the site today", ink: "var(--green)", accent: "#fff", bg: "var(--green)", dInk: "#fff", dAccent: "var(--green)", sw: ["#17533e", "#ffffff", "#7fd3a8"] },
+    { name: "Green and gold", note: "Brings back the original gold", ink: "var(--green)", accent: "var(--gold)", bg: "var(--green-ink)", dInk: "var(--gold)", dAccent: "var(--green-ink)", sw: ["#17533e", "#d9a63c", "#0e3a2b"] },
+    { name: "Ink and leaf", note: "Quieter, more modern", ink: "var(--ink)", accent: "var(--leaf)", bg: "var(--ink)", dInk: "var(--leaf)", dAccent: "var(--ink)", sw: ["#0f1513", "#7fd3a8", "#f3f5f4"] },
+    { name: "Navy and gold", note: "The original logo's colours", ink: "var(--navy)", accent: "var(--gold)", bg: "var(--navy)", dInk: "var(--gold)", dAccent: "var(--navy)", sw: ["#0d2a4c", "#d9a63c", "#ffffff"] },
+  ];
+  document.getElementById("palettes").innerHTML = palettes.map((p) => `
+    <article class="card" style="--bg:${p.bg}">
+      <div class="hero">
+        <div class="light">${mark("A", p.ink, p.accent)}</div>
+        <div class="dark">${mark("A", p.dInk, p.dAccent)}</div>
+      </div>
+      <div class="body"><h2>${p.name}</h2><p>${p.note}</p></div>
+      <div class="sw">${p.sw.map((c) => `<i style="background:${c}"></i>`).join("")}</div>
+    </article>`).join("");
+
+  const A = (s) => mark("A", "var(--green)", "#fff", "#fff", "", s);
+  document.getElementById("wordmarks").innerHTML = [
+    { lock: `${A(48)}<span class="wm-serif">AllahCall<span class="wm-sub">Islamic Dawah &amp; Education</span></span>`, note: "Serif, matching the site's headings, with a small subtitle. Calm and scholarly." },
+    { lock: `${A(42)}<span class="wm-sans">Allah<span style="color:var(--green)">Call</span></span>`, note: "Inter bold with \"Call\" in green. The most modern, and easiest to read at small sizes." },
+    { lock: `${A(46)}<span class="wm-stack">Allah<br><span style="color:var(--green)">Call</span></span>`, note: "Stacked, for square spaces like social avatars, banners and book spines." },
+    { lock: `<span class="wm-sans" style="display:flex;align-items:center;gap:2px">Allah${mark("C", "var(--green)", "#fff", "#fff", "", 30)}Call</span>`, note: "The cutout mark sits between the two words, like a single glyph. Good for merch and headers." },
+  ].map((w) => `<div class="wmcard"><div class="lock">${w.lock}</div><p class="note">${w.note}</p></div>`).join("");
+
+  document.getElementById("inuse").innerHTML = `
+    <div class="site">
+      <div class="bar">
+        <div class="lock">${A(30)}<span class="wm-sans" style="font-size:19px">Allah<span style="color:var(--green)">Call</span></span></div>
+        <nav><span>Learn</span><span>Services</span><span>Contact</span></nav>
+      </div>
+      <div class="hero2"><b>Answers about Islam, from people who care.</b><span>Talk to us</span></div>
+    </div>
+    <div class="tabs">
+      <div class="tab"><span class="fav">${mark("C", "var(--green)", "#fff")}</span>AllahCall · Islamic Dawah</div>
+      <div class="tab" style="background:#eef0ef"><span class="fav">${mark("A", "var(--green)", "#fff")}</span>Favicon with version A</div>
+    </div>
+    <div class="phone">
+      <div class="row"><div class="avatar">${mark("A", "#fff", "var(--green)")}</div><div><b>AllahCall</b><small>Assalamu alaikum, how can we help?</small></div></div>
+      <div class="row"><div class="avatar" style="background:var(--green-ink)">${mark("H", "var(--leaf)", "var(--green-ink)")}</div><div><b>AllahCall · Typing</b><small>typing…</small></div></div>
+      <div class="row"><div class="avatar" style="background:#fff">${mark("D", "var(--green)", "var(--gold)")}</div><div><b>AllahCall · Doorway</b><small>White avatar</small></div></div>
+    </div>
+    <div class="footer">
+      <div class="lock">${mark("A", "var(--leaf)", "var(--green-ink)", "", "", 40)}<span class="wm-serif" style="font-size:26px">AllahCall<span class="wm-sub" style="color:rgb(255 255 255 / .55)">Islamic Dawah &amp; Education</span></span></div>
+      <p>The footer lockup on the dark green band, with the mark in leaf.</p>
+    </div>`;
+</script>
+</body>
+</html>
