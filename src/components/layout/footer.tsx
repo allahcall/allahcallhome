@@ -2,6 +2,7 @@ import { cacheLife } from "next/cache";
 import Link from "next/link";
 import { Mark } from "@/components/ui/mark";
 import { site } from "@/lib/site";
+import { ThemeToggle } from "./theme-toggle";
 
 // Reading the clock makes a component dynamic; caching it per day keeps pages static.
 async function CurrentYear() {
@@ -101,6 +102,7 @@ export function Footer() {
             <Link href="/privacy" className="hover:text-green">
               Privacy policy
             </Link>
+            <ThemeToggle />
             {site.ein}
           </span>
         </div>

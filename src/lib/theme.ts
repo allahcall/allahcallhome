@@ -1,5 +1,5 @@
 /**
- * Light or dark. A choice made with the header toggle is kept in localStorage;
+ * Light or dark. A choice made with the footer toggle is kept in localStorage;
  * without one the site follows the device, live.
  */
 export type Theme = "light" | "dark";

@@ -3,7 +3,6 @@ import { ButtonLink } from "@/components/ui/button";
 import { Mark } from "@/components/ui/mark";
 import { nav, site } from "@/lib/site";
 import { Search } from "./search";
-import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   return (
@@ -25,7 +24,7 @@ export function Header() {
               <li key={group.label} className="group relative">
                 <Link
                   href={group.href}
-                  className="flex h-10 items-center rounded-[10px] px-2.5 text-[14.5px] font-medium whitespace-nowrap xl:px-3 text-ink-2 transition-colors group-hover:bg-paper hover:text-ink"
+                  className="flex h-10 items-center rounded-[10px] px-3 text-[14.5px] font-medium text-ink-2 transition-colors group-hover:bg-paper hover:text-ink"
                 >
                   {group.label}
                 </Link>
@@ -53,7 +52,7 @@ export function Header() {
             <li>
               <Link
                 href="/contact"
-                className="flex h-10 items-center rounded-[10px] px-2.5 text-[14.5px] font-medium whitespace-nowrap xl:px-3 text-ink-2 transition-colors hover:bg-paper hover:text-ink"
+                className="flex h-10 items-center rounded-[10px] px-3 text-[14.5px] font-medium text-ink-2 transition-colors hover:bg-paper hover:text-ink"
               >
                 Contact
               </Link>
@@ -65,10 +64,9 @@ export function Header() {
           Contact
         </Link>
         <Search />
-        <ThemeToggle />
         {/* The wrapper carries the breakpoint: the button's own inline-flex would override `hidden`. */}
         <div className="hidden lg:block">
-          <ButtonLink href="/accept-islam-now" className="min-h-10 rounded-[12px] px-4 text-[14px] whitespace-nowrap">
+          <ButtonLink href="/accept-islam-now" className="min-h-10 rounded-[12px] px-4 text-[14px]">
             Accept Islam
           </ButtonLink>
         </div>
