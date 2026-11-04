@@ -132,7 +132,7 @@ export function MobileNav() {
               return (
                 <li key={t.label}>
                   <Link href={t.href} className={tabClass(true)} aria-current={on ? "page" : undefined}>
-                    <span className="grid h-8.5 w-11.5 place-items-center rounded-[12px] bg-green text-paper">
+                    <span className="grid h-8.5 w-11.5 place-items-center rounded-[12px] bg-brand text-white">
                       <Star className="size-5" />
                     </span>
                     {t.label}

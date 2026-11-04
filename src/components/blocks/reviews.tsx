@@ -24,8 +24,8 @@ export function Reviews() {
       />
 
       <div className="grid gap-3 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-4">
-        <figure className="pop relative isolate overflow-hidden rounded-[20px] bg-green p-6 text-paper md:p-10">
-          <span aria-hidden className="absolute -top-6 right-4 -z-10 font-serif text-[220px] leading-none text-paper/8">
+        <figure className="pop relative isolate overflow-hidden rounded-[20px] bg-brand p-6 text-white md:p-10">
+          <span aria-hidden className="absolute -top-6 right-4 -z-10 font-serif text-[220px] leading-none text-white/8">
             ”
           </span>
           <Stars className="text-leaf" />
@@ -33,10 +33,10 @@ export function Reviews() {
             {spotlight.quote.at(-1)}
           </blockquote>
           <figcaption className="mt-6 flex items-center gap-3">
-            <Initial name={spotlight.name} className="bg-paper/15 text-paper" />
+            <Initial name={spotlight.name} className="bg-white/15 text-white" />
             <span>
               <span className="block font-semibold">{spotlight.name}</span>
-              <span className="block text-[13px] text-paper/70">{programs[spotlight.program]}</span>
+              <span className="block text-[13px] text-white/70">{programs[spotlight.program]}</span>
             </span>
           </figcaption>
         </figure>

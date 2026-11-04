@@ -8,8 +8,8 @@ export const BUBBLE_STAR =
 export function Mark({ className = "size-[34px]" }: { className?: string }) {
   return (
     <svg viewBox="0 0 64 64" className={`shrink-0 ${className}`} aria-hidden="true">
-      <path d={BUBBLE} className="fill-green" />
-      <path d={BUBBLE_STAR} className="fill-paper" />
+      <path d={BUBBLE} className="fill-brand" />
+      <path d={BUBBLE_STAR} className="fill-white" />
     </svg>
   );
 }

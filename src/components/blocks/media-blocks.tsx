@@ -73,15 +73,15 @@ export const SHAHADA = {
 export function Shahada({ block }: { block: Of<"shahada"> }) {
   return (
     <Section>
-      <div className="relative overflow-hidden rounded-[24px] bg-green-ink px-5 py-8 text-center text-paper md:px-12 md:py-14">
-        <Rosette className="pointer-events-none absolute -top-28 -right-28 size-[22rem] text-paper opacity-[0.12] md:size-[30rem]" />
-        <p className="relative text-[12.5px] font-semibold tracking-[0.08em] text-paper/65 uppercase">{block.label ?? "The Shahada"}</p>
+      <div className="relative overflow-hidden rounded-[24px] bg-green-ink px-5 py-8 text-center text-white md:px-12 md:py-14">
+        <Rosette className="pointer-events-none absolute -top-28 -right-28 size-[22rem] text-white opacity-[0.12] md:size-[30rem]" />
+        <p className="relative text-[12.5px] font-semibold tracking-[0.08em] text-white/65 uppercase">{block.label ?? "The Shahada"}</p>
         {block.title && <h2 className="sr-only">{block.title}</h2>}
         <p dir="rtl" lang="ar" className="relative mx-auto mt-3 max-w-[18em] font-arabic text-[28px] leading-[1.85] md:text-[clamp(34px,3.6vw,50px)]">
           {SHAHADA.arabic}
         </p>
-        <p className="relative mt-3 font-serif text-[17px] text-paper/85 italic md:text-[20px]">{SHAHADA.transliteration}</p>
-        <p className="relative mx-auto mt-2 max-w-[34em] text-[14px] text-paper/65 md:text-[15px]">{SHAHADA.translation}</p>
+        <p className="relative mt-3 font-serif text-[17px] text-white/85 italic md:text-[20px]">{SHAHADA.transliteration}</p>
+        <p className="relative mx-auto mt-2 max-w-[34em] text-[14px] text-white/65 md:text-[15px]">{SHAHADA.translation}</p>
         {block.action && (
           <ButtonLink href={block.action.href} variant="inverse" arrow className="relative mt-6 w-full sm:w-auto">
             {block.action.label}
@@ -143,11 +143,11 @@ export function TeamGrid({ people, more }: { people: Of<"people">["items"]; more
         </div>
       ))}
       {more && (
-        <Link href="/board-of-directors" className="group flex aspect-[4/5] flex-col justify-end rounded-[16px] bg-green p-4 text-paper md:p-6">
+        <Link href="/board-of-directors" className="group flex aspect-[4/5] flex-col justify-end rounded-[16px] bg-brand p-4 text-white md:p-6">
           <span className="text-[18px] leading-tight font-semibold md:text-[22px]">
             Board of Directors <Arrow />
           </span>
-          <span className="mt-1 text-[13px] text-paper/70">Meet the full leadership team</span>
+          <span className="mt-1 text-[13px] text-white/70">Meet the full leadership team</span>
         </Link>
       )}
     </div>
@@ -213,7 +213,7 @@ export function Books({ block }: { block: Of<"books"> }) {
                         href={site.orderBook(b.title, b.pakistan)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex min-h-12 items-center justify-center rounded-[14px] bg-green px-5 py-2 text-[15px] font-semibold text-paper transition-colors hover:bg-green-ink"
+                        className="inline-flex min-h-12 items-center justify-center rounded-[14px] bg-brand px-5 py-2 text-[15px] font-semibold text-white transition-colors hover:bg-green-ink"
                       >
                         Order on WhatsApp
                       </a>

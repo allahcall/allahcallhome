@@ -120,7 +120,7 @@ export default function Home() {
     <PageTransition>
       <div className="wrap pt-1.5 md:pt-4">
         <div className="grid gap-3 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:gap-4">
-          <header className="relative isolate flex min-h-[460px] flex-col justify-end overflow-hidden rounded-[24px] text-paper md:min-h-[520px] lg:min-h-[580px]">
+          <header className="relative isolate flex min-h-[460px] flex-col justify-end overflow-hidden rounded-[24px] text-white md:min-h-[520px] lg:min-h-[580px]">
             <div className="absolute inset-0 -z-10">
               <Photo
                 image={{ src: "/images/mosque-window.webp", alt: "Light falling through a mosque window" }}
@@ -130,11 +130,11 @@ export default function Home() {
                 className="h-full"
               />
             </div>
-            <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-ink/5 from-20% to-ink/85" />
+            <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-shade/5 from-20% to-shade/85" />
             <div className="p-5 md:p-10">
               <Link
                 href="/events"
-                className="inline-flex items-center gap-2 rounded-[10px] bg-paper/15 px-2.5 py-1.5 text-[12.5px] font-medium backdrop-blur-sm hover:bg-paper/25"
+                className="inline-flex items-center gap-2 rounded-[10px] bg-white/15 px-2.5 py-1.5 text-[12.5px] font-medium backdrop-blur-sm hover:bg-white/25"
               >
                 <span aria-hidden className="size-1.5 rounded-full bg-leaf" />
                 New Muslims Support Group · Saturdays
@@ -142,7 +142,7 @@ export default function Home() {
               <h1 className="display mt-3.5 max-w-[11em] text-[38px] leading-[1.04] md:text-[clamp(48px,5.4vw,68px)]">
                 Discover the truth of Islam’s <em className="italic">beautiful</em> message
               </h1>
-              <p className="mt-3 max-w-[34em] text-[15px] text-paper/85 md:text-[17px]">
+              <p className="mt-3 max-w-[34em] text-[15px] text-white/85 md:text-[17px]">
                 Join us on a journey to understand the pure teachings of Islam and find answers to life’s important
                 questions, with authentic knowledge from qualified scholars.
               </p>

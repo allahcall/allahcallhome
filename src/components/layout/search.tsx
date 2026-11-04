@@ -58,7 +58,7 @@ function Snippet({ text, terms }: { text: string; terms: string[] }) {
     <>
       {slice.split(re).map((part, i) =>
         i % 2 ? (
-          <mark key={i} className="rounded-[3px] bg-green-tint text-green-ink">
+          <mark key={i} className="rounded-[3px] bg-green-tint text-green">
             {part}
           </mark>
         ) : (
@@ -180,7 +180,7 @@ export function Search() {
         ref={dialog}
         aria-label="Search the site"
         onClick={(e) => e.target === dialog.current && dialog.current.close()}
-        className="m-0 mx-auto mt-[max(1rem,8vh)] max-h-[min(36rem,calc(100svh-2rem))] w-[min(40rem,calc(100%-2rem))] max-w-none flex-col overflow-hidden rounded-[20px] border border-line bg-paper p-0 text-ink shadow-[0_24px_60px_-20px_rgb(15_21_19/0.35)] backdrop:bg-ink/30 backdrop:backdrop-blur-[2px] open:flex"
+        className="m-0 mx-auto mt-[max(1rem,8vh)] max-h-[min(36rem,calc(100svh-2rem))] w-[min(40rem,calc(100%-2rem))] max-w-none flex-col overflow-hidden rounded-[20px] border border-line bg-paper p-0 text-ink shadow-[0_24px_60px_-20px_rgb(15_21_19/0.35)] backdrop:bg-shade/30 dark:backdrop:bg-shade/60 backdrop:backdrop-blur-[2px] open:flex"
       >
         <div className="flex items-center gap-2.5 border-b border-line px-4">
           <span className="text-muted">{searchIcon}</span>

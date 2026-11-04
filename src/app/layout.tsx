@@ -8,6 +8,7 @@ import { MobileNav } from "@/components/layout/mobile-menu";
 import { JsonLd, siteLd } from "@/components/seo/json-ld";
 import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { themeScript } from "@/lib/theme";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
@@ -33,11 +34,21 @@ export const metadata: Metadata = {
   ...pageMetadata({ description: site.description, path: "/" }),
 };
 
-export const viewport: Viewport = { themeColor: "#f3f5f4", viewportFit: "cover" };
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f3f5f4" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c1110" },
+  ],
+  viewportFit: "cover",
+};
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} ${newsreader.variable} ${amiri.variable}`}>
+    // The inline script sets data-theme before first paint, so the server's "light" is expected to differ.
+    <html lang="en" data-theme="light" suppressHydrationWarning className={`${inter.variable} ${newsreader.variable} ${amiri.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="flex min-h-svh flex-col pb-[calc(4rem+env(safe-area-inset-bottom))] lg:pb-0">
         <a
           href="#main"

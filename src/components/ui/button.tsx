@@ -4,10 +4,10 @@ import type { ComponentProps } from "react";
 type Variant = "primary" | "secondary" | "inverse" | "inverse-secondary";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-ink text-paper hover:bg-green-ink",
+  primary: "bg-ink text-paper hover:bg-green-ink hover:text-white",
   secondary: "border border-line bg-paper text-ink hover:border-ink-2/40",
-  inverse: "bg-paper text-ink hover:bg-green-tint",
-  "inverse-secondary": "bg-paper/15 text-paper backdrop-blur-sm hover:bg-paper/25",
+  inverse: "bg-white text-shade hover:bg-white/85",
+  "inverse-secondary": "bg-white/15 text-white backdrop-blur-sm hover:bg-white/25",
 };
 
 export function buttonClass(variant: Variant = "primary", className = "") {
