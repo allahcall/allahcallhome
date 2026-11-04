@@ -14,6 +14,39 @@ export const servicePages: Page[] = [
     },
     blocks: [
       {
+        type: "books",
+        label: "Our founder's books",
+        title: "Books by Engr. Hafiz Muhammad Harris",
+        lede: "Clear, reasoned answers to the questions atheists and sceptics ask about God. Order inside Pakistan over WhatsApp, or worldwide from Amazon.",
+        items: [
+          {
+            title: "There Is a God",
+            subtitle: "Unraveling over 250 logical fallacies: a rebuttal to Armin Navabi's “Why There Is No God”",
+            author: "Engr. Hafiz Muhammad Harris",
+            body: "Works through Navabi's arguments one by one and shows where each goes wrong, with Islamic proofs of God's existence drawn from the Quran and logic.",
+            image: { src: "/images/books/there-is-a-god.jpg", alt: "Cover of There Is a God" },
+            amazon: "https://www.amazon.com/dp/9692387909",
+            pakistan: "Rs 1,000 + Rs 300 delivery",
+          },
+          {
+            title: "Reasoning with Atheist",
+            subtitle: "An Islamic response to Todd C. Moody's “Does God Exist?”",
+            author: "Engr. Maulana Hafiz Muhammad Harris",
+            body: "Conversations between a Muslim theist, an atheist and an agnostic on existence, morality, science, suffering and the search for meaning. An invitation to think, not a debate.",
+            image: { src: "/images/books/reasoning-with-atheist.jpg", alt: "Cover of Reasoning with Atheist" },
+            amazon: "https://www.amazon.com/dp/9692387917",
+          },
+          {
+            title: "The Rational Foundations of Faith",
+            subtitle: "An Islamic philosophical case for the existence of God",
+            author: "Maulana Engineer Muhammad Harris",
+            body: "Sets out, step by step, the philosophical case that belief in God rests on reason.",
+            image: { src: "/images/books/rational-foundations-of-faith.jpg", alt: "Cover of The Rational Foundations of Faith" },
+            pakistan: "Rs 1,000 (PDF)",
+          },
+        ],
+      },
+      {
         type: "prose",
         label: "Resources",
         title: "Islamic resources",
@@ -50,7 +83,7 @@ export const servicePages: Page[] = [
       {
         type: "books",
         label: "Reading",
-        title: "Featured books",
+        title: "Recommended reading",
         items: [
           {
             title: "The Sealed Nectar",
@@ -63,12 +96,6 @@ export const servicePages: Page[] = [
             author: "Hamza Andreas Tzortzis",
             body: "A philosophical exploration of God's existence.",
             image: { src: "/images/books/divine-reality.png", alt: "Cover of The Divine Reality" },
-          },
-          {
-            title: "There is a GOD",
-            author: "Engineer Hafiz Muhammad Haris",
-            body: "Islamic proofs of God's existence through Quran and logic.",
-            image: { src: "/images/books/there-is-a-god.png", alt: "Cover of There is a GOD" },
           },
         ],
       },

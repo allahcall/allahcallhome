@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Block } from "@/content/types";
-import { Arrow, ButtonLink } from "@/components/ui/button";
+import { Arrow, ButtonLink, buttonClass } from "@/components/ui/button";
 import { Photo } from "@/components/ui/photo";
 import { Rosette } from "@/components/ui/rosette";
 import { Section, SectionHead, Ticks } from "@/components/ui/section";
 import { imageSrc } from "@/lib/image";
+import { site } from "@/lib/site";
 
 type Of<T extends Block["type"]> = Extract<Block, { type: T }>;
 
@@ -181,23 +182,50 @@ export function Gallery({ block }: { block: Of<"gallery"> }) {
 export function Books({ block }: { block: Of<"books"> }) {
   return (
     <Section>
-      <SectionHead label={block.label} title={block.title} />
+      <SectionHead label={block.label} title={block.title} lede={block.lede} />
       <div className="grid gap-3 md:grid-cols-3 md:gap-4">
         {block.items.map((b) => (
-          <article key={b.title} className="card overflow-hidden">
-            <div className="flex aspect-[4/3] items-center justify-center bg-green-tint p-8">
+          <article key={b.title} className="card flex flex-col overflow-hidden">
+            {/* min-h-0 keeps the 5:4 frame when a tall portrait cover would stretch it */}
+            <div className="flex aspect-[5/4] min-h-0 items-center justify-center bg-green-tint p-6">
               <Image
                 src={imageSrc(b.image.src)}
                 alt={b.image.alt}
                 width={400}
-                height={400}
+                height={600}
+                sizes="(min-width: 768px) 200px, 240px"
                 className="h-full w-auto object-contain drop-shadow-[0_12px_18px_rgb(15_21_19/0.22)]"
               />
             </div>
-            <div className="p-5 md:p-6">
+            <div className="flex flex-1 flex-col p-5 md:p-6">
               <h3 className="text-[19px] leading-snug font-semibold tracking-[-0.01em]">{b.title}</h3>
-              <p className="mt-0.5 text-[13.5px] font-medium text-green">by {b.author}</p>
+              {b.subtitle && <p className="mt-1 text-[14.5px] leading-snug text-ink-2">{b.subtitle}</p>}
+              <p className="mt-1.5 text-[13.5px] font-medium text-green">by {b.author}</p>
               <p className="mt-2 text-[14.5px] text-ink-2">{b.body}</p>
+              {(b.amazon || b.pakistan) && (
+                <div className="mt-auto grid gap-2 pt-5">
+                  {b.pakistan && (
+                    <>
+                      <p className="text-[13.5px] text-ink-2">
+                        <span className="font-semibold text-ink">In Pakistan:</span> {b.pakistan}
+                      </p>
+                      <a
+                        href={site.orderBook(b.title, b.pakistan)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-12 items-center justify-center rounded-[14px] bg-green px-5 py-2 text-[15px] font-semibold text-paper transition-colors hover:bg-green-ink"
+                      >
+                        Order on WhatsApp
+                      </a>
+                    </>
+                  )}
+                  {b.amazon && (
+                    <a href={b.amazon} target="_blank" rel="noopener noreferrer" className={buttonClass("secondary")}>
+                      Buy on Amazon
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           </article>
         ))}

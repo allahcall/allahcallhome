@@ -40,7 +40,7 @@ export type Block =
   | { type: "people"; label?: string; title?: string; lede?: string; items: Person[] }
   | { type: "events"; label?: string; title?: string; lede?: string; items: EventItem[] }
   | { type: "gallery"; label?: string; title?: string; lede?: string; groups: { title: string; items: Img[] }[] }
-  | { type: "books"; label?: string; title: string; items: { title: string; author: string; body: string; image: Img }[] }
+  | { type: "books"; label?: string; title: string; lede?: string; items: Book[] }
   | { type: "testimonies"; label?: string; title: string; lede?: string; items: Testimony[] }
   | { type: "form"; label?: string; title: string; lede?: string; form: "contact" | "volunteer" | "updates" }
   | { type: "faq"; label?: string; title?: string; items: { q: string; a: string }[] }
@@ -48,6 +48,17 @@ export type Block =
   | { type: "talk"; title: string; body?: string }
   /** Closing call to action on a dark green band. */
   | { type: "cta"; title: string; body?: string; actions: Action[] };
+
+export type Book = {
+  title: string;
+  subtitle?: string;
+  author: string;
+  body: string;
+  image: Img;
+  amazon?: string;
+  /** Price in Pakistan, e.g. "Rs 1,000 + Rs 300 delivery". Shows a WhatsApp order button. */
+  pakistan?: string;
+};
 
 export type Person = {
   name: string;

@@ -25,6 +25,11 @@ export const site = {
       "Assalamu alaikum,\n\nI am thinking about Islam and would like to talk with someone privately. A little about me and my questions:\n\n",
     )}`,
   },
+  // Book orders inside Pakistan are taken over WhatsApp.
+  orderBook: (title: string, price: string) =>
+    `https://wa.me/923040496627?text=${encodeURIComponent(
+      `Assalamu alaikum, I would like to order "${title}" (${price}). My name and delivery address: `,
+    )}`,
   socials: [
     { label: "Instagram", href: "https://www.instagram.com/allah_call1" },
     { label: "YouTube", href: "https://youtube.com/@allahcall2421" },

@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 export type SearchDoc = { id: number; url: string; page: string; section: string; text: string };
 
 // Fields that hold markup choices, links or alt text rather than words a reader sees.
-const skip = new Set(["type", "tone", "cols", "variant", "form", "href", "src", "alt", "date"]);
+const skip = new Set(["type", "tone", "cols", "variant", "form", "href", "src", "alt", "date", "amazon"]);
 
 function words(value: unknown, out: string[] = []): string[] {
   if (typeof value === "string") out.push(value);
