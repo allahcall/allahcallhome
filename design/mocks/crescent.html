@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AllahCall · Crescent logo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --canvas: #f3f5f4; --paper: #fff; --ink: #0f1513; --ink-2: #3a433f; --muted: #646d68; --line: #e3e8e5;
+    --green: #17533e; --green-ink: #0e3a2b; --leaf: #7fd3a8; --gold: #d9a63c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--canvas); color: var(--ink); font: 400 15px/1.55 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; padding: 40px 16px 80px; }
+  .wrap { max-width: 1180px; margin-inline: auto; }
+  h1 { font: 500 clamp(32px, 4vw, 48px)/1.05 Newsreader, Georgia, serif; letter-spacing: -.02em; }
+  .lead { margin-top: 10px; color: var(--ink-2); max-width: 66ch; }
+  h3 { margin-top: 52px; font: 500 28px/1.1 Newsreader, Georgia, serif; letter-spacing: -.015em; }
+  .orig { margin-top: 20px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; color: var(--muted); font-size: 13.5px; }
+  .orig img { height: 64px; width: auto; max-width: 100%; }
+  .grid { margin-top: 24px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+  .hero { display: grid; grid-template-columns: 1fr 1fr; }
+  .hero > div { aspect-ratio: 1; display: grid; place-items: center; }
+  .hero .light { background: var(--paper); border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
+  .hero .dark { background: var(--bg, var(--green-ink)); }
+  .hero svg { width: 58%; height: 58%; }
+  .body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .tag { font: 600 12px/1 Inter, sans-serif; color: var(--muted); }
+  h2 { font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
+  .body p { color: var(--ink-2); font-size: 14px; }
+  .sizes { margin-top: auto; padding-top: 8px; display: flex; align-items: end; gap: 10px; }
+  .app { display: grid; place-items: center; border-radius: 22%; background: var(--bg, var(--green)); }
+  .app svg { width: 70%; height: 70%; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 8px; background: var(--canvas); font-size: 12px; color: var(--ink-2); }
+  .chip svg { width: 16px; height: 16px; display: block; }
+  .locks { margin-top: 24px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); }
+  .lockcard { border: 1px solid var(--line); border-radius: 20px; padding: 32px 26px; display: flex; flex-direction: column; gap: 20px; background: var(--paper); }
+  .lockcard.dark { background: var(--green-ink); border-color: transparent; color: #fff; }
+  .lockcard.dark .note { color: rgb(255 255 255 / .6); }
+  .lock { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .lock svg { flex: none; }
+  .note { color: var(--muted); font-size: 13.5px; }
+  .caps { font: 500 34px/1 Newsreader, Georgia, serif; letter-spacing: .06em; }
+  .sans { font: 700 27px/1 Inter, sans-serif; letter-spacing: -.035em; }
+  .sub { display: block; margin-top: 7px; font: 500 10.5px/1 Inter, sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+  .dark .sub { color: rgb(255 255 255 / .55); }
+  .bar { margin-top: 24px; background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .bar nav { display: flex; gap: 16px; font-size: 13.5px; color: var(--ink-2); flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Shared parts, traced from the purple logo (viewBox 0 0 206 196) -->
+    <path id="moon" d="M89.67 6.07A92 92 0 0 1 89.67 189.93A96 96 0 0 0 89.67 6.07Z"/>
+    <path id="swoosh" d="M4 190C8 160 28 124 66 105L66 117C44 130 25 160 21 190Z"/>
+    <g id="bars">
+      <path d="M65 148L65 110L84 105L84 143.3Z"/>
+      <path d="M89 142L89 92L109 87L109 137Z"/>
+      <path d="M114 135.9L114 79L135 73.8L135 130.8Z"/>
+      <path d="M65 148L135 130.8L135 125.8L65 143Z"/>
+    </g>
+    <g id="marks">
+      <path d="M87 81L87 70L93 68.7L93 79.7Z"/>
+      <path d="M96 79L96 66L101 65L101 78Z"/>
+      <path d="M105 77L105 61L111 59.7L111 75.7Z"/>
+    </g>
+
+    <!-- 1 · Faithful: the original drawing in one colour -->
+    <symbol id="c1" viewBox="0 0 206 196">
+      <g fill="currentColor"><use href="#moon"/><use href="#swoosh"/><use href="#bars"/><use href="#marks"/></g>
+    </symbol>
+    <!-- 2 · Two-tone: the crescent in the accent, the rising word in the main colour -->
+    <symbol id="c2" viewBox="0 0 206 196">
+      <use href="#moon" fill="var(--accent)"/>
+      <g fill="currentColor"><use href="#swoosh"/><use href="#bars"/><use href="#marks"/></g>
+    </symbol>
+    <!-- 3 · Simplified: crescent and bars only, re-centred, for favicons and app icons -->
+    <symbol id="c3" viewBox="20 0 176 196">
+      <use href="#moon" fill="currentColor"/>
+      <g fill="var(--accent)" transform="translate(-6 8)"><use href="#bars"/><use href="#marks"/></g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <h1>The crescent logo, on brand</h1>
+  <p class="lead">I redrew the mark from the purple logo as clean vector shapes, kept its drawing, and recoloured it in the site's greens. The three rising strokes with the small marks above read like a stylised “الله” (alif, two lams and the shadda) rising out of the crescent.</p>
+  <div class="orig"><img src="img/logo-purple.png" alt="Original purple Allah Call logo" onerror="this.remove()"> The original, for reference.</div>
+
+  <h3>The mark</h3>
+  <div class="grid" id="marks-grid"></div>
+
+  <h3>Lockups</h3>
+  <div class="locks" id="locks"></div>
+
+  <h3>In the header</h3>
+  <div class="bar">
+    <div class="lock"><svg width="34" height="34" style="color:var(--green);--accent:var(--green)"><use href="#c1"/></svg><span class="sans" style="font-size:18px">Allah<span style="color:var(--green)">Call</span></span></div>
+    <nav><span>About</span><span>Islam</span><span>Religions</span><span>New Muslims</span><span>Contact</span></nav>
+  </div>
+  <div class="bar">
+    <div class="lock"><svg width="34" height="34" style="color:var(--green);--accent:var(--gold)"><use href="#c2"/></svg><span class="caps" style="font-size:21px;letter-spacing:.08em">ALLAH CALL</span></div>
+    <nav><span>About</span><span>Islam</span><span>Religions</span><span>New Muslims</span><span>Contact</span></nav>
+  </div>
+</div>
+
+<script>
+  const mark = (id, ink, accent, attrs = "") => `<svg ${attrs} style="color:${ink};--accent:${accent}"><use href="#${id}"/></svg>`;
+
+  const versions = [
+    { id: "c1", name: "Faithful", tag: "1", idea: "The original drawing, cleaned up and set in the site's deep green. It's the closest to what people already know.",
+      light: ["var(--green)", "var(--green)"], dark: ["#fff", "#fff"], bg: "var(--green-ink)", app: ["#fff", "#fff"] },
+    { id: "c2", name: "Two-tone", tag: "2", idea: "Gold crescent, green rising word. The gold nods to the original AllahCall logo, and the two colours make the meaning easier to see.",
+      light: ["var(--green)", "var(--gold)"], dark: ["#fff", "var(--gold)"], bg: "var(--green-ink)", app: ["#fff", "var(--gold)"] },
+    { id: "c3", name: "Simplified", tag: "3", idea: "The swoosh is dropped and the word sits inside the crescent. It's tighter and stays clear at 16px, so it works as the favicon and app icon for 1 or 2.",
+      light: ["var(--green)", "var(--green)"], dark: ["#fff", "var(--leaf)"], bg: "var(--green)", app: ["#fff", "var(--leaf)"] },
+  ];
+
+  document.getElementById("marks-grid").innerHTML = versions.map((v) => `
+    <article class="card" style="--bg:${v.bg}">
+      <div class="hero">
+        <div class="light">${mark(v.id, ...v.light)}</div>
+        <div class="dark">${mark(v.id, ...v.dark)}</div>
+      </div>
+      <div class="body">
+        <span class="tag">${v.tag}</span>
+        <h2>${v.name}</h2>
+        <p>${v.idea}</p>
+        <div class="sizes">
+          ${[56, 32].map((s) => `<div class="app" style="width:${s}px;height:${s}px">${mark(v.id, ...v.app)}</div>`).join("")}
+          <span class="chip">${mark(v.id, ...v.light)}16px</span>
+        </div>
+      </div>
+    </article>`).join("");
+
+  document.getElementById("locks").innerHTML = [
+    { dark: false, lock: `${mark("c1", "var(--green)", "var(--green)", 'width="64" height="64"')}<span class="caps" style="color:var(--green)">ALLAH CALL</span>`,
+      note: "The original layout with spaced capitals, redone in Newsreader, the site's heading serif, in place of the stock Didone." },
+    { dark: false, lock: `${mark("c2", "var(--green)", "var(--gold)", 'width="60" height="60"')}<span><span class="caps" style="font-size:30px">ALLAH CALL</span><span class="sub">Islamic Dawah &amp; Education</span></span>`,
+      note: "Two-tone, with the subtitle. Good for the footer, letterheads and the books." },
+    { dark: false, lock: `${mark("c1", "var(--green)", "var(--green)", 'width="48" height="48"')}<span class="sans">Allah<span style="color:var(--green)">Call</span></span>`,
+      note: "With the site's current Inter wordmark. The most compact option for the header." },
+    { dark: true, lock: `${mark("c2", "#fff", "var(--gold)", 'width="60" height="60"')}<span><span class="caps" style="font-size:30px">ALLAH CALL</span><span class="sub">Islamic Dawah &amp; Education</span></span>`,
+      note: "On the dark green band, and in dark mode." },
+  ].map((l) => `<div class="lockcard ${l.dark ? "dark" : ""}"><div class="lock">${l.lock}</div><p class="note">${l.note}</p></div>`).join("");
+</script>
+</body>
+</html>
