@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
+import { BUBBLE, BUBBLE_STAR } from "@/components/ui/mark";
 import { site } from "./site";
 
 /** Share-card size every social app expects (1.91:1). */
@@ -14,13 +15,11 @@ const [serif, sans] = await Promise.all([
   font("inter", "inter-latin-600-normal.woff"),
 ]);
 
-// Same geometry as the brand mark in src/components/ui/mark.tsx.
-function Star({ size, stroke }: { size: number; stroke: number }) {
+function Mark({ size }: { size: number }) {
   return (
-    <svg width={size} height={size} viewBox="-50 -50 100 100" fill="none" stroke="white" strokeWidth={stroke}>
-      <rect x="-30" y="-30" width="60" height="60" />
-      <rect x="-30" y="-30" width="60" height="60" transform="rotate(45)" />
-      <circle r="11" />
+    <svg width={size} height={size} viewBox="0 0 64 64">
+      <path d={BUBBLE} fill="white" />
+      <path d={BUBBLE_STAR} fill="#17533e" />
     </svg>
   );
 }
@@ -69,7 +68,7 @@ export function shareCard({ label, title }: { label: string; title: string }) {
               justifyContent: "center",
             }}
           >
-            <Star size={38} stroke={5} />
+            <Mark size={42} />
           </div>
           <div style={{ fontSize: 34, fontWeight: 600, letterSpacing: -0.5 }}>{site.name}</div>
         </div>

@@ -1,8 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#17533e"/>
-  <g fill="none" stroke="#ffffff" stroke-width="2.6" transform="translate(32 32)">
-    <rect x="-17.5" y="-17.5" width="35" height="35"/>
-    <rect x="-17.5" y="-17.5" width="35" height="35" transform="rotate(45)"/>
-    <circle r="6.4"/>
-  </g>
+  <style>path { fill: #17533e } @media (prefers-color-scheme: dark) { path { fill: #7fd3a8 } }</style>
+  <!-- The mihrab bubble with its star cut out, so it reads on light and dark tabs -->
+  <path fill-rule="evenodd" d="M12 30C12 18.5 20.5 10.5 32 4C43.5 10.5 52 18.5 52 30V43Q52 50 45 50H26L15 58.4Q12 60.6 12 57Z M32 20.1L34.9 23L39 23L39 27.1L41.9 30L39 32.9L39 37L34.9 37L32 39.9L29.1 37L25 37L25 32.9L22.1 30L25 27.1L25 23L29.1 23Z"/>
 </svg>
