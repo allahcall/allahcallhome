@@ -77,8 +77,9 @@ self.addEventListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
   if (request.method !== "GET" || url.origin !== self.location.origin) return;
-  // Analytics, and the data Next.js fetches for in-app navigation, always go to the network.
-  if (url.pathname.startsWith("/_vercel/") || request.headers.has("RSC") || url.searchParams.has("_rsc")) return;
+  // Analytics, the article editor, and the data Next.js fetches for in-app navigation, always go to the network.
+  if (url.pathname.startsWith("/_vercel/") || url.pathname.startsWith("/admin") || request.headers.has("RSC") || url.searchParams.has("_rsc"))
+    return;
 
   if (request.mode === "navigate") event.respondWith(page(request));
   else if (url.pathname.startsWith("/_next/static/")) event.respondWith(cacheFirst(request));

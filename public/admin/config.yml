@@ -1,0 +1,103 @@
+# Article editor at /admin (Sveltia CMS). It reads and writes the Markdown
+# files in src/content/articles through GitHub. The fields and limits here
+# match the checks in src/content/articles.ts, which run on every build and
+# have the final say: a file the editor lets through but the build rejects
+# never goes live.
+#
+# Sign in with a GitHub fine-grained token scoped to allahcall/allahcallhome
+# with Contents and Pull requests: read and write. See docs/articles/README.md.
+
+app_title: AllahCall articles
+display_url: https://allahcall.com
+
+backend:
+  name: github
+  repo: allahcall/allahcallhome
+  branch: main
+  auth_methods: [token]
+  squash_merges: true
+  commit_messages:
+    create: "Add article: {{slug}}"
+    update: "Update article: {{slug}}"
+    delete: "Remove article: {{slug}}"
+    uploadMedia: "Upload {{path}}"
+    deleteMedia: "Delete {{path}}"
+
+# Every save becomes a pull request. Publishing merges it, after Vercel's
+# build (which runs the article checks) passes.
+publish_mode: editorial_workflow
+
+media_folder: /public/articles
+public_folder: /articles
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  maxlength: 80
+
+output:
+  omit_empty_optional_fields: true
+
+collections:
+  - name: articles
+    label: Articles
+    label_singular: Article
+    description: Articles on the research page. Each one is published at /research/ followed by its file name.
+    icon: article
+    folder: /src/content/articles
+    extension: md
+    format: frontmatter
+    preview_path: /research/{{slug}}
+    summary: "{{title}} ({{date}})"
+    sortable_fields: [date, title]
+    fields:
+      - name: title
+        label: Title
+        widget: string
+        pattern: ['^.{1,120}$', 'Keep the title under 120 characters']
+      - name: topic
+        label: Topic
+        widget: select
+        hint: "The section of the research page it is listed under."
+        options:
+          - { label: "God and belief", value: god }
+          - { label: "Modern thought", value: modern }
+          - { label: "Qur'an and Sunnah", value: quran }
+          - { label: "Society and rights", value: society }
+      - name: date
+        label: Date
+        widget: datetime
+        type: date
+        format: YYYY-MM-DD
+        default: "{{now}}"
+      - name: summary
+        label: Summary
+        widget: text
+        hint: "One or two sentences under the title and on the research page."
+        pattern: ['^[\s\S]{1,320}$', 'Keep the summary under 320 characters']
+      - name: authors
+        label: Authors
+        widget: list
+        required: false
+        default: [Muhammad Harris Suhaib]
+        hint: "Leave empty for Muhammad Harris Suhaib alone."
+      - name: pdf
+        label: Full paper (PDF)
+        widget: string
+        required: false
+        hint: "Optional. A link starting https:// (Zenodo, journal), or /papers/file-name.pdf for a PDF added to public/papers."
+        pattern: ['^(https://\S+|/papers/[\w.-]+\.pdf)$', 'Use an https:// link or /papers/file-name.pdf']
+      - name: draft
+        label: Draft
+        widget: boolean
+        required: false
+        default: false
+        hint: "Drafts are saved but never shown on the site."
+      - name: body
+        label: Article
+        widget: markdown
+        hint: "Use Heading 2 and 3 for sections; the title is already the top heading. Links must start with https://, mailto: or /."
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
+        editor_components: [image]
+        linked_images: false
+        use_emoji_autocomplete: false

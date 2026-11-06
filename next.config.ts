@@ -17,6 +17,24 @@ const csp = [
   "upgrade-insecure-requests",
 ].join("; ");
 
+// The article editor at /admin runs Sveltia CMS from unpkg (pinned with an
+// integrity hash in public/admin/index.html) and talks to GitHub's API. This
+// policy replaces the site-wide one there and only there.
+const adminCsp = [
+  "default-src 'self'",
+  "script-src 'self' https://unpkg.com",
+  "style-src 'self' 'unsafe-inline'",
+  "font-src 'self' https://cdn.jsdelivr.net",
+  "img-src 'self' blob: data: https://*.githubusercontent.com",
+  "media-src blob:",
+  "frame-src blob:",
+  "connect-src 'self' blob: data: https://unpkg.com https://api.github.com https://*.githubusercontent.com https://www.githubstatus.com",
+  "manifest-src blob:",
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "object-src 'none'",
+].join("; ");
+
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "DENY" },
@@ -31,9 +49,17 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   cacheComponents: true,
   poweredByHeader: false,
+  // Articles are read from disk (src/content/articles.ts). Ship them with any
+  // route rendered on demand, such as a 404 under /research.
+  outputFileTracingIncludes: { "/**": ["./src/content/articles/*.md"] },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
+      // Later entries win for the same header, so this replaces the CSP above.
+      ...(process.env.VERCEL_ENV === "production"
+        ? [{ source: "/admin/:path*", headers: [{ key: "Content-Security-Policy", value: adminCsp }] }]
+        : []),
+      { source: "/admin/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }, { key: "Cache-Control", value: "no-cache" }] },
       // Browsers must always fetch the latest service worker so updates reach installed apps.
       { source: "/sw.js", headers: [{ key: "Cache-Control", value: "no-cache, no-store, must-revalidate" }] },
       // Deployment URLs like allahcallhome.vercel.app mirror the site; keep them out of search.
@@ -55,6 +81,8 @@ const nextConfig: NextConfig = {
     return [
       { source: "/board", destination: "/board-of-directors", permanent: true },
       { source: "/services", destination: "/our-services", permanent: true },
+      // The article editor is a static page in public/admin.
+      { source: "/admin", destination: "/admin/index.html", permanent: false },
     ];
   },
   turbopack: {
