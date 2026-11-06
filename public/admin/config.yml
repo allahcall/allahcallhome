@@ -30,6 +30,20 @@ publish_mode: editorial_workflow
 media_folder: /public/articles
 public_folder: /articles
 
+# Uploaded images are resized to at most 1600 pixels wide and saved as WebP
+# (PNG in browsers that can't make WebP, such as Safari). The build also
+# rejects article images over 5 MB, whatever their source.
+media_libraries:
+  default:
+    config:
+      max_file_size: 15000000
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 1600
+
 slug:
   encoding: ascii
   clean_accents: true
@@ -48,6 +62,15 @@ collections:
     extension: md
     format: frontmatter
     preview_path: /research/{{slug}}
+    # The address. It can't reuse a paper's address: the build checks this
+    # list against src/content/research.ts, so add new paper slugs here too.
+    slug:
+      template: "{{title}}"
+      editable: true
+      hint: "The article's address, /research/ followed by this. Lowercase words joined by hyphens."
+      pattern:
+        - '^(?!(?:craig-kalam-and-classical-kalam|naturalness-of-religious-belief|cumulative-case-for-god|design-argument-in-classical-theism|critiquing-intelligent-design|ontological-arguments|oneness-of-god-in-islamic-theology|ghazali-infinite-regress|fitrah-beyond-arguments|finite-cosmos-infinite-creator|quranic-response-to-nihilism|harari-sapiens-and-religion|re-evaluating-scientism|spirituality-between-atheism-and-theism|man-or-god|surah-al-asr-crisis-of-humanism|maududi-response-to-atheism|ghazali-and-the-decline-of-science|burden-of-proof-atheism|surah-al-fil-and-imperialism|surah-al-humazah-and-materialism|quranic-and-biblical-accounts-of-nuh|kalam-cosmology-and-the-trinity|seerah-and-islamophobia|science-of-hidden-hadith-defects|conditions-for-ijtihad|ghazwa-e-hind-hadiths|standard-for-interpreting-quran-and-hadith|ghamidi-principles-critical-review|locke-natural-rights-and-islamic-rights|constitution-of-madina|human-rights-epistemological-basis|islamic-and-atlantic-slavery|gender-equality-vs-gender-justice|womens-rights-islam-and-the-west|feminism-and-the-family|colonization-and-liberalism|loneliness-solidarity-and-democide|free-speech-and-the-muslim-exception|how-islam-responds-to-liberalism|riba-as-structural-distortion)$)[a-z0-9]+(?:-[a-z0-9]+)*$'
+        - 'Use lowercase words joined by hyphens, and not the address of an existing paper'
     summary: "{{title}} ({{date}})"
     sortable_fields: [date, title]
     fields:
@@ -77,10 +100,16 @@ collections:
         pattern: ['^[\s\S]{1,320}$', 'Keep the summary under 320 characters']
       - name: authors
         label: Authors
+        label_singular: Author
         widget: list
         required: false
         default: [Muhammad Harris Suhaib]
         hint: "Leave empty for Muhammad Harris Suhaib alone."
+        field:
+          name: author
+          label: Name
+          widget: string
+          pattern: ['^.{1,80}$', 'Keep each name under 80 characters']
       - name: pdf
         label: Full paper (PDF)
         widget: string
@@ -96,7 +125,12 @@ collections:
       - name: body
         label: Article
         widget: markdown
-        hint: "Use Heading 2 and 3 for sections; the title is already the top heading. Links must start with https://, mailto: or /."
+        hint: "Use Heading 2 and 3 for sections; the title is already the top heading. Links must start with https://, mailto: or /. Add images with the image button, and give each one a description."
+        # Mirrors the build's checks on the text: no # heading, no HTML, link
+        # targets, and images uploaded here with a description.
+        pattern:
+          - '/^(?<![\s\S])(?![\s\S]*^#[ \t])(?![\s\S]*(?:<!--|<\/?[a-zA-Z][a-zA-Z0-9-]*(?:\s[^>]*)?\/?>))(?![\s\S]*\]\((?!https:\/\/|mailto:|\/|#))(?![\s\S]*!\[\s*\]\()(?![\s\S]*!\[[^\]]*\]\((?!\/articles\/))[\s\S]*$/m'
+          - 'Not allowed in the text: HTML, a heading with a single #, links that don''t start with https://, mailto: or /, and images without a description or not uploaded here'
         buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
         editor_components: [image]
         linked_images: false

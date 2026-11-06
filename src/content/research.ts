@@ -1,3 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
+import { parse as parseYaml } from "yaml";
 import { articlePath, articles } from "./articles";
 import type { Page } from "./types";
 
@@ -1054,6 +1057,22 @@ if (clash.length)
   throw new Error(
     `These articles use the same name as a paper, rename the file: ${clash.map((a) => `src/content/articles/${a.slug}.md`).join(", ")}`,
   );
+
+// The /admin editor blocks paper addresses for new articles with a list in its
+// config. Fail the build if a paper is missing from that list, so the editor
+// can't offer an address the build would then reject.
+// Runs where the file is on disk (builds); skipped in on-demand server renders.
+const editorConfig = path.join(process.cwd(), "public/admin/config.yml");
+if (fs.existsSync(editorConfig)) {
+  const config = parseYaml(fs.readFileSync(editorConfig, "utf8"));
+  const source: string = config?.collections?.find((c: { name?: string }) => c.name === "articles")?.slug?.pattern?.[0] ?? "";
+  const slugRule = new RegExp(source);
+  const missing = papers.filter((p) => slugRule.test(p.slug)).map((p) => p.slug);
+  if (!source || missing.length)
+    throw new Error(
+      `public/admin/config.yml: add these paper slugs to the articles slug pattern so the editor can't reuse them: ${missing.join(", ") || "(pattern not found)"}`,
+    );
+}
 
 /** Every /research/[slug] page: paper summaries and Markdown articles. */
 export const researchSlugs = [...summarized.map((p) => p.slug), ...articles.map((a) => a.slug)];
