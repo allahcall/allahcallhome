@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { articlePath, articles } from "@/content/articles";
 import { pages } from "@/content/pages";
 import { paperPath, summarized } from "@/content/research";
 import { site } from "@/lib/site";
@@ -17,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...summarized.map((p) => ({
       url: `${site.url}${paperPath(p)}`,
       lastModified: p.date,
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+    })),
+    ...articles.map((a) => ({
+      url: `${site.url}${articlePath(a)}`,
+      lastModified: a.date,
       changeFrequency: "yearly" as const,
       priority: 0.6,
     })),

@@ -1,3 +1,4 @@
+import { articlePath, articles } from "@/content/articles";
 import { pages } from "@/content/pages";
 import { paperPage, paperPath, summarized } from "@/content/research";
 import type { Block, Page } from "@/content/types";
@@ -28,6 +29,29 @@ function sections(page: Page, url: string): Omit<SearchDoc, "id">[] {
   ];
 }
 
+/** Plain text of Markdown: drops link targets, images and formatting marks. */
+function plain(md: string) {
+  return md
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/\[\^[^\]]+\]:?/g, " ")
+    .replace(/[*_`>#|~-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/** An article split at its ## headings, so a result can name the section it came from. */
+function articleSections(title: string, summary: string, body: string, url: string): Omit<SearchDoc, "id">[] {
+  const [intro, ...rest] = body.split(/^## +/m);
+  return [
+    { url, page: title, section: "", text: `${title} ${summary} ${plain(intro)}` },
+    ...rest.map((part) => {
+      const [heading, ...lines] = part.split("\n");
+      return { url, page: title, section: plain(heading), text: plain(lines.join("\n")) };
+    }),
+  ];
+}
+
 /** Every page split into sections, for the client-side search index. */
 export function searchDocs(): SearchDoc[] {
   const home = { url: "/", page: "Home", section: "", text: `${site.name} ${site.tagline}. ${site.description}` };
@@ -35,6 +59,7 @@ export function searchDocs(): SearchDoc[] {
     home,
     ...pages.flatMap((p) => sections(p, `/${p.slug}`)),
     ...summarized.flatMap((p) => sections(paperPage({ ...p, summary: p.summary! }), paperPath(p))),
+    ...articles.flatMap((a) => articleSections(a.title, a.summary, a.body, articlePath(a))),
   ]
     .filter((d) => d.section || d.text.trim())
     .map((d, id) => ({ id, ...d }));

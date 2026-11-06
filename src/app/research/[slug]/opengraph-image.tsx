@@ -1,4 +1,5 @@
-import { getPaper, summarized } from "@/content/research";
+import { getArticle } from "@/content/articles";
+import { getPaper, researchSlugs } from "@/content/research";
 import { ogSize, shareCard } from "@/lib/og";
 import { site } from "@/lib/site";
 
@@ -7,10 +8,12 @@ export const size = ogSize;
 export const contentType = "image/png";
 
 export function generateStaticParams() {
-  return summarized.map((p) => ({ slug: p.slug }));
+  return researchSlugs.map((slug) => ({ slug }));
 }
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
-  const paper = getPaper((await params).slug);
-  return shareCard({ label: "Research", title: paper?.summary?.title ?? site.name });
+  const slug = (await params).slug;
+  const article = getArticle(slug);
+  if (article) return shareCard({ label: "Article", title: article.title });
+  return shareCard({ label: "Research", title: getPaper(slug)?.summary?.title ?? site.name });
 }

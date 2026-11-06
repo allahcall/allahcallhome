@@ -1,3 +1,4 @@
+import { articlePath, type Article } from "@/content/articles";
 import { doiUrl, licenseUrl, paperPath, type Paper } from "@/content/research";
 import type { Page } from "@/content/types";
 import { nav, site } from "@/lib/site";
@@ -106,6 +107,31 @@ export function paperLd(paper: Paper): Thing[] {
       identifier: { "@type": "PropertyValue", propertyID: "DOI", value: paper.doi },
       sameAs: doiUrl(paper),
       license: licenseUrl(paper),
+      mainEntityOfPage: url,
+    },
+  ];
+}
+
+export function articleLd(article: Article): Thing[] {
+  const url = `${site.url}${articlePath(article)}`;
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { name: "Home", item: site.url },
+        { name: "Research", item: `${site.url}/research` },
+        { name: article.title, item: url },
+      ].map((t, i) => ({ "@type": "ListItem", position: i + 1, ...t })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: article.title,
+      description: article.summary,
+      author: article.authors.map((name) => ({ "@type": "Person", name })),
+      datePublished: article.date,
+      publisher: { "@id": orgId },
       mainEntityOfPage: url,
     },
   ];

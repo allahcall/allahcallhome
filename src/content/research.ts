@@ -1,3 +1,4 @@
+import { articlePath, articles } from "./articles";
 import type { Page } from "./types";
 
 /**
@@ -1047,6 +1048,16 @@ export const paperPath = (p: Paper) => `/research/${p.slug}`;
 /** Papers with our own write-up, which get a page on this site. */
 export const summarized = papers.filter((p) => p.summary);
 
+// Articles and paper summaries share /research/[slug], so a name can only be used once.
+const clash = articles.filter((a) => papers.some((p) => p.slug === a.slug));
+if (clash.length)
+  throw new Error(
+    `These articles use the same name as a paper, rename the file: ${clash.map((a) => `src/content/articles/${a.slug}.md`).join(", ")}`,
+  );
+
+/** Every /research/[slug] page: paper summaries and Markdown articles. */
+export const researchSlugs = [...summarized.map((p) => p.slug), ...articles.map((a) => a.slug)];
+
 export function getPaper(slug: string): Paper | undefined {
   return summarized.find((p) => p.slug === slug);
 }
@@ -1076,6 +1087,7 @@ export const researchPage: Page = {
       body: [
         `These ${papers.length} papers were published in academic journals between 2024 and 2026. Each one is open access: you can read and download the full paper for free.`,
         "Most papers have a short write-up on this site that explains the argument in plain language, with a link to the full paper. Papers marked “Full paper” open the original directly.",
+        ...(articles.length ? ["Articles written for this site are listed first under each topic, marked “Article”."] : []),
       ],
     },
     {
@@ -1105,15 +1117,21 @@ export const researchPage: Page = {
       lede: t.lede,
       cols: 3 as const,
       ...(i % 2 ? { tone: "alt" as const } : {}),
-      items: papers
-        .filter((p) => p.topic === t.id)
-        .sort((a, b) => Number(!!b.summary) - Number(!!a.summary))
-        .map((p) => ({
-          title: p.summary?.title ?? p.title,
-          meta: p.summary ? citeLine(p) : `Full paper · ${citeLine(p)}`,
-          body: p.blurb,
-          href: p.summary ? paperPath(p) : doiUrl(p),
-        })),
+      items: [
+        // Articles first, newest at the top, then papers with a write-up, then the rest.
+        ...articles
+          .filter((a) => a.topic === t.id)
+          .map((a) => ({ title: a.title, meta: `Article · ${a.date.slice(0, 4)}`, body: a.summary, href: articlePath(a) })),
+        ...papers
+          .filter((p) => p.topic === t.id)
+          .sort((a, b) => Number(!!b.summary) - Number(!!a.summary))
+          .map((p) => ({
+            title: p.summary?.title ?? p.title,
+            meta: p.summary ? citeLine(p) : `Full paper · ${citeLine(p)}`,
+            body: p.blurb,
+            href: p.summary ? paperPath(p) : doiUrl(p),
+          })),
+      ],
     })),
     {
       type: "cta",
@@ -1162,7 +1180,7 @@ export function paperPage(p: Paper & { summary: NonNullable<Paper["summary"]> })
   };
 }
 
-function longDate(iso: string) {
+export function longDate(iso: string) {
   if (iso.length === 4) return iso;
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 }
