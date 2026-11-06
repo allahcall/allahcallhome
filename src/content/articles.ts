@@ -163,9 +163,10 @@ export function parseArticle(file: string, source: string): Article | null | str
     } else if (!/^https:\/\/[^\s/]+\.[^\s/]+\S*$/.test(pdf)) problems.push(`"pdf" must be an https:// link or /papers/file-name.pdf`);
   }
 
+  // Any length is fine; only a published article needs text at all.
   const body = parts.body.trim();
-  if (body.length < 200) problems.push("the article text is missing or too short");
-  else checkBody(parser.parse(parts.body), parts.offset, problems);
+  if (!body && head.draft !== true) problems.push("the article has no text under the header");
+  checkBody(parser.parse(parts.body), parts.offset, problems);
 
   if (problems.length) return problems;
   if (head.draft === true) return null;
