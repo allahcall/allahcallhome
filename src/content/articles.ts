@@ -51,15 +51,28 @@ function splitFrontMatter(source: string): { head: string; body: string; offset:
   return { head: m[1], body: m[2], offset };
 }
 
-function publicFileExists(urlPath: string) {
+const MB = 1024 * 1024;
+/** Largest files an article can use. Images uploaded in /admin are resized well under this. */
+export const maxImageBytes = 5 * MB;
+export const maxPdfBytes = 25 * MB;
+
+/** Size in bytes of a file under public/, or undefined when it isn't there. */
+function publicFileSize(urlPath: string): number | undefined {
   let decoded: string;
   try {
     decoded = decodeURI(urlPath);
   } catch {
-    return false;
+    return undefined;
   }
   const file = path.normalize(path.join(publicDir, decoded));
-  return file.startsWith(publicDir + path.sep) && fs.existsSync(file);
+  if (!file.startsWith(publicDir + path.sep) || !fs.existsSync(file)) return undefined;
+  return fs.statSync(file).size;
+}
+
+function sizeProblem(what: string, urlPath: string, folder: string, max: number): string | undefined {
+  const size = publicFileSize(urlPath);
+  if (size === undefined) return `${what} "${urlPath}" was not found in public/${folder}/`;
+  if (size > max) return `${what} "${urlPath}" is ${(size / MB).toFixed(1)} MB, keep it under ${max / MB} MB`;
 }
 
 /** Links a reader can follow: other sites over https, email, and pages on this site. */
@@ -88,7 +101,10 @@ function checkBody(tree: Root, offset: number, problems: string[]) {
       case "image":
         if (!node.alt?.trim()) problems.push(`image "${node.url}" needs a description in the [brackets]${line}`);
         if (!node.url.startsWith("/articles/")) problems.push(`image "${node.url}" must be a file in public/articles/${line}`);
-        else if (!publicFileExists(node.url)) problems.push(`image "${node.url}" was not found in public/articles/${line}`);
+        else {
+          const p = sizeProblem("image", node.url, "articles", maxImageBytes);
+          if (p) problems.push(p + line);
+        }
         break;
       case "imageReference":
         problems.push(`write images as ![description](/articles/file.webp), not as references${line}`);
@@ -159,7 +175,10 @@ export function parseArticle(file: string, source: string): Article | null | str
     pdf = typeof head.pdf === "string" ? head.pdf.trim() : "";
     if (pdf.startsWith("/")) {
       if (!/^\/papers\/[\w.-]+\.pdf$/.test(pdf)) problems.push(`"pdf" on this site must look like /papers/file-name.pdf`);
-      else if (!publicFileExists(pdf)) problems.push(`"pdf" ${pdf} was not found in public/papers/`);
+      else {
+        const p = sizeProblem('"pdf"', pdf, "papers", maxPdfBytes);
+        if (p) problems.push(p);
+      }
     } else if (!/^https:\/\/[^\s/]+\.[^\s/]+\S*$/.test(pdf)) problems.push(`"pdf" must be an https:// link or /papers/file-name.pdf`);
   }
 

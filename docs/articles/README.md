@@ -73,6 +73,21 @@ More text, with **bold**, *italics* and [a link](https://example.com).
 
 HTML, scripts, embeds and images from other websites are not allowed.
 
+## Limits
+
+The editor at /admin shows these as you type, and the build enforces them.
+
+| What | Limit |
+| ---- | ----- |
+| Title | 120 characters |
+| Summary | 320 characters |
+| Each author's name | 80 characters |
+| Address (file name) | lowercase words joined by hyphens, not the address of an existing paper |
+| Article length | none, but a published article can't be empty |
+| Images | 5 MB each. The editor shrinks uploads to 1600 pixels wide as WebP (PNG in Safari), and accepts uploads up to 15 MB before shrinking |
+| PDFs in public/papers | 25 MB each |
+| Number of articles | none |
+
 ## If something is wrong
 
 Every article is checked when the site builds. If one has a problem (a missing
