@@ -61,6 +61,39 @@ export function MobileNav() {
     setOpen(false);
   }
 
+  // Like a native app, the tab bar slides away while reading down the page and
+  // comes back the moment the reader scrolls up (or reaches the top).
+  const [tucked, setTucked] = useState(false);
+  useEffect(() => {
+    let last = window.scrollY;
+    let frame = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const atEnd = y + window.innerHeight >= document.documentElement.scrollHeight - 4;
+        if (y < 64 || atEnd) setTucked(false);
+        else if (y > last + 6) setTucked(true);
+        else if (y < last - 6) setTucked(false);
+        else return;
+        last = y;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+  const hidden = tucked && !open;
+
+  // A new page starts with the bar showing.
+  const [shownPath, setShownPath] = useState(pathname);
+  if (pathname !== shownPath) {
+    setShownPath(pathname);
+    setTucked(false);
+  }
+
   useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : "";
     if (!open) return;
@@ -133,7 +166,8 @@ export function MobileNav() {
 
       <nav
         aria-label="Quick links"
-        className="fixed inset-x-0 bottom-0 z-50 [view-transition-name:tab-bar] border-t border-line bg-paper/95 pb-[calc(env(safe-area-inset-bottom))] backdrop-blur-md"
+        onFocus={() => setTucked(false)}
+        className={`fixed inset-x-0 bottom-0 z-50 [view-transition-name:tab-bar] glass border-t [--glass-tint:var(--color-paper)] pb-[calc(env(safe-area-inset-bottom))] transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none ${hidden ? "translate-y-[calc(100%+1px)]" : ""}`}
       >
         <ul className="mx-auto grid h-16 max-w-xl grid-cols-5">
           {tabs.map((t) => {

@@ -463,3 +463,15 @@
     white-space: nowrap;
   }
 }
+
+/*
+ * Frosted glass for the bars that float over content (site header, phone tab
+ * bar): mostly see-through, with a strong blur so text behind stays unreadable
+ * and a hairline edge that catches the light.
+ */
+@utility glass {
+  background: color-mix(in oklab, var(--glass-tint, var(--color-canvas)) 62%, transparent);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
+  border-color: color-mix(in oklab, var(--color-line) 70%, transparent);
+}
