@@ -120,12 +120,12 @@ export default function Home() {
   return (
     <PageTransition>
       <div className="wrap pt-1.5 md:pt-4">
-        <div className="grid gap-3 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:gap-4">
-          <header className="relative isolate flex min-h-[460px] flex-col justify-end overflow-hidden rounded-[24px] text-white md:min-h-[520px] lg:min-h-[580px]">
+        <div className="grid gap-3 lg:gap-4">
+          <header className="relative isolate flex min-h-[460px] flex-col justify-end overflow-hidden rounded-[24px] text-white md:min-h-[520px]">
             <div className="absolute inset-0 -z-10">
               <Photo
                 image={{ src: "/images/mosque-window.webp", alt: "Light falling through a mosque window" }}
-                sizes="(min-width: 1024px) 60vw, 100vw"
+                sizes="100vw"
                 priority
                 position="center 40%"
                 className="h-full"
@@ -158,29 +158,19 @@ export default function Home() {
             </div>
           </header>
 
-          <div className="grid content-start gap-3 sm:grid-cols-2 lg:grid-cols-1 lg:grid-rows-[1fr_auto] lg:content-stretch lg:gap-4">
-            <dl className="grid grid-cols-2 gap-2.5 sm:col-span-2 lg:col-span-1 lg:auto-rows-fr lg:gap-4">
-              {stats.map((s) => (
-                <div key={s.label} className="card flex flex-col p-4 lg:justify-between lg:p-6">
-                  <dd className="font-serif text-[30px] leading-none font-medium tracking-[-0.02em] text-green lg:text-[36px]">{s.value}</dd>
-                  <dt className="mt-2 text-[13px] leading-snug text-muted">{s.label}</dt>
-                </div>
-              ))}
-            </dl>
-            <Link href="/events" className="card group flex items-center gap-4 p-3.5 sm:col-span-2 lg:col-span-1">
-              <span className="grid size-16 shrink-0 place-items-center content-center rounded-[14px] bg-green-tint text-center leading-tight text-green">
-                <span className="text-[11px] font-bold tracking-wide">EVERY</span>
-                <span className="text-[20px] font-bold">SAT</span>
-              </span>
-              <span className="min-w-0">
-                <span className="block text-[16px] font-semibold">New Muslims Support Group</span>
-                <span className="block text-[13.5px] text-muted">3–5 PM · Online · Weekly</span>
-              </span>
-              <span aria-hidden className="ml-auto grid size-9 shrink-0 place-items-center rounded-[12px] bg-canvas transition-transform group-hover:translate-x-0.5">
-                →
-              </span>
-            </Link>
-          </div>
+          <Link href="/events" className="card group flex items-center gap-4 p-3.5">
+            <span className="grid size-16 shrink-0 place-items-center content-center rounded-[14px] bg-green-tint text-center leading-tight text-green">
+              <span className="text-[11px] font-bold tracking-wide">EVERY</span>
+              <span className="text-[20px] font-bold">SAT</span>
+            </span>
+            <span className="min-w-0">
+              <span className="block text-[16px] font-semibold">New Muslims Support Group</span>
+              <span className="block text-[13.5px] text-muted">3–5 PM · Online · Weekly</span>
+            </span>
+            <span aria-hidden className="ml-auto grid size-9 shrink-0 place-items-center rounded-[12px] bg-canvas transition-transform group-hover:translate-x-0.5">
+              →
+            </span>
+          </Link>
         </div>
 
         <nav aria-label="Topics" className="rail mt-4 [--rail-col:auto] md:flex md:flex-wrap md:gap-2">
@@ -240,6 +230,14 @@ export default function Home() {
                 welcoming and inclusive environment.
               </p>
               <Ticks items={mission} className="mt-5" />
+              <dl className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-line pt-4 sm:grid-cols-4">
+                {stats.map((s) => (
+                  <div key={s.label} className="flex flex-col-reverse justify-end">
+                    <dt className="mt-1 text-[12px] leading-snug text-muted">{s.label}</dt>
+                    <dd className="text-[16px] leading-none font-semibold text-ink-2">{s.value}</dd>
+                  </div>
+                ))}
+              </dl>
               <ButtonLink href="/about" variant="secondary" arrow className="mt-6 max-sm:w-full">
                 Discover more
               </ButtonLink>
