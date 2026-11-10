@@ -315,6 +315,33 @@ export const aboutPages: Page[] = [
             ],
           },
           {
+            name: "Mufti Saifullah Taunsvi",
+            role: "Islamic scholar · Mufti · Teacher",
+            image: { src: "/images/team/saifullah.jpg", alt: "Portrait of Mufti Saifullah Taunsvi" },
+            bio: "Mufti at Jamia-tur-Rasheed, Karachi, with 18 years of work in fiqh and fatwa. He heads the Department of Fiqh al-Halal and teaches in the Takhassus fil-Hadith and Takhassus fil-Ifta programmes. He graduated in Dars-e-Nizami from Jamia Dar-ul-Uloom Karachi, completed specialisations in ifta, hadith and halal jurisprudence at Jamia-tur-Rasheed, and holds an M.A. in English from NUML. He is the author of Munazara ke Usool wa Aadab, on the principles and etiquette of scholarly debate.",
+            highlights: [
+              "400+ fatwas issued",
+              "Head of the Department of Fiqh al-Halal, Jamia-tur-Rasheed",
+              "Has lectured on Sunan Abi Dawud for 8 years",
+              "Teaches Fiqh al-Halal to BS students, covering the rulings across the madhhabs",
+              "Trained as a Halal Lead Auditor (OIC/SMIIC, GSO, MS 1500 and ISO 22000 standards)",
+              "Hafiz of the Qur'an",
+            ],
+          },
+          {
+            name: "Muaz Bin Zia",
+            role: "Islamic scholar · Islamic psychotherapy practitioner",
+            image: { src: "/images/team/muaz.jpg", alt: "Portrait of Muaz Bin Zia" },
+            bio: "Islamic scholar and psychology professional working where Islamic scholarship meets psychotherapy and mental health. He holds the Shahadah A'lamiyyah (Dars-e-Nizami), specialises in Islamic fiqh and research, and has studied psychology and, at postgraduate level, Islamic psychotherapy. His work brings the intellectual and spiritual heritage of Islam together with modern psychology to care for the mental health of Muslims. He founded the International Faculty for Educational & Psychological Studies (IFEPS), which works on education, Islamic psychology and mental health awareness.",
+            highlights: [
+              "Offers counselling and psychotherapy, with a focus on Muslim mental health and faith-sensitive care",
+              "Researches and writes on bringing Islamic scholarship and modern psychology together",
+              "Teaches Fiqh, Usul al-Fiqh, Arabic and Islamic studies, and leads curriculum development",
+              "Runs sessions, workshops and training for scholars, teachers, students and the wider community",
+              "Founder of IFEPS",
+            ],
+          },
+          {
             name: "Muhammad Zeeshan",
             role: "Marketing Manager",
             image: { src: "/images/team/zeeshan.jpg", alt: "Portrait of Muhammad Zeeshan" },

@@ -85,7 +85,8 @@ const mission = [
 
 const team: Person[] = [
   { name: "Hafiz Muhammad Harris Suhaib", role: "Founder & CEO", image: { src: "/images/team/hafiz.jpg", alt: "Hafiz Muhammad Harris Suhaib" } },
-  { name: "Muhammad Zeeshan", role: "Marketing Manager", image: { src: "/images/team/zeeshan.jpg", alt: "Muhammad Zeeshan" } },
+  { name: "Mufti Saifullah Taunsvi", role: "Mufti · Head of Fiqh al-Halal", image: { src: "/images/team/saifullah.jpg", alt: "Mufti Saifullah Taunsvi" } },
+  { name: "Muaz Bin Zia", role: "Scholar · Islamic psychotherapist", image: { src: "/images/team/muaz.jpg", alt: "Muaz Bin Zia" } },
 ];
 
 const faq = [
