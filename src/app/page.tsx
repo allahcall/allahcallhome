@@ -230,14 +230,6 @@ export default function Home() {
                 welcoming and inclusive environment.
               </p>
               <Ticks items={mission} className="mt-5" />
-              <dl className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-line pt-4 sm:grid-cols-4">
-                {stats.map((s) => (
-                  <div key={s.label} className="flex flex-col-reverse justify-end">
-                    <dt className="mt-1 text-[12px] leading-snug text-muted">{s.label}</dt>
-                    <dd className="text-[16px] leading-none font-semibold text-ink-2">{s.value}</dd>
-                  </div>
-                ))}
-              </dl>
               <ButtonLink href="/about" variant="secondary" arrow className="mt-6 max-sm:w-full">
                 Discover more
               </ButtonLink>
@@ -272,6 +264,21 @@ export default function Home() {
           image: { src: "/images/quran.webp", alt: "A copy of the Quran on a dark cloth" },
         }}
       />
+
+      <Section>
+        <SectionHead label="Our reach" title="A growing community, by the grace of Allah." />
+        <dl className="card grid grid-cols-2 overflow-hidden md:grid-cols-4">
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              className={`flex flex-col-reverse justify-end p-5 md:p-8 ${i % 2 ? "border-l border-line" : ""} ${i > 1 ? "border-t border-line md:border-t-0" : ""} ${i === 2 ? "md:border-l" : ""}`}
+            >
+              <dt className="mt-2 text-[13.5px] leading-snug text-muted">{s.label}</dt>
+              <dd className="font-serif text-[32px] leading-none font-medium tracking-[-0.02em] text-green md:text-[44px]">{s.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
 
       <Section>
         <SectionHead label="Our people" title="Scholars and professionals in service of the message." link={{ label: "Board", href: "/board-of-directors" }} />
