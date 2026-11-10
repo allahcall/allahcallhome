@@ -6,7 +6,7 @@ import { Search } from "./search";
 
 export function Header() {
   return (
-    <header className="glass sticky top-0 z-40 [--glass-top:48px] [view-transition-name:site-header] border-b">
+    <header className="glass sticky top-0 z-40 [view-transition-name:site-header] border-b">
       <div className="wrap flex h-15 items-center gap-3 lg:h-18 lg:gap-6">
         <Link href="/" className="flex min-w-0 items-center gap-2.5" aria-label={`${site.name} home`}>
           <Mark />
