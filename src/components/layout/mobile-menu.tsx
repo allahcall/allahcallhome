@@ -110,9 +110,9 @@ export function MobileNav() {
       <div
         id="menu-sheet"
         hidden={!open}
-        className="fixed inset-x-0 top-0 bottom-[calc(4rem+env(safe-area-inset-bottom))] z-40 overflow-y-auto overscroll-contain bg-canvas"
+        className="fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-canvas"
       >
-        <nav aria-label="Menu" className="wrap pt-5 pb-10">
+        <nav aria-label="Menu" className="wrap pt-5 pb-[calc(6.5rem+env(safe-area-inset-bottom))]">
           <div className="flex items-center justify-between">
             <p className="text-[22px] font-semibold tracking-[-0.02em]">Menu</p>
             <button
@@ -167,16 +167,16 @@ export function MobileNav() {
       <nav
         aria-label="Quick links"
         onFocus={() => setTucked(false)}
-        className={`fixed inset-x-0 bottom-0 z-50 [view-transition-name:tab-bar] glass border-t [--glass-tint:var(--color-paper)] [--glass-bottom:48px] pb-[calc(env(safe-area-inset-bottom))] transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none ${hidden ? "translate-y-[calc(100%+1px)]" : ""}`}
+        className={`fixed inset-x-3 bottom-[calc(env(safe-area-inset-bottom)+10px)] z-50 mx-auto max-w-md overflow-hidden rounded-[28px] border [view-transition-name:tab-bar] glass [--glass-tint:var(--color-paper)] [--glass-x:0px] shadow-[0_12px_32px_-8px_rgb(15_21_19/0.28)] transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none dark:shadow-[0_12px_32px_-8px_rgb(0_0_0/0.7)] ${hidden ? "translate-y-[calc(100%+env(safe-area-inset-bottom)+24px)]" : ""}`}
       >
-        <ul className="mx-auto grid h-16 max-w-xl grid-cols-5">
+        <ul className="grid h-16 grid-cols-5 px-1">
           {tabs.map((t) => {
             const on = !open && t.match.includes(pathname);
             if (!t.icon)
               return (
                 <li key={t.label}>
                   <Link href={t.href} onClick={close} className={tabClass(true)} aria-current={on ? "page" : undefined}>
-                    <span className="grid h-8.5 w-11.5 place-items-center rounded-[12px] bg-brand text-white">
+                    <span className="grid h-8.5 w-12 place-items-center rounded-full bg-brand text-white">
                       <Star className="size-5" />
                     </span>
                     {t.label}
