@@ -8,7 +8,7 @@ import { MobileNav } from "@/components/layout/mobile-menu";
 import { JsonLd, siteLd } from "@/components/seo/json-ld";
 import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
-import { themeScript } from "@/lib/theme";
+import { BAR_COLORS, themeScript } from "@/lib/theme";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3f5f4" },
-    { media: "(prefers-color-scheme: dark)", color: "#0c1110" },
+    { media: "(prefers-color-scheme: light)", color: BAR_COLORS.light },
+    { media: "(prefers-color-scheme: dark)", color: BAR_COLORS.dark },
   ],
   viewportFit: "cover",
 };
