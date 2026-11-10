@@ -466,12 +466,25 @@
 
 /*
  * Frosted glass for the bars that float over content (site header, phone tab
- * bar): mostly see-through, with a strong blur so text behind stays unreadable
- * and a hairline edge that catches the light.
+ * bar): mostly see-through, with a blur so text behind stays unreadable and a
+ * hairline edge that catches the light.
+ *
+ * The glass is drawn on a ::before that runs 48px past the screen edges. A blur
+ * fades out near the edges of whatever it is drawn on, which showed as pale
+ * bands at the sides of the bars; pushing those edges off screen hides them.
+ * --glass-top / --glass-bottom extend it past the edge the bar is pinned to.
  */
 @utility glass {
-  background: color-mix(in oklab, var(--glass-tint, var(--color-canvas)) 62%, transparent);
-  -webkit-backdrop-filter: blur(22px) saturate(180%);
-  backdrop-filter: blur(22px) saturate(180%);
+  isolation: isolate;
   border-color: color-mix(in oklab, var(--color-line) 70%, transparent);
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: calc(var(--glass-top, 0px) * -1) -48px calc(var(--glass-bottom, 0px) * -1);
+    background: color-mix(in oklab, var(--glass-tint, var(--color-canvas)) 64%, transparent);
+    -webkit-backdrop-filter: blur(22px) saturate(140%);
+    backdrop-filter: blur(22px) saturate(140%);
+    pointer-events: none;
+  }
 }

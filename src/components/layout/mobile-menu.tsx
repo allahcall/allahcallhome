@@ -167,7 +167,7 @@ export function MobileNav() {
       <nav
         aria-label="Quick links"
         onFocus={() => setTucked(false)}
-        className={`fixed inset-x-0 bottom-0 z-50 [view-transition-name:tab-bar] glass border-t [--glass-tint:var(--color-paper)] pb-[calc(env(safe-area-inset-bottom))] transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none ${hidden ? "translate-y-[calc(100%+1px)]" : ""}`}
+        className={`fixed inset-x-0 bottom-0 z-50 [view-transition-name:tab-bar] glass border-t [--glass-tint:var(--color-paper)] [--glass-bottom:48px] pb-[calc(env(safe-area-inset-bottom))] transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none ${hidden ? "translate-y-[calc(100%+1px)]" : ""}`}
       >
         <ul className="mx-auto grid h-16 max-w-xl grid-cols-5">
           {tabs.map((t) => {
