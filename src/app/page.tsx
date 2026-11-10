@@ -217,40 +217,37 @@ export default function Home() {
       <Shahada block={{ type: "shahada", action: { label: "Understand the Shahada", href: "/shahada" } }} />
 
       <Section>
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-4">
-          <div>
-            <SectionHead label="About us" title="Get to know more about Islam" />
-            <div className="card p-5 md:p-7">
-              <p className="font-serif text-[21px] leading-snug tracking-[-0.01em] md:text-[24px]">
-                Our mission is to make Islamic knowledge accessible to everyone, in a comprehensive and authentic manner.
-              </p>
-              <p className="mt-3 text-[15px] text-ink-2">
-                Welcome to our Islamic learning platform. We help people understand the true teachings of Islam through
-                reliable sources and scholarly guidance, with resources, educational materials and expert guidance in a
-                welcoming and inclusive environment.
-              </p>
-              <Ticks items={mission} className="mt-5" />
-              <ButtonLink href="/about" variant="secondary" arrow className="mt-6 max-sm:w-full">
-                Discover more
-              </ButtonLink>
-            </div>
-          </div>
-          <div>
-            <SectionHead label="Questions" title="Everything you need to know" link={{ label: "Ask us", href: "/contact" }} />
-            <div className="card divide-y divide-line">
-              {faq.map((item, i) => (
-                <details key={item.q} open={i === 0} className="group">
-                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 px-5 py-4 text-[15.5px] font-semibold md:px-7">
-                    {item.q}
-                    <span aria-hidden className="text-xl leading-none font-light text-muted transition-transform group-open:rotate-45">
-                      +
-                    </span>
-                  </summary>
-                  <p className="px-5 pb-5 text-[15px] text-ink-2 md:px-7">{item.a}</p>
-                </details>
-              ))}
-            </div>
-          </div>
+        <SectionHead label="About us" title="Get to know more about Islam" />
+        <div className="card p-5 md:p-10">
+          <p className="max-w-[30em] font-serif text-[23px] leading-snug tracking-[-0.01em] md:text-[30px]">
+            Our mission is to make Islamic knowledge accessible to everyone, in a comprehensive and authentic manner.
+          </p>
+          <p className="mt-4 max-w-[46em] text-[15px] text-ink-2 md:text-[16px]">
+            Welcome to our Islamic learning platform. We help people understand the true teachings of Islam through
+            reliable sources and scholarly guidance, with resources, educational materials and expert guidance in a
+            welcoming and inclusive environment.
+          </p>
+          <Ticks items={mission} className="mt-5" />
+          <ButtonLink href="/about" variant="secondary" arrow className="mt-6 max-sm:w-full">
+            Discover more
+          </ButtonLink>
+        </div>
+      </Section>
+
+      <Section>
+        <SectionHead label="Questions" title="Everything you need to know" link={{ label: "Ask us", href: "/contact" }} />
+        <div className="card divide-y divide-line">
+          {faq.map((item, i) => (
+            <details key={item.q} open={i === 0} className="group">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 px-5 py-4 text-[15.5px] font-semibold md:px-8 md:py-5 md:text-[16.5px]">
+                {item.q}
+                <span aria-hidden className="text-xl leading-none font-light text-muted transition-transform group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p className="max-w-[60em] px-5 pb-5 text-[15px] text-ink-2 md:px-8 md:pb-6">{item.a}</p>
+            </details>
+          ))}
         </div>
       </Section>
 
