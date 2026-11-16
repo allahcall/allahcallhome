@@ -87,6 +87,7 @@ const team: Person[] = [
   { name: "Hafiz Muhammad Harris Suhaib", role: "Founder & CEO", image: { src: "/images/team/hafiz.jpg", alt: "Hafiz Muhammad Harris Suhaib" } },
   { name: "Mufti Saifullah Taunsvi", role: "Mufti · Head of Fiqh al-Halal", image: { src: "/images/team/saifullah.jpg", alt: "Mufti Saifullah Taunsvi" } },
   { name: "Muaz Bin Zia", role: "Scholar · Islamic psychotherapist", image: { src: "/images/team/muaz.jpg", alt: "Muaz Bin Zia" } },
+  { name: "Dr. Mufti Muhammad Ismail Aarifi", role: "Scholar · Chairman, Usool-ud-Din", image: { src: "/images/team/ismail.jpg", alt: "Dr. Mufti Muhammad Ismail Aarifi" } },
 ];
 
 const faq = [
