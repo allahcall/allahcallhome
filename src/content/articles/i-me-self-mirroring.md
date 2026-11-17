@@ -11,7 +11,7 @@ draft: false
 
 ## **Poem**
 
-![Self Mirroring](articles/self-mirroring.jpg)
+<img width="840" height="1260" alt="self-mirroring" src="https://github.com/user-attachments/assets/a94363c2-4734-4547-8dc5-2b41ace1a2f5" />
 
 
 **When I look at you, I see**
