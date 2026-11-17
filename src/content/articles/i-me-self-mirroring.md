@@ -11,7 +11,7 @@ draft: false
 
 ## **Poem**
 
-![ Self Mirroring](public/images/self- mirroring.jpg)
+![Self Mirroring](public/articles/self-mirroring.jpg)
 
 
 **When I look at you, I see**
