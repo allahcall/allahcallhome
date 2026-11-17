@@ -19,6 +19,7 @@ draft: false
 
 **And feel a bond that makes me known**
 
+![Mufti Pic](/articles/whatsapp-image-2026-11-14-at-18-20-26.webp "Mufti Picture from board")
 > _But are you really my reflection_
 
 > _Or just a projection of my affection_
