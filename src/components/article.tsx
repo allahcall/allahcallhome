@@ -26,10 +26,11 @@ const components: Components = {
   // The page hero holds the only <h1>; the build rejects # headings, this is a backstop.
   h1: ({ children }) => <h2>{children}</h2>,
   img: ({ src, alt }) =>
-    typeof src === "string" && src.startsWith("/articles/") ? (
-      // Local files under public/articles, checked at build time.
+    typeof src === "string" && (src.startsWith("/articles/") || src.startsWith("https://")) ? (
+      // Files under public/articles or https links, checked at build time.
+      // No referrer, so other sites don't learn which article showed their image.
       // eslint-disable-next-line @next/next/no-img-element
-      <img src={src} alt={alt ?? ""} loading="lazy" decoding="async" />
+      <img src={src} alt={alt ?? ""} loading="lazy" decoding="async" referrerPolicy="no-referrer" />
     ) : null,
 };
 

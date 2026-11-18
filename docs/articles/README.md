@@ -66,8 +66,7 @@ More text, with **bold**, *italics* and [a link](https://example.com).
 - `## Heading` and `### Smaller heading` (not `#`: the title is the page's only top heading)
 - Paragraphs, **bold**, *italics*, > quotes, lists, tables, and footnotes[^1]
 - Links that start with `https://`, `mailto:`, or `/` for pages on this site
-- Images: put the file in `public/articles/` and write `![What the image shows](/articles/file.webp)`
-  (the editor's image button does this for you)
+- Images: upload with the image button (saved to `public/articles/`), or link one over https: `![What the image shows](https://example.com/photo.jpg)`
 
 [^1]: Footnotes look like this.
 

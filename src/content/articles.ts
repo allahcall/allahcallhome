@@ -100,8 +100,11 @@ function checkBody(tree: Root, offset: number, problems: string[]) {
       }
       case "image":
         if (!node.alt?.trim()) problems.push(`image "${node.url}" needs a description in the [brackets]${line}`);
-        if (!node.url.startsWith("/articles/")) problems.push(`image "${node.url}" must be a file in public/articles/${line}`);
-        else {
+        if (/^https:\/\/[^\s/]+\.[^\s/]+\S*$/.test(node.url)) {
+          // Linked from another site (e.g. GitHub); its size can't be checked here.
+        } else if (!node.url.startsWith("/articles/")) {
+          problems.push(`image "${node.url}" must be an https:// link or a file in public/articles/${line}`);
+        } else {
           const p = sizeProblem("image", node.url, "articles", maxImageBytes);
           if (p) problems.push(p + line);
         }

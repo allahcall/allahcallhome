@@ -2,12 +2,12 @@ import type { NextConfig } from "next";
 
 // Static pages can't carry per-request nonces, so inline scripts are allowed
 // (Next's guidance for statically rendered sites); everything else is locked
-// to this origin plus Formspree, which receives the forms.
+// to this origin (images may also come over https) plus Formspree, which receives the forms.
 const csp = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
+  "img-src 'self' data: blob: https:", // articles may link images from other sites
   "font-src 'self'",
   "connect-src 'self' https://formspree.io",
   "form-action 'self' https://formspree.io",
@@ -25,7 +25,7 @@ const adminCsp = [
   "script-src 'self' https://unpkg.com",
   "style-src 'self' 'unsafe-inline'",
   "font-src 'self' https://cdn.jsdelivr.net",
-  "img-src 'self' blob: data: https://*.githubusercontent.com",
+  "img-src 'self' blob: data: https:",
   "media-src blob:",
   "frame-src blob:",
   "connect-src 'self' blob: data: https://unpkg.com https://api.github.com https://*.githubusercontent.com https://www.githubstatus.com",
