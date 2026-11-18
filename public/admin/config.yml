@@ -128,9 +128,11 @@ collections:
         hint: "Use Heading 2 and 3 for sections; the title is already the top heading. Links must start with https://, mailto: or /. Add images with the image button (or paste an https:// image link), and give each one a description."
         # Mirrors the build's checks on the text: no # heading, no HTML, link
         # targets, and images (uploaded here or an https:// link) with a description.
+        # A just-uploaded image shows as a blob: link until Save, which swaps it
+        # for its /articles/ path, so blob: has to pass here too.
         pattern:
-          - '/^(?<![\s\S])(?![\s\S]*^#[ \t])(?![\s\S]*(?:<!--|<\/?[a-zA-Z][a-zA-Z0-9-]*(?:\s[^>]*)?\/?>))(?![\s\S]*\]\((?!https:\/\/|mailto:|\/|#))(?![\s\S]*!\[\s*\]\()(?![\s\S]*!\[[^\]]*\]\((?!\/articles\/|https:\/\/))[\s\S]*$/m'
-          - 'Not allowed in the text: HTML, a heading with a single #, links that don''t start with https://, mailto: or /, and images without a description or whose link doesn''t start with https:// or /articles/'
+          - '/^(?<![\s\S])(?![\s\S]*^#[ \t])(?![\s\S]*(?:<!--|<\/?[a-zA-Z][a-zA-Z0-9-]*(?:\s[^>]*)?\/?>))(?![\s\S]*\]\((?!https:\/\/|mailto:|\/|#|blob:))(?![\s\S]*!\[\s*\]\()(?![\s\S]*!\[[^\]]*\]\((?!\/articles\/|https:\/\/|blob:))[\s\S]*$/m'
+          - 'Check the text: every image needs Alt Text (the description in ![ ]), and HTML, a single # heading, and links not starting with https://, mailto: or / aren''t allowed'
         buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list]
         editor_components: [image]
         linked_images: false
