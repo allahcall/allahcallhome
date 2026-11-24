@@ -19,7 +19,7 @@ const columns = [
       { label: "Islam", href: "/islam" },
       { label: "New Muslims", href: "/new-muslims" },
       { label: "Religions", href: "/religions" },
-      { label: "Research", href: "/research" },
+      { label: "Articles", href: "/articles" },
       { label: "Our work", href: "/our-work" },
     ],
   },

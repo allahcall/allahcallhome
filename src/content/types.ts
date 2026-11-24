@@ -25,7 +25,7 @@ export type Block =
   /** Label + heading on the left, paragraphs on the right. */
   | { type: "prose"; label?: string; title: string; body: string[] }
   /** Hairline-divided columns of text, optional bullet lists and links. */
-  | { type: "columns"; label?: string; title?: string; lede?: string; cols?: 2 | 3 | 4; items: Item[]; tone?: "alt" }
+  | { type: "columns"; id?: string; label?: string; title?: string; lede?: string; cols?: 2 | 3 | 4; items: Item[]; tone?: "alt" }
   /** Image-led cards. With `href` the whole card links. */
   | { type: "cards"; label?: string; title?: string; lede?: string; cols?: 2 | 3; items: (Item & { image: Img })[]; tone?: "alt" }
   /** Numbered steps. */
@@ -40,7 +40,7 @@ export type Block =
   | { type: "people"; label?: string; title?: string; lede?: string; items: Person[] }
   | { type: "events"; label?: string; title?: string; lede?: string; items: EventItem[] }
   | { type: "gallery"; label?: string; title?: string; lede?: string; groups: { title: string; items: Img[] }[] }
-  | { type: "books"; label?: string; title: string; lede?: string; items: Book[] }
+  | { type: "books"; id?: string; label?: string; title: string; lede?: string; items: Book[] }
   | { type: "testimonies"; label?: string; title: string; lede?: string; items: Testimony[] }
   | { type: "form"; label?: string; title: string; lede?: string; form: "contact" | "volunteer" | "updates" }
   | { type: "faq"; label?: string; title?: string; items: { q: string; a: string }[] }

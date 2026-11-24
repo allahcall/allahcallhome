@@ -1089,14 +1089,14 @@ export function citeLine(p: Paper) {
 }
 
 export const researchPage: Page = {
-  slug: "research",
-  title: "Research Papers",
+  slug: "articles",
+  title: "Articles",
   description:
-    "Peer-reviewed papers by Muhammad Harris Suhaib and colleagues on God, atheism, the Qur'an and Islam in modern society, with plain-language summaries.",
+    "Articles and research papers on God, belief, the Qur'an and society, with accessible summaries and links to the full papers.",
   hero: {
-    label: "Research",
-    title: "Research papers",
-    lede: "Peer-reviewed papers on God, atheism, the Qur'an and Islam in modern society, by Muhammad Harris Suhaib and colleagues.",
+    label: "Library",
+    title: "Articles",
+    lede: "Explore articles and research papers on God, belief, the Qur'an and life in modern society, organised by topic.",
   },
   blocks: [
     {
@@ -1131,6 +1131,7 @@ export const researchPage: Page = {
     },
     ...topics.map((t, i) => ({
       type: "columns" as const,
+      id: t.id,
       label: t.label,
       title: t.title,
       lede: t.lede,
@@ -1158,7 +1159,7 @@ export const researchPage: Page = {
       body: "Ask us about anything you read here, or about Islam in general.",
       actions: [
         { label: "Ask a question", href: "/contact" },
-        { label: "Articles & books", href: "/articles-books", variant: "secondary" },
+        { label: "Articles", href: "/articles", variant: "secondary" },
       ],
     },
   ],
@@ -1192,7 +1193,7 @@ export function paperPage(p: Paper & { summary: NonNullable<Paper["summary"]> })
         body: "This page is our summary. The paper itself sets out the full argument with its sources.",
         actions: [
           { label: "Read the paper", href: doiUrl(p) },
-          { label: "All research", href: "/research", variant: "secondary" },
+          { label: "All articles", href: "/articles", variant: "secondary" },
         ],
       },
     ],

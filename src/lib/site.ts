@@ -42,7 +42,7 @@ export const site = {
   formspreeId: process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "mrppaaza",
 } as const;
 
-export type NavLink = { label: string; href: string; description?: string };
+export type NavLink = { label: string; href: string; description?: string; links?: NavLink[] };
 export type NavGroup = { label: string; href: string; links: NavLink[] };
 
 export const nav: NavGroup[] = [
@@ -92,21 +92,18 @@ export const nav: NavGroup[] = [
     ],
   },
   {
-    label: "Programs",
-    href: "/programs",
-    links: [
-      { label: "All programs", href: "/programs" },
-      { label: "Companionship", href: "/companionship" },
-      { label: "Courses", href: "/courses" },
-    ],
+    label: "Articles",
+    href: "/articles",
+    links: [{ label: "All articles", href: "/articles" }],
   },
   {
     label: "Services",
     href: "/our-services",
     links: [
       { label: "All services", href: "/our-services" },
-      { label: "Articles & Books", href: "/articles-books" },
-      { label: "Research papers", href: "/research" },
+      { label: "Programs", href: "/programs" },
+      { label: "Companionship", href: "/companionship" },
+      { label: "Courses", href: "/courses" },
       { label: "Muslim Revival", href: "/muslim-revival" },
       { label: "Rejoining the Ummah", href: "/rejoining-muslim-ummah" },
       { label: "Publish your work", href: "/publish-your-work" },

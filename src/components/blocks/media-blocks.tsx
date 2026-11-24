@@ -181,7 +181,7 @@ export function Gallery({ block }: { block: Of<"gallery"> }) {
 
 export function Books({ block }: { block: Of<"books"> }) {
   return (
-    <Section>
+    <Section id={block.id} className="scroll-mt-24">
       <SectionHead label={block.label} title={block.title} lede={block.lede} />
       <div className="grid gap-3 md:grid-cols-3 md:gap-4">
         {block.items.map((b) => (
