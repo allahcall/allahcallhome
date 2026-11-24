@@ -1,6 +1,8 @@
 import type { Page } from "../types";
+import { modernIdeologies } from "./modern-ideologies";
 
 export const programPages: Page[] = [
+  modernIdeologies,
   {
     slug: "programs",
     title: "Islamic Learning Programs",
@@ -174,6 +176,14 @@ export const programPages: Page[] = [
         type: "cards",
         cols: 2,
         items: [
+          {
+            title: modernIdeologies.title,
+            meta: modernIdeologies.hero.label,
+            body: modernIdeologies.description,
+            href: `/${modernIdeologies.slug}`,
+            image: modernIdeologies.hero.poster,
+            featured: true,
+          },
           {
             title: "Fundamentals of Islam",
             meta: "Beginner · 8 weeks",

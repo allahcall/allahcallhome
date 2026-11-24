@@ -1,4 +1,5 @@
 import type { Page } from "../types";
+import { modernIdeologies } from "./modern-ideologies";
 
 export const servicePages: Page[] = [
   {
@@ -97,6 +98,21 @@ export const servicePages: Page[] = [
             author: "Hamza Andreas Tzortzis",
             body: "A philosophical exploration of God's existence.",
             image: { src: "/images/books/divine-reality.png", alt: "Cover of The Divine Reality" },
+          },
+        ],
+      },
+      {
+        type: "cards",
+        label: "Courses",
+        title: "Islamic courses",
+        cols: 2,
+        items: [
+          {
+            title: modernIdeologies.title,
+            meta: modernIdeologies.hero.label,
+            body: modernIdeologies.description,
+            href: `/${modernIdeologies.slug}`,
+            image: modernIdeologies.hero.poster,
           },
         ],
       },
