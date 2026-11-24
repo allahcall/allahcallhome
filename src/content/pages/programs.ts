@@ -1,6 +1,10 @@
 import type { Page } from "../types";
+import { modernIdeologies } from "./modern-ideologies";
+import { modernHydrology } from "./modern-hydrology";
 
 export const programPages: Page[] = [
+  modernIdeologies,
+  modernHydrology,
   {
     slug: "programs",
     title: "Islamic Learning Programs",
@@ -174,6 +178,22 @@ export const programPages: Page[] = [
         type: "cards",
         cols: 2,
         items: [
+          {
+            title: modernIdeologies.title,
+            meta: modernIdeologies.hero.label,
+            body: modernIdeologies.description,
+            href: `/${modernIdeologies.slug}`,
+            image: modernIdeologies.hero.poster,
+            featured: true,
+          },
+          {
+            title: modernHydrology.title,
+            meta: modernHydrology.hero.label,
+            body: modernHydrology.description,
+            href: `/${modernHydrology.slug}`,
+            image: modernHydrology.hero.poster,
+            featured: false,
+          },
           {
             title: "Fundamentals of Islam",
             meta: "Beginner · 8 weeks",

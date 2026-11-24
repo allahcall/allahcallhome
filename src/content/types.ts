@@ -23,11 +23,11 @@ export type Item = {
 
 export type Block =
   /** Label + heading on the left, paragraphs on the right. */
-  | { type: "prose"; label?: string; title: string; body: string[] }
+  | { type: "prose"; label?: string; title: string; body: string[]; action?: Action }
   /** Hairline-divided columns of text, optional bullet lists and links. */
   | { type: "columns"; id?: string; label?: string; title?: string; lede?: string; cols?: 2 | 3 | 4; items: Item[]; tone?: "alt" }
   /** Image-led cards. With `href` the whole card links. */
-  | { type: "cards"; label?: string; title?: string; lede?: string; cols?: 2 | 3; items: (Item & { image: Img })[]; tone?: "alt" }
+  | { type: "cards"; label?: string; title?: string; lede?: string; cols?: 2 | 3; items: (Item & { image: Img; featured?: boolean })[]; tone?: "alt" }
   /** Numbered steps. */
   | { type: "steps"; label?: string; title: string; items: { title: string; body: string }[] }
   /** Short items laid out in a hairline grid (principles, mission points). */
@@ -100,6 +100,7 @@ export type Page = {
     title: string;
     lede?: string;
     image?: Img;
+    poster?: Img;
   };
   blocks: Block[];
 };

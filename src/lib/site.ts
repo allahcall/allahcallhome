@@ -1,3 +1,7 @@
+export function whatsappLink(message: string) {
+  return `https://wa.me/923040496627?text=${encodeURIComponent(message)}`;
+}
+
 export const site = {
   name: "AllahCall",
   tagline: "Islamic Dawah & Education",
@@ -10,26 +14,26 @@ export const site = {
   phone: { display: "+92 304 0496627", href: "tel:+923040496627" },
   email: { display: "allahcall786@gmail.com", href: "mailto:allahcall786@gmail.com" },
   // Prefilled drafts so people don't face an empty chat or email.
-  whatsapp: `https://wa.me/923040496627?text=${encodeURIComponent(
+  whatsapp: whatsappLink(
     "Assalamu alaikum AllahCall team, I found you through allahcall.com and would like to ask about ",
-  )}`,
+  ),
   emailDraft: `mailto:allahcall786@gmail.com?subject=${encodeURIComponent("Question from allahcall.com")}&body=${encodeURIComponent(
     "Assalamu alaikum AllahCall team,\n\nI would like to ask about \n\nJazakAllahu khayran,\n",
   )}`,
   // Drafts for someone thinking about Islam who wants a private conversation.
   talk: {
-    whatsapp: `https://wa.me/923040496627?text=${encodeURIComponent(
+    whatsapp: whatsappLink(
       "Assalamu alaikum, I am thinking about Islam and would like to talk with someone privately. ",
-    )}`,
+    ),
     email: `mailto:allahcall786@gmail.com?subject=${encodeURIComponent("I would like to talk about Islam")}&body=${encodeURIComponent(
       "Assalamu alaikum,\n\nI am thinking about Islam and would like to talk with someone privately. A little about me and my questions:\n\n",
     )}`,
   },
   // Book orders inside Pakistan are taken over WhatsApp.
   orderBook: (title: string, price: string) =>
-    `https://wa.me/923040496627?text=${encodeURIComponent(
+    whatsappLink(
       `Assalamu alaikum, I would like to order "${title}" (${price}). My name and delivery address: `,
-    )}`,
+    ),
   socials: [
     { label: "Instagram", href: "https://www.instagram.com/allah_call1" },
     { label: "YouTube", href: "https://youtube.com/@allahcall2421" },
