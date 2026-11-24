@@ -24,12 +24,14 @@ export function DesktopNav({ groups }: { groups: NavGroup[] }) {
           <li key={group.href} className="relative" onPointerEnter={(event) => { if (event.pointerType === "mouse") { setOpen(group.href); setCategory(null); } }} onPointerLeave={(event) => { if (event.pointerType === "mouse") close(); }}
             onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) close(); }}>
             <div className="flex items-center rounded-[10px] hover:bg-paper">
-              <Link href={group.href} onClick={close} className="flex h-10 items-center pl-2 pr-1 text-[14.5px] font-medium text-ink-2 hover:text-ink">{group.label}</Link>
+              <Link href={group.href} onClick={close} className="flex h-10 items-center px-2 text-[14.5px] font-medium text-ink-2 hover:text-ink">{group.label}</Link>
               <button type="button" ref={(node) => { toggles.current[group.href] = node; }}
                 aria-label={`Show ${group.label} submenu`} aria-expanded={open === group.href} aria-controls={`nav-${index}`}
-                className="grid size-6 place-items-center rounded-lg text-muted hover:text-ink"
+                className={group.href === "/articles"
+                  ? "grid size-6 place-items-center rounded-lg text-muted hover:text-ink"
+                  : "sr-only focus:not-sr-only focus:rounded-lg focus:px-2 focus:py-1 focus:text-sm"}
                 onClick={() => { setOpen(open === group.href ? null : group.href); setCategory(null); }}>
-                <span aria-hidden>⌄</span>
+                {group.href === "/articles" ? <span aria-hidden>⌄</span> : "Open submenu"}
               </button>
             </div>
             <div id={`nav-${index}`} hidden={open !== group.href} className={`absolute top-full w-64 pt-2 ${index >= groups.length - 2 ? "right-0" : "left-0"}`}>
