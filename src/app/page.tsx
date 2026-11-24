@@ -62,7 +62,7 @@ const paths = [
     links: [
       { label: "Islamic courses", href: "/courses" },
       { label: "Companionship program", href: "/companionship" },
-      { label: "Articles & books", href: "/articles-books" },
+      { label: "Articles", href: "/articles" },
     ],
   },
   {

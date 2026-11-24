@@ -218,9 +218,9 @@ export const aboutPages: Page[] = [
         cols: 4,
         items: [
           {
-            title: "Articles & Books",
-            body: "Access a rich collection of Islamic literature, articles, and educational materials.",
-            href: "/articles-books",
+            title: "Programs",
+            body: "Explore our courses, companionship program, and opportunities to learn and grow.",
+            href: "/programs",
           },
           {
             title: "Muslim Revival",
@@ -271,7 +271,7 @@ export const aboutPages: Page[] = [
         body: "Contact us to learn more about our services or to discuss your specific needs.",
         actions: [
           { label: "Contact us", href: "/contact" },
-          { label: "Browse resources", href: "/articles-books", variant: "secondary" },
+          { label: "Browse resources", href: "/articles", variant: "secondary" },
         ],
       },
     ],

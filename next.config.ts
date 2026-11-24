@@ -79,6 +79,8 @@ const nextConfig: NextConfig = {
   // Addresses that existed on the previous site.
   async redirects() {
     return [
+      { source: "/research", destination: "/articles", permanent: true },
+      { source: "/articles-books", destination: "/articles#books", permanent: true },
       { source: "/board", destination: "/board-of-directors", permanent: true },
       { source: "/services", destination: "/our-services", permanent: true },
       // The article editor is a static page in public/admin.

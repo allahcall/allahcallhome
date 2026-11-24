@@ -30,7 +30,7 @@ export function Prose({ block }: { block: Of<"prose"> }) {
 export function Columns({ block }: { block: Of<"columns"> }) {
   const cols = block.cols ?? 3;
   return (
-    <Section>
+    <Section id={block.id} className="scroll-mt-24">
       <SectionHead label={block.label} title={block.title} lede={block.lede} />
       <div className={`grid gap-3 md:gap-4 ${colClass[cols]}`}>
         {block.items.map((item, i) => {

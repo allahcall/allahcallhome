@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
 import { Star } from "@/components/ui/mark";
 import { ThemeSwitch } from "./theme-switch";
-import { nav, site } from "@/lib/site";
+import { site, type NavGroup } from "@/lib/site";
 
 const icon = "size-[22px]";
 
@@ -23,7 +23,7 @@ const tabs: { label: string; href: string; icon: ReactNode; match: string[] }[] 
   {
     label: "Learn",
     href: "/islam",
-    match: ["/islam", "/quran-sunnah", "/dawah", "/marriage", "/courses", "/companionship", "/programs", "/articles-books"],
+    match: ["/islam", "/quran-sunnah", "/dawah", "/marriage", "/courses", "/companionship", "/programs", "/articles-books", "/articles", "/research"],
     icon: (
       <svg viewBox="0 0 24 24" className={icon} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
         <path d="M4 5.5C6.5 4 9.5 4 12 6c2.5-2 5.5-2 8-.5V19c-2.5-1.5-5.5-1.5-8 .5-2.5-2-5.5-2-8-.5z" />
@@ -46,7 +46,7 @@ const tabs: { label: string; href: string; icon: ReactNode; match: string[] }[] 
 ];
 
 /** Bottom tab bar and full menu sheet for phones and tablets. */
-export function MobileNav() {
+export function MobileNav({ groups }: { groups: NavGroup[] }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -124,25 +124,37 @@ export function MobileNav() {
             </button>
           </div>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            {nav.map((group) => (
-              <details key={group.label} className="group card overflow-hidden">
+            {groups.map((group) => (
+              <details key={group.label} className="group/section card overflow-hidden">
                 <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-[17px] font-semibold">
                   {group.label}
-                  <span aria-hidden className="text-xl font-light text-muted transition-transform group-open:rotate-45">
+                  <span aria-hidden className="text-xl font-light text-muted transition-transform group-open/section:rotate-45">
                     +
                   </span>
                 </summary>
                 <ul className="border-t border-line px-2 py-2">
                   {group.links.map((link) => (
                     <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        aria-current={pathname === link.href ? "page" : undefined}
-                        onClick={close}
-                        className="block rounded-[12px] px-3 py-2.5 text-[15px] text-ink-2 aria-[current=page]:bg-green-tint aria-[current=page]:text-green"
-                      >
-                        {link.label}
-                      </Link>
+                      {link.links ? (
+                        <details className="group/category">
+                          <summary className="flex cursor-pointer list-none items-center justify-between rounded-xl px-3 py-2.5 text-[15px] font-medium">
+                            {link.label}<span aria-hidden className="group-open/category:rotate-45">+</span>
+                          </summary>
+                          <ul className="ml-3 border-l border-line pl-2">
+                            {[{ label: `All ${link.label}`, href: link.href }, ...link.links].map((article) => (
+                              <li key={article.href}>
+                                <Link href={article.href} dir="auto" onClick={close} aria-current={pathname === article.href ? "page" : undefined}
+                                  className="block rounded-xl px-3 py-2.5 text-[14px] text-ink-2 aria-[current=page]:bg-green-tint">{article.label}</Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </details>
+                      ) : (
+                        <Link href={link.href} aria-current={pathname === link.href ? "page" : undefined} onClick={close}
+                          className="block rounded-[12px] px-3 py-2.5 text-[15px] text-ink-2 aria-[current=page]:bg-green-tint aria-[current=page]:text-green">
+                          {link.label}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -171,7 +183,7 @@ export function MobileNav() {
       >
         <ul className="grid h-16 grid-cols-5 px-1">
           {tabs.map((t) => {
-            const on = !open && t.match.includes(pathname);
+            const on = !open && (t.match.includes(pathname) || (t.label === "Learn" && pathname.startsWith("/research/")));
             if (!t.icon)
               return (
                 <li key={t.label}>

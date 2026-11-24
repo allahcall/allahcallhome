@@ -92,7 +92,7 @@ export function paperLd(paper: Paper): Thing[] {
       "@type": "BreadcrumbList",
       itemListElement: [
         { name: "Home", item: site.url },
-        { name: "Research", item: `${site.url}/research` },
+        { name: "Articles", item: `${site.url}/articles` },
         { name, item: url },
       ].map((t, i) => ({ "@type": "ListItem", position: i + 1, ...t })),
     },
@@ -120,7 +120,7 @@ export function articleLd(article: Article): Thing[] {
       "@type": "BreadcrumbList",
       itemListElement: [
         { name: "Home", item: site.url },
-        { name: "Research", item: `${site.url}/research` },
+        { name: "Articles", item: `${site.url}/articles` },
         { name: article.title, item: url },
       ].map((t, i) => ({ "@type": "ListItem", position: i + 1, ...t })),
     },

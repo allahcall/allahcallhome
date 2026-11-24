@@ -14,8 +14,19 @@ export const pages: Page[] = [
   ...religionPages,
   ...newMuslimPages,
   ...programPages,
-  ...servicePages,
-  researchPage,
+  ...servicePages.filter((page) => page.slug !== "articles-books"),
+  {
+    ...researchPage,
+    blocks: [
+      ...researchPage.blocks.filter((block) => block.type !== "cta"),
+      ...servicePages.find((page) => page.slug === "articles-books")!.blocks.filter((block) => block.type === "books"),
+      {
+        type: "cta",
+        title: "Have a question about something you read?",
+        actions: [{ label: "Ask a question", href: "/contact" }],
+      },
+    ],
+  },
   ...legalPages,
 ];
 

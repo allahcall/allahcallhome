@@ -7,6 +7,7 @@ import { Header } from "@/components/layout/header";
 import { MobileNav } from "@/components/layout/mobile-menu";
 import { JsonLd, siteLd } from "@/components/seo/json-ld";
 import { pageMetadata } from "@/lib/seo";
+import { navigation } from "@/lib/navigation";
 import { site } from "@/lib/site";
 import { BAR_COLORS, themeScript } from "@/lib/theme";
 import "./globals.css";
@@ -61,7 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
-        <MobileNav />
+        <MobileNav groups={navigation} />
         <JsonLd data={siteLd()} />
         <Analytics />
         <SpeedInsights />

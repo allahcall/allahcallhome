@@ -15,6 +15,7 @@ export const servicePages: Page[] = [
     blocks: [
       {
         type: "books",
+        id: "books",
         label: "Our founder's books",
         title: "Books by Engr. Hafiz Muhammad Harris",
         lede: "Clear, reasoned answers to the questions atheists and sceptics ask about God. Order inside Pakistan over WhatsApp, or worldwide from Amazon.",

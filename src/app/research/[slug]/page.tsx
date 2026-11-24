@@ -56,7 +56,7 @@ export default async function ResearchPage({ params }: PageProps<"/research/[slu
               body: "Ask us about anything you read here, or about Islam in general.",
               actions: [
                 { label: "Ask a question", href: "/contact" },
-                { label: "All research", href: "/research", variant: "secondary" },
+                { label: "All articles", href: "/articles", variant: "secondary" },
               ],
             },
           ]}
