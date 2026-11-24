@@ -64,6 +64,20 @@ export const islamPages: Page[] = [
         ],
       },
       {
+        type: "columns",
+        label: "Articles",
+        title: "Explore the Shahada",
+        cols: 2,
+        items: [
+          {
+            title: "کلمۂ شہادت میں «مُحَمَّدٌ رَّسُولُ اللّٰہِ» کی شمولیت: ایک استدلال کا تنقیدی جائزہ",
+            meta: "Article · Urdu",
+            body: "کلمۂ شہادت میں رسالتِ محمدیہ کی شمولیت پر قرآنِ مجید، سیاق و سباق اور تواترِ امت کی روشنی میں ایک تنقیدی جائزہ۔",
+            href: "/research/shahada-muhammad-rasulullah",
+          },
+        ],
+      },
+      {
         type: "faq",
         label: "Questions",
         title: "Frequently asked questions",

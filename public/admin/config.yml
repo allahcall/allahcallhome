@@ -87,6 +87,14 @@ collections:
           - { label: "Modern thought", value: modern }
           - { label: "Qur'an and Sunnah", value: quran }
           - { label: "Society and rights", value: society }
+      - name: language
+        label: Language
+        widget: select
+        required: false
+        default: en
+        options:
+          - { label: English, value: en }
+          - { label: Urdu, value: ur }
       - name: date
         label: Date
         widget: datetime

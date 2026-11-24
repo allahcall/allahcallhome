@@ -44,8 +44,10 @@ export default async function ResearchPage({ params }: PageProps<"/research/[slu
     const topic = topics.find((t) => t.id === article.topic)!;
     return (
       <PageTransition>
-        <PageHero hero={{ label: `Article · ${topic.label}`, title: article.title, lede: article.summary }} />
-        <ArticleBody article={article} />
+        <div lang={article.language ?? "en"} dir={article.language === "ur" ? "rtl" : "ltr"} className={article.language === "ur" ? "urdu-article" : undefined}>
+          <PageHero hero={{ label: `Article · ${topic.label}`, title: article.title, lede: article.summary }} />
+          <ArticleBody article={article} />
+        </div>
         <Blocks
           blocks={[
             {
