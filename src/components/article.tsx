@@ -39,7 +39,7 @@ export function ArticleBody({ article }: { article: Article }) {
   return (
     <Section>
       <article className="card p-6 md:p-12">
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-5">
+        <div dir="ltr" lang="en" className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-5">
           <p className="text-[14px] text-muted">
             <span className="font-medium text-ink-2">{article.authors.join(", ")}</span>
             <span aria-hidden> · </span>

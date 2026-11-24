@@ -27,6 +27,7 @@ export type Article = {
   /** One or two sentences under the title and on the research page. */
   summary: string;
   authors: string[];
+  language?: "en" | "ur";
   /** Full paper as a PDF: an https link, or a file in public/papers/. */
   pdf?: string;
   /** Markdown body, already checked. */
@@ -37,7 +38,7 @@ export const articlesDir = path.join(process.cwd(), "src/content/articles");
 const publicDir = path.join(process.cwd(), "public");
 
 const topicIds: Topic[] = ["god", "modern", "quran", "society"];
-const fields = new Set(["title", "topic", "date", "summary", "authors", "pdf", "draft"]);
+const fields = new Set(["title", "topic", "date", "summary", "authors", "pdf", "draft", "language"]);
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const defaultAuthor = "Muhammad Harris Suhaib";
 
@@ -158,6 +159,9 @@ export function parseArticle(file: string, source: string): Article | null | str
 
   const title = text(head.title, "title", problems, 120);
   const summary = text(head.summary, "summary", problems, 320);
+  const language = head.language;
+  if (language !== undefined && language !== "en" && language !== "ur")
+    problems.push('"language" must be en or ur');
 
   const topic = head.topic as Topic;
   if (!topicIds.includes(topic)) problems.push(`"topic" must be one of: ${topicIds.join(", ")}`);
@@ -192,7 +196,7 @@ export function parseArticle(file: string, source: string): Article | null | str
 
   if (problems.length) return problems;
   if (head.draft === true) return null;
-  return { slug, title, topic, date, summary, authors, ...(pdf ? { pdf } : {}), body };
+  return { slug, title, topic, date, summary, authors, ...(language === "en" || language === "ur" ? { language } : {}), ...(pdf ? { pdf } : {}), body };
 }
 
 function load(): Article[] {

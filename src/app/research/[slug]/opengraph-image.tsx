@@ -14,6 +14,9 @@ export function generateStaticParams() {
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;
   const article = getArticle(slug);
-  if (article) return shareCard({ label: "Article", title: article.title });
+  // The image renderer cannot shape Urdu; keep its title in page metadata.
+  if (article) return shareCard(article.language === "ur"
+    ? { label: "Article in Urdu", title: site.name }
+    : { label: "Article", title: article.title });
   return shareCard({ label: "Research", title: getPaper(slug)?.summary?.title ?? site.name });
 }

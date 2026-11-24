@@ -58,6 +58,7 @@ More text, with **bold**, *italics* and [a link](https://example.com).
 | `date`    | yes    | `YYYY-MM-DD`. Newest articles are listed first. |
 | `summary` | yes    | Up to 320 characters. |
 | `authors` | no     | One name or a list. Defaults to Muhammad Harris Suhaib. |
+| `language` | no    | `en` (default) or `ur`. Urdu articles use right-to-left layout. |
 | `pdf`     | no     | The full paper: an `https://` link (Zenodo, journal) or `/papers/file-name.pdf` for a PDF placed in `public/papers/`. Adds a "Read the full paper" button. |
 | `draft`   | no     | `true` keeps the article off the site while you work on it. |
 

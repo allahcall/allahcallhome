@@ -128,6 +128,7 @@ export function articleLd(article: Article): Thing[] {
       "@context": "https://schema.org",
       "@type": "Article",
       headline: article.title,
+      inLanguage: article.language ?? "en",
       description: article.summary,
       author: article.authors.map((name) => ({ "@type": "Person", name })),
       datePublished: article.date,

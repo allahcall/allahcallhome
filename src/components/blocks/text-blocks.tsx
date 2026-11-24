@@ -39,12 +39,12 @@ export function Columns({ block }: { block: Of<"columns"> }) {
               <span className="grid size-9 place-items-center rounded-[11px] bg-green-tint text-[13px] font-semibold text-green tabular-nums">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className="mt-4 text-[18px] leading-snug font-semibold tracking-[-0.01em]">
+              <h3 dir="auto" className="mt-4 text-[18px] leading-snug font-semibold tracking-[-0.01em]">
                 {item.title}
                 {item.href && <Arrow className="ml-1.5 text-green" />}
               </h3>
               {item.meta && <p className="mt-1 text-[13px] font-medium text-green">{item.meta}</p>}
-              {item.body && <p className="mt-2 text-[14.5px] text-muted">{item.body}</p>}
+              {item.body && <p dir="auto" className="mt-2 text-[14.5px] text-muted">{item.body}</p>}
             </>
           );
           return (
