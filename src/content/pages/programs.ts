@@ -1,10 +1,8 @@
 import type { Page } from "../types";
 import { modernIdeologies } from "./modern-ideologies";
-import { modernHydrology } from "./modern-hydrology";
 
 export const programPages: Page[] = [
   modernIdeologies,
-  modernHydrology,
   {
     slug: "programs",
     title: "Islamic Learning Programs",
@@ -185,14 +183,6 @@ export const programPages: Page[] = [
             href: `/${modernIdeologies.slug}`,
             image: modernIdeologies.hero.poster,
             featured: true,
-          },
-          {
-            title: modernHydrology.title,
-            meta: modernHydrology.hero.label,
-            body: modernHydrology.description,
-            href: `/${modernHydrology.slug}`,
-            image: modernHydrology.hero.poster,
-            featured: false,
           },
           {
             title: "Fundamentals of Islam",

@@ -1,6 +1,5 @@
 import type { Page } from "../types";
 import { modernIdeologies } from "./modern-ideologies";
-import { modernHydrology } from "./modern-hydrology";
 
 export const servicePages: Page[] = [
   {
@@ -114,13 +113,6 @@ export const servicePages: Page[] = [
             body: modernIdeologies.description,
             href: `/${modernIdeologies.slug}`,
             image: modernIdeologies.hero.poster,
-          },
-          {
-            title: modernHydrology.title,
-            meta: modernHydrology.hero.label,
-            body: modernHydrology.description,
-            href: `/${modernHydrology.slug}`,
-            image: modernHydrology.hero.poster,
           },
         ],
       },
