@@ -22,6 +22,21 @@ export const modernIdeologies = {
   },
   blocks: [
     {
+      type: "gallery",
+      title: "Modern Ideologies and Islam",
+      groups: [
+        {
+          title: "Course poster",
+          items: [
+            {
+              src: "/images/courses/modern-ideologies-and-islam-poster.webp",
+              alt: "Modern Ideologies and Islam course poster featuring Maulana Engineer Muhammad Harris Suhaib",
+            },
+          ],
+        },
+      ],
+    },
+    {
       type: "prose",
       title: "Course overview",
       action: enrollment,
