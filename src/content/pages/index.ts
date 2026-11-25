@@ -7,6 +7,7 @@ import { newMuslimPages } from "./new-muslims";
 import { programPages } from "./programs";
 import { modernIdeologies } from "./modern-ideologies";
 import { whyIslamIsTrue } from "./why-islam-is-true";
+import { holyQuran } from "./holy-quran";
 import { religionPages } from "./religions";
 import { servicePages } from "./services";
 
@@ -18,6 +19,7 @@ export const pages: Page[] = [
   ...programPages,
   modernIdeologies,
   whyIslamIsTrue,
+  holyQuran,
   ...servicePages.filter((page) => page.slug !== "articles-books"),
   {
     ...researchPage,

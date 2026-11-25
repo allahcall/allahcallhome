@@ -1,6 +1,7 @@
 import type { Page } from "../types";
 import { modernIdeologies } from "./modern-ideologies";
 import { whyIslamIsTrue } from "./why-islam-is-true";
+import { holyQuran } from "./holy-quran";
 
 export const servicePages: Page[] = [
   {
@@ -121,6 +122,13 @@ export const servicePages: Page[] = [
             body: whyIslamIsTrue.description,
             href: `/${whyIslamIsTrue.slug}`,
             image: whyIslamIsTrue.hero.poster,
+          },
+          {
+            title: holyQuran.title,
+            meta: holyQuran.hero.label,
+            body: holyQuran.description,
+            href: `/${holyQuran.slug}`,
+            image: holyQuran.hero.poster,
           },
         ],
       },
