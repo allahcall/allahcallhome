@@ -19,32 +19,13 @@ export const modernIdeologies = {
       src: "/images/courses/modern-ideologies-and-islam-poster.webp",
       alt: "Modern Ideologies and Islam course poster featuring Maulana Engineer Muhammad Harris Suhaib and announcing 60+ topics through an Islamic lens",
     },
+    overview: [
+      "Two people can both call for justice and disagree about what anyone is owed. They may be drawing on different ideas about equality, duty or the purpose of the state. This course starts with those differences and follows them into debates about government, wealth, family and public life.",
+      "Across seven themes, you will study how modern political and philosophical traditions frame these questions and how Muslim thinkers have approached them through Shariah, consultation, social obligation and accountability. The full lecture series is planned to cover 60+ topics. The outline gives you a guide to the questions we expect to discuss.",
+    ],
+    action: enrollment,
   },
   blocks: [
-    {
-      type: "gallery",
-      title: "Modern Ideologies and Islam",
-      groups: [
-        {
-          title: "Course poster",
-          items: [
-            {
-              src: "/images/courses/modern-ideologies-and-islam-poster.webp",
-              alt: "Modern Ideologies and Islam course poster featuring Maulana Engineer Muhammad Harris Suhaib",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: "prose",
-      title: "Course overview",
-      action: enrollment,
-      body: [
-        "Two people can both call for justice and disagree about what anyone is owed. They may be drawing on different ideas about equality, duty or the purpose of the state. This course starts with those differences and follows them into debates about government, wealth, family and public life.",
-        "Across seven themes, you will study how modern political and philosophical traditions frame these questions and how Muslim thinkers have approached them through Shariah, consultation, social obligation and accountability. The full lecture series is planned to cover 60+ topics. The outline gives you a guide to the questions we expect to discuss.",
-      ],
-    },
     {
       type: "columns",
       cols: 3,

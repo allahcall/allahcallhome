@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Block, Page } from "@/content/types";
 import { ContactForm, UpdatesForm, VolunteerForm } from "@/components/forms/forms";
 import { buttonClass } from "@/components/ui/button";
@@ -10,6 +11,42 @@ import { Books, Cards, Gallery, People, Shahada, Testimonies } from "./media-blo
 import { Columns, Cta, Faq, Points, Prose, Quote, Stats, Steps } from "./text-blocks";
 
 export function PageHero({ hero }: { hero: Page["hero"] }) {
+  if (hero.poster) {
+    return (
+      <header className="wrap pt-3 md:pt-6">
+        <div className="mb-6 px-1 md:mb-8">
+          <Link href="/courses" className="text-sm font-semibold text-green hover:underline">← All courses</Link>
+          <Label className="mt-5">{hero.label}</Label>
+          <h1 className="display mt-2 text-[36px] md:text-[clamp(42px,4.5vw,60px)]">{hero.title}</h1>
+          {hero.lede && <p className="mt-3 text-[15px] text-ink-2 md:text-[17px]">{hero.lede}</p>}
+        </div>
+        <div className="card grid items-center overflow-hidden lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <Photo
+            image={hero.poster}
+            sizes="(min-width: 1220px) 590px, (min-width: 1024px) 50vw, 100vw"
+            priority
+            fit="contain"
+            className="aspect-square w-full min-w-0"
+          />
+          <div className="min-w-0 p-6 sm:p-8">
+            {hero.overview && (
+              <div>
+                <h2 className="display text-[30px] md:text-[36px]">Course overview</h2>
+                <div className="mt-4 space-y-4 text-[15px] leading-relaxed text-ink-2 md:text-[16px]">
+                  {hero.overview.map((paragraph) => <p key={paragraph.slice(0, 24)}>{paragraph}</p>)}
+                </div>
+              </div>
+            )}
+            {hero.action && (
+              <a href={hero.action.href} target="_blank" rel="noopener noreferrer" className={buttonClass("primary", "mt-6 w-full sm:w-auto")}>
+                {hero.action.label}
+              </a>
+            )}
+          </div>
+        </div>
+      </header>
+    );
+  }
   if (!hero.image) {
     return (
       <header className="wrap pt-3 md:pt-6">

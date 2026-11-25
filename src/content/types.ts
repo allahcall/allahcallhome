@@ -101,6 +101,9 @@ export type Page = {
     lede?: string;
     image?: Img;
     poster?: Img;
+    /** Course copy shown beside a poster image. */
+    overview?: string[];
+    action?: Action;
   };
   blocks: Block[];
 };

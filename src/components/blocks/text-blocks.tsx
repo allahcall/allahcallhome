@@ -21,6 +21,7 @@ export function Prose({ block }: { block: Of<"prose"> }) {
           {block.body.map((p) => (
             <p key={p.slice(0, 24)}>{p}</p>
           ))}
+          {block.action && <ButtonLink href={block.action.href}>{block.action.label}</ButtonLink>}
         </div>
       </div>
     </Section>

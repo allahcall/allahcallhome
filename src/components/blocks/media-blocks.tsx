@@ -21,23 +21,24 @@ export function Cards({ block }: { block: Of<"cards"> }) {
             <>
               <Photo
                 image={item.image}
-                sizes={cols === 2 ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"}
-                className="aspect-[16/10] transition-transform duration-500 group-hover:scale-[1.02]"
+                sizes={item.featured ? "(min-width: 1220px) 377px, (min-width: 640px) 32vw, 100vw" : cols === 2 ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"}
+                className={item.featured ? "aspect-square w-full min-w-0" : "aspect-[16/10] transition-transform duration-500 group-hover:scale-[1.02]"}
+                fit={item.featured ? "contain" : "cover"}
               />
-              <div className="p-5 md:p-6">
+              <div className={item.featured ? "min-w-0 p-6 lg:p-10" : "p-5 md:p-6"}>
                 {item.meta && <p className="mb-1 text-[13px] font-medium text-green">{item.meta}</p>}
-                <h3 className="text-[19px] leading-snug font-semibold tracking-[-0.01em]">
+                <h3 className={item.featured ? "display mt-2 text-[28px] md:text-[36px]" : "text-[19px] leading-snug font-semibold tracking-[-0.01em]"}>
                   {item.title}
                   {item.href && <Arrow className="ml-1.5 text-green" />}
                 </h3>
-                {item.body && <p className="mt-2 text-[14.5px] text-muted">{item.body}</p>}
+                {item.body && <p className={item.featured ? "mt-3 max-w-[38em] text-[16px] text-muted" : "mt-2 text-[14.5px] text-muted"}>{item.body}</p>}
               </div>
             </>
           );
           return (
-            <article key={item.title} className={`card flex flex-col overflow-hidden ${item.href ? "lift" : ""}`}>
+            <article key={item.title} className={`card flex flex-col overflow-hidden ${item.featured ? "md:col-span-full" : ""} ${item.href ? "lift" : ""}`}>
               {item.href ? (
-                <Link href={item.href} className="group block">
+                <Link href={item.href} className={item.featured ? "group grid items-center sm:grid-cols-[minmax(180px,32%)_1fr]" : "group block"}>
                   {body}
                 </Link>
               ) : (
