@@ -118,6 +118,18 @@ export const modernIdeologies = {
       ],
     },
     {
+      type: "columns",
+      cols: 2,
+      title: "Related course",
+      items: [
+        {
+          title: "Why Islam Is True",
+          body: "A one hour recorded crash course on the reasons Muslims believe Islam is true, taught by Maulana Engineer Muhammad Harris Suhaib. Available on demand.",
+          href: "/why-islam-is-true",
+        },
+      ],
+    },
+    {
       type: "cta",
       title: "Interested in enrolling?",
       actions: [enrollment],

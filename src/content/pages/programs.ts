@@ -1,5 +1,6 @@
 import type { Page } from "../types";
 import { modernIdeologies } from "./modern-ideologies";
+import { whyIslamIsTrue } from "./why-islam-is-true";
 
 export const programPages: Page[] = [
   modernIdeologies,
@@ -183,6 +184,13 @@ export const programPages: Page[] = [
             href: `/${modernIdeologies.slug}`,
             image: modernIdeologies.hero.poster,
             featured: true,
+          },
+          {
+            title: whyIslamIsTrue.title,
+            meta: whyIslamIsTrue.hero.label,
+            body: whyIslamIsTrue.description,
+            href: `/${whyIslamIsTrue.slug}`,
+            image: whyIslamIsTrue.hero.poster,
           },
           {
             title: "Fundamentals of Islam",

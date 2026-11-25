@@ -6,6 +6,7 @@ import { legalPages } from "./legal";
 import { newMuslimPages } from "./new-muslims";
 import { programPages } from "./programs";
 import { modernIdeologies } from "./modern-ideologies";
+import { whyIslamIsTrue } from "./why-islam-is-true";
 import { religionPages } from "./religions";
 import { servicePages } from "./services";
 
@@ -16,6 +17,7 @@ export const pages: Page[] = [
   ...newMuslimPages,
   ...programPages,
   modernIdeologies,
+  whyIslamIsTrue,
   ...servicePages.filter((page) => page.slug !== "articles-books"),
   {
     ...researchPage,
