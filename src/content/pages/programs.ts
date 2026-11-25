@@ -191,6 +191,7 @@ export const programPages: Page[] = [
             body: whyIslamIsTrue.description,
             href: `/${whyIslamIsTrue.slug}`,
             image: whyIslamIsTrue.hero.poster,
+            featured: true,
           },
           {
             title: "Fundamentals of Islam",
