@@ -1,10 +1,9 @@
 import type { Page } from "../types";
-import { whatsappLink } from "@/lib/site";
 
 const title = "Hikmah Complete Quran Tafsir Program";
 const enrollment = {
   label: "Join the course",
-  href: whatsappLink(`Assalamu alaikum, I would like to join the Hikmah Complete Quran Tafsir Program.`),
+  href: "https://wa.me/923175211131?text=" + encodeURIComponent("Assalamu alaikum, I would like to join the Hikmah Complete Quran Tafsir Program."),
 };
 
 export const hikmahTafseer = {
@@ -78,6 +77,22 @@ export const hikmahTafseer = {
         "Message us on WhatsApp and our team will guide you on the batch timing and the next steps, in sha Allah.",
       ],
       action: enrollment,
+    },
+    {
+      type: "columns",
+      cols: 2,
+      title: "Our other courses",
+      lede: "Alongside the Tafsir Program, Hikmah Quran Academy teaches students to read the Quran correctly, from the very first letter to fluent recitation.",
+      items: [
+        {
+          title: "Noorani Qaida",
+          body: "Live online classes, 5 days a week, 30 minutes per class. For girls, ladies and little kids (little boys are welcome too). Small batches, limited seats. PKR 3,000 per month; USD 11 per month for international students.",
+        },
+        {
+          title: "Nazra with Tajweed",
+          body: "Live online classes, 5 days a week, 30 minutes per class. For girls, ladies and little kids (little boys are welcome too). Small batches, limited seats. PKR 3,000 per month; USD 11 per month for international students.",
+        },
+      ],
     },
     {
       type: "cta",
