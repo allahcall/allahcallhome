@@ -2,8 +2,7 @@ import type { Page } from "../types";
 import { modernIdeologies } from "./modern-ideologies";
 import { whyIslamIsTrue } from "./why-islam-is-true";
 import { holyQuran } from "./holy-quran";
-import { hikmahTafseer } from "./hikmah-tafseer";
-
+import { qaidaNazra } from "./qaida-nazra";
 export const programPages: Page[] = [
   modernIdeologies,
   {
@@ -200,18 +199,18 @@ export const programPages: Page[] = [
             meta: holyQuran.hero.label,
             body: holyQuran.description,
             href: `/${holyQuran.slug}`,
-             image: holyQuran.hero.poster,
-             featured: true,
-           },
-           {
-             title: hikmahTafseer.title,
-             meta: hikmahTafseer.hero.label,
-             body: hikmahTafseer.description,
-             href: `/${hikmahTafseer.slug}`,
-             image: hikmahTafseer.hero.poster,
-             featured: true,
-           },
-         ],
+            image: holyQuran.hero.poster,
+            featured: true,
+          },
+          {
+            title: qaidaNazra.title,
+            meta: qaidaNazra.hero.label,
+            body: qaidaNazra.description,
+            href: `/${qaidaNazra.slug}`,
+            image: qaidaNazra.hero.poster,
+            featured: true,
+          },
+        ],
       },
       {
         type: "columns",
