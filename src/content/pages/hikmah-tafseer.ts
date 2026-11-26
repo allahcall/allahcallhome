@@ -81,17 +81,26 @@ export const hikmahTafseer = {
     {
       type: "columns",
       cols: 2,
-      title: "Our other courses",
+      title: "Our other course",
       lede: "Alongside the Tafsir Program, Hikmah Quran Academy teaches students to read the Quran correctly, from the very first letter to fluent recitation.",
       items: [
         {
-          title: "Noorani Qaida",
-          body: "Live online classes, 5 days a week, 30 minutes per class. For girls, ladies and little kids (little boys are welcome too). Small batches, limited seats. PKR 3,000 per month; USD 11 per month for international students.",
+          title: "Noorani Qaida and Nazra with Tajweed",
+          body: "Live online classes in small batches. 5 days a week, 30 minutes per class. For girls, ladies and little kids (little boys are welcome too). Batches have limited seats. Course fee: PKR 3,000 per month; USD 11 per month for international students. Message us on WhatsApp and our team will guide you on batch timing and next steps.",
         },
-        {
-          title: "Nazra with Tajweed",
-          body: "Live online classes, 5 days a week, 30 minutes per class. For girls, ladies and little kids (little boys are welcome too). Small batches, limited seats. PKR 3,000 per month; USD 11 per month for international students.",
-        },
+      ],
+    },
+    {
+      type: "columns",
+      cols: 3,
+      title: "Noorani Qaida and Nazra with Tajweed · details",
+      items: [
+        { title: "Format", body: "Live online classes." },
+        { title: "Schedule", body: "5 days a week, 30 minutes per class." },
+        { title: "Who it is for", body: "Girls, ladies and little kids (little boys are welcome too)." },
+        { title: "Batches", body: "Small batches, seats in each batch are limited." },
+        { title: "Course fee", body: "PKR 3,000 per month. USD 11 per month for international students." },
+        { title: "How to join", body: "Message us on WhatsApp and our team will guide you on the batch timing and the next steps, in sha Allah." },
       ],
     },
     {
