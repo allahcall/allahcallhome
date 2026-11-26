@@ -8,6 +8,7 @@ import { programPages } from "./programs";
 import { modernIdeologies } from "./modern-ideologies";
 import { whyIslamIsTrue } from "./why-islam-is-true";
 import { holyQuran } from "./holy-quran";
+import { hikmahTafseer } from "./hikmah-tafseer";
 import { qaidaNazra } from "./qaida-nazra";
 import { religionPages } from "./religions";
 import { servicePages } from "./services";
@@ -21,6 +22,7 @@ export const pages: Page[] = [
   modernIdeologies,
   whyIslamIsTrue,
   holyQuran,
+  hikmahTafseer,
   qaidaNazra,
   ...servicePages.filter((page) => page.slug !== "articles-books"),
   {
