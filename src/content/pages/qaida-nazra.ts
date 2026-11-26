@@ -17,7 +17,7 @@ export const qaidaNazra = {
     title,
     lede: "Course: Noorani Qaida and Nazra with Tajweed",
     poster: {
-      src: "/images/courses/hikmah-qaida-nazra.pdf",
+      src: "/images/courses/hikmah-qaida-nazra.png",
       alt: "Noorani Qaida and Nazra with Tajweed course poster",
     },
     overview: [
